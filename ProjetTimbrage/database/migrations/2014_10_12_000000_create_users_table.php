@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             //$table->foreignId('current_team_id')->nullable(); Ne sera pas utilisée car pas de team selon modèle jetstream
             $table->text('profile_photo_path')->nullable();
             $table->integer('grade');
-            $table->foreignId('department_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
