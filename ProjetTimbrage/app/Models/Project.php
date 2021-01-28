@@ -20,4 +20,8 @@ class Project extends Model
     'number',
     'name'
   ];
+
+  public function affectation(){
+    return $this->hasMany(Affectation::class);
+  }
 }

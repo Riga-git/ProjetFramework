@@ -19,4 +19,14 @@ class Department extends Model
       'user_id',
       'name'
     ];
+
+    public function userIn(){
+      return $this->hasMany(User::class, 'department_id');
+    }
+
+    public function leader(){
+      return $this->hasOne(User::class, 'id');
+    }
+
+
 }

@@ -60,4 +60,22 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function stamp(){
+      return $this->hasMany(Stamp::class);
+    }
+
+    public function inDepartment(){
+      return $this->belongsTo(Department::class, 'id');
+    }
+
+    public function leadDepartment(){
+      return $this->belongsTo(Department::class, 'user_id');
+    }
+
+    public function affectation(){
+      return $this->hasMany(Affectation::class);
+    }
+
+
 }

@@ -20,4 +20,8 @@ class Stamp extends Model
     'stamp'
   ];
 
+  public function user(){
+    return $this->belongsTo(User::class);
+  }
+
 }
