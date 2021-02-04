@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDepartmentIdColumnToUsersTable extends Migration
+class AddExtraColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddDepartmentIdColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->foreignId('department_id')->after('grade')->constrained();
+          $table->foreignId('department_id')->after('profile_photo_path')->constrained();
+          $table->foreignId('grade_id')->after('department_id')->constrained();
         });
     }
 
@@ -27,6 +28,7 @@ class AddDepartmentIdColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
           $table->dropConstrainedForeignId('department_id');
+          $table->dropConstrainedForeignId('grade_id');
         });
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Department;
+use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -39,60 +40,84 @@ class DatabaseSeeder extends Seeder
         'name' => 'Purchase',
       ]);
 
+      Grade::create([
+        'name' => 'user',
+        'can_manage_users' => false,
+        'can_manage_departments' => false,
+        'can_manage_stamps' => true,
+        'can_manage_projects' => false,
+      ]);
+
+      Grade::create([
+        'name' => 'manager',
+        'can_manage_users' => false,
+        'can_manage_departments' => false,
+        'can_manage_stamps' => true,
+        'can_manage_projects' => true,
+      ]);
+
+      Grade::create([
+        'name' => 'hr',
+        'can_manage_users' => true,
+        'can_manage_departments' => true,
+        'can_manage_stamps' => true,
+        'can_manage_projects' => false,
+      ]);
+
       User::create([
-        'department_id' => 1,
         'firstName' => 'Jérôme',
         'lastName' => 'Garo',
         'email' => 'jerome.garo@gmail.com',
         'email_verified_at' => now(),
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
-        'grade' => 100,
+        'department_id' => 1,
+        'grade_id' => 1,
       ]);
 
       User::create([
-        'department_id' => 1,
         'firstName' => 'Luca',
         'lastName' => 'Rigazzi',
         'email' => 'luca.riggazi@gmail.com',
         'email_verified_at' => now(),
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
-        'grade' => 100,
+        'department_id' => 1,
+        'grade_id' => 1,
       ]);
 
-      User::create([
-        'department_id' => 3,
-        'firstName' => 'Human',
-        'lastName' => 'Resources',
-        'email' => 'hr@gmail.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('password'),
-        'remember_token' => Str::random(10),
-        'grade' => 1000,
-      ]);
-
-      User::create([
-        'department_id' => 2,
-        'firstName' => 'J-P',
-        'lastName' => 'Meca',
-        'email' => 'jp.meca@gmail.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('password'),
-        'remember_token' => Str::random(10),
-        'grade' => 200,
-      ]);
-
-      User::create([
-        'department_id' => 4,
-        'firstName' => 'J-F',
-        'lastName' => 'Purchase',
-        'email' => 'jf.purchase@gmail.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('password'),
-        'remember_token' => Str::random(10),
-        'grade' => 300,
-      ]);
+//      User::create([
+//        'department_id' => 3,
+//        'firstName' => 'Human',
+//        'lastName' => 'Resources',
+//        'email' => 'hr@gmail.com',
+//        'email_verified_at' => now(),
+//        'password' => Hash::make('password'),
+//        'remember_token' => Str::random(10),
+//        'grade' => 1000,
+//      ]);
+//
+//      User::create([
+//        'department_id' => 2,
+//        'firstName' => 'J-P',
+//        'lastName' => 'Meca',
+//        'email' => 'jp.meca@gmail.com',
+//        'email_verified_at' => now(),
+//        'password' => Hash::make('password'),
+//        'remember_token' => Str::random(10),
+//        'grade' => 200,
+//      ]);
+//
+//      User::create([
+//        'department_id' => 4,
+//        'firstName' => 'J-F',
+//        'lastName' => 'Purchase',
+//        'email' => 'jf.purchase@gmail.com',
+//        'email_verified_at' => now(),
+//        'password' => Hash::make('password'),
+//        'remember_token' => Str::random(10),
+//        'grade' => 300,
+//      ]);
 
     }
 }

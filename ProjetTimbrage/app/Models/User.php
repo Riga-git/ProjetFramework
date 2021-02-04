@@ -78,5 +78,8 @@ class User extends Authenticatable
       return $this->hasMany(Affectation::class);
     }
 
+    public function grade(){
+      return $this->belongsTo(Grade::class);
+    }
 
 }
