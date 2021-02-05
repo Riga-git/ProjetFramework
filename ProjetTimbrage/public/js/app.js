@@ -4287,18 +4287,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['departments']
-}); // import AppLayout from './../Layouts/AppLayout'
-//
-//        components: {
-//            AppLayout,
-//        },
-//    }
+  props: ['departments'],
+  data: function data() {
+    return {
+      departmentList: this.departments
+    };
+  }
+});
 
 /***/ }),
 
@@ -32881,15 +32877,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "h2",
-      { staticClass: "font-semibold text-xl text-gray-800 leading-tight" },
-      [_vm._v("\n                Profile test 1234\n            ")]
-    ),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.departments))])
-  ])
+  return _c(
+    "div",
+    { staticClass: "container mx-auto grid grid-flow-row" },
+    _vm._l(this.departmentList, function(department) {
+      return _c("div", { key: department.id }, [
+        _vm._v("\n    " + _vm._s(department.name) + "\n  ")
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

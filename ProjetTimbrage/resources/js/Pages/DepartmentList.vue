@@ -1,26 +1,23 @@
 <template>
-  <!--  <app-layout>
-        <template #header>-->
-          <div>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile test 1234
-            </h2>
-            <p>{{ departments }}</p>
-<!--        </template>
 
-    </app-layout> -->
-          </div>
+  <div class="container mx-auto grid grid-flow-row">
+    <div v-for="department in this.departmentList" v-bind:key="department.id">
+      {{ department.name }}
+    </div>
+
+  </div>
 </template>
 
 <script>
   export default {
-    props: ['departments']
-  }
-   // import AppLayout from './../Layouts/AppLayout'
+    props: ['departments'],
 
-//
-//        components: {
-//            AppLayout,
-//        },
-//    }
+    data() {
+      return {
+        departmentList : this.departments
+      }
+    }
+
+  }
+
 </script>
