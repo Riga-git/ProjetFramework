@@ -1,11 +1,13 @@
 <template>
 
   <div class="container mx-auto grid grid-flow-row">
+    {{ departmentList}}
+    <!--
     <div v-for="department in this.departmentList" v-bind:key="department.id">
       {{ department.name }}
     </div>
     <a class="button is-success">Success</a>
-
+    -->
   </div>
 </template>
 

@@ -4288,6 +4288,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['departments'],
   data: function data() {
@@ -5422,6 +5424,7 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
 vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.use(portal_vue__WEBPACK_IMPORTED_MODULE_1__.default);
 var app = document.getElementById('app');
+vue__WEBPACK_IMPORTED_MODULE_2__.default.config.devtools = true;
 new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   render: function render(h) {
     return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.App, {
@@ -32878,20 +32881,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mx-auto grid grid-flow-row" },
-    [
-      _vm._l(this.departmentList, function(department) {
-        return _c("div", { key: department.id }, [
-          _vm._v("\n    " + _vm._s(department.name) + "\n  ")
-        ])
-      }),
-      _vm._v(" "),
-      _c("a", { staticClass: "button is-success" }, [_vm._v("Success")])
-    ],
-    2
-  )
+  return _c("div", { staticClass: "container mx-auto grid grid-flow-row" }, [
+    _vm._v("\n  " + _vm._s(_vm.departmentList) + "\n  ")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
