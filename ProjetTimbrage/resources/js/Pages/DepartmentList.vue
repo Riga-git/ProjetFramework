@@ -1,13 +1,20 @@
 <template>
 
-  <div class="container mx-auto grid grid-flow-row">
-    {{ departmentList}}
-    <!--
-    <div v-for="department in this.departmentList" v-bind:key="department.id">
-      {{ department.name }}
+  <div class="container">
+    <div class="columns is-multiline">
+      <div v-for="department in this.departmentList" v-bind:key="department.object" class="column">
+          <div class="card">
+            <div class="card-header has-background-primary-dark">
+              <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ department.name }}</p>
+            </div>
+            <div class="card-content">
+              <p>Leader : {{ department.leader[0].firstName }} {{department.leader[0].lastName}} </p>
+              <p>Members : {{ department.memberNbre }}</p>
+            </div>
+          </div>
+      </div>
+
     </div>
-    <a class="button is-success">Success</a>
-    -->
   </div>
 </template>
 

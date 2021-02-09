@@ -71,7 +71,7 @@ class User extends Authenticatable
     }
 
     public function leadDepartment(){
-      return $this->hasOne(Department::class, 'user_id');
+      return $this->hasMany(Department::class, 'user_id');
     }
 
     public function affectation(){

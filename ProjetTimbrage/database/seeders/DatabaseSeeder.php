@@ -86,38 +86,38 @@ class DatabaseSeeder extends Seeder
         'grade_id' => 1,
       ]);
 
-//      User::create([
-//        'department_id' => 3,
-//        'firstName' => 'Human',
-//        'lastName' => 'Resources',
-//        'email' => 'hr@gmail.com',
-//        'email_verified_at' => now(),
-//        'password' => Hash::make('password'),
-//        'remember_token' => Str::random(10),
-//        'grade' => 1000,
-//      ]);
-//
-//      User::create([
-//        'department_id' => 2,
-//        'firstName' => 'J-P',
-//        'lastName' => 'Meca',
-//        'email' => 'jp.meca@gmail.com',
-//        'email_verified_at' => now(),
-//        'password' => Hash::make('password'),
-//        'remember_token' => Str::random(10),
-//        'grade' => 200,
-//      ]);
-//
-//      User::create([
-//        'department_id' => 4,
-//        'firstName' => 'J-F',
-//        'lastName' => 'Purchase',
-//        'email' => 'jf.purchase@gmail.com',
-//        'email_verified_at' => now(),
-//        'password' => Hash::make('password'),
-//        'remember_token' => Str::random(10),
-//        'grade' => 300,
-//      ]);
+      User::create([
+        'department_id' => 3,
+        'firstName' => 'Human',
+        'lastName' => 'Resources',
+        'email' => 'hr@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('password'),
+        'remember_token' => Str::random(10),
+        'grade_id' => 2,
+      ]);
+
+      User::create([
+        'department_id' => 2,
+        'firstName' => 'J-P',
+        'lastName' => 'Meca',
+        'email' => 'jp.meca@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('password'),
+        'remember_token' => Str::random(10),
+        'grade_id' => 3,
+      ]);
+
+      User::create([
+        'department_id' => 4,
+        'firstName' => 'J-F',
+        'lastName' => 'Purchase',
+        'email' => 'jf.purchase@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('password'),
+        'remember_token' => Str::random(10),
+        'grade_id' => 2,
+      ]);
 
     }
 }

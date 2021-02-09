@@ -14,11 +14,10 @@ class DepartmentDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
       return [
         'id' => $this->id,
         'name' => $this->name,
-        'leader' => $this->leader(),
+        'leader' => $this->leader()->get(),
         'memberNbre' => $this->userIn()->count()
       ];
     }
