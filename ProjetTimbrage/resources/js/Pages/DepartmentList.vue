@@ -4,6 +4,7 @@
     <div v-for="department in this.departmentList" v-bind:key="department.id">
       {{ department.name }}
     </div>
+    <a class="button is-success">Success</a>
 
   </div>
 </template>

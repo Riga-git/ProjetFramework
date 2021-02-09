@@ -4287,6 +4287,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['departments'],
   data: function data() {
@@ -32880,12 +32881,16 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "container mx-auto grid grid-flow-row" },
-    _vm._l(this.departmentList, function(department) {
-      return _c("div", { key: department.id }, [
-        _vm._v("\n    " + _vm._s(department.name) + "\n  ")
-      ])
-    }),
-    0
+    [
+      _vm._l(this.departmentList, function(department) {
+        return _c("div", { key: department.id }, [
+          _vm._v("\n    " + _vm._s(department.name) + "\n  ")
+        ])
+      }),
+      _vm._v(" "),
+      _c("a", { staticClass: "button is-success" }, [_vm._v("Success")])
+    ],
+    2
   )
 }
 var staticRenderFns = []
