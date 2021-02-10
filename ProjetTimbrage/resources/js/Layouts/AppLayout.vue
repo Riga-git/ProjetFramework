@@ -145,6 +145,9 @@
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('departments')" :active="route().current('departments')">
+                            Demartments list
+                        </jet-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->

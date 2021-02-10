@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,4 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('departments', 'App\Http\Controllers\DepartmentController@index');
+/*
+Route::get('departments', 'App\Http\Controllers\DepartmentController@index')->name('departments');
+Route::get('departments/{id}', 'App\Http\Controllers\DepartmentController@show')->name('departments.show');
+*/
+
+Route::resource('departments', DepartmentController::class);

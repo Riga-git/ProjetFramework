@@ -49,7 +49,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+      return Inertia::render('DepartmentDetail', ['departmentDetail' => $department]);
     }
 
     /**
