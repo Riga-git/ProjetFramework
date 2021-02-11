@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\DepartmentDetailResource;
+use App\Http\Resources\DepartmentOverviewResource;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,7 +17,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-      $departments = DepartmentDetailResource::collection(Department::all());
+      $departments = DepartmentOverviewResource::collection(Department::all());
       return Inertia::render('DepartmentList', [ 'departments' => $departments]);
     }
 
@@ -49,7 +50,8 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-      return Inertia::render('DepartmentDetail', ['departmentDetail' => $department]);
+      $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
+      return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
     }
 
     /**

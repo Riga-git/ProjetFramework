@@ -1,0 +1,12 @@
+{
+    "search.exclude": {
+        "**/bower_components": false,
+        "**/bower_components2": true,
+        "**/node_modules": false,
+        "**/node_modules2": true
+    },
+    "files.watcherExclude": {
+        "**/node_modules/*/**": false,
+        "**/node_modules2/*/**": true
+    }
+}
