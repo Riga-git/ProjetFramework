@@ -30713,8 +30713,8 @@ var render = function() {
                       "jet-responsive-nav-link",
                       {
                         attrs: {
-                          href: _vm.route("departments"),
-                          active: _vm.route().current("departments")
+                          href: _vm.route("departments.index"),
+                          active: _vm.route().current("departments.index")
                         }
                       },
                       [
