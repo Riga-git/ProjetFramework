@@ -19,7 +19,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = DepartmentOverviewResource::collection(Department::all());
-        return Inertia::render('DepartmentList', [ 'departments' => $departments]);
+        return Inertia::render('DepartmentsList', [ 'departments' => $departments]);
     }
 
     /**
@@ -29,7 +29,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('DepartmentCreate');
     }
 
     /**
@@ -61,9 +61,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($department)
     {
-        //
+        return Inertia::render('DepartmentEdit', [ 'department' => $department]);
     }
 
     /**

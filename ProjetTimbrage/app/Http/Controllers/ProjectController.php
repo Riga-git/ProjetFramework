@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = 1;
+        return Inertia::render('ProjectsList', [ 'projects' => $projects]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('ProjectCreate');
     }
 
     /**
@@ -43,9 +45,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($project)
     {
-        //
+        return Inertia::render('ProjectDetail', ['project' => $project]);
     }
 
     /**
@@ -54,9 +56,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($project)
     {
-        //
+        return Inertia::render('ProjectEdit', [ 'project' => $project]);
     }
 
     /**

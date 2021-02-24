@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class ClockingController extends Controller
@@ -13,7 +14,8 @@ class ClockingController extends Controller
      */
     public function index()
     {
-        //
+        $clockings = 1;
+        return Inertia::render('Clockings',[ 'clockings' => $clockings]);
     }
 
     /**
@@ -54,9 +56,9 @@ class ClockingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($clocking)
     {
-        //
+        return Inertia::render('Clockings',[ 'clockingEdit' => $clocking]);
     }
 
     /**
