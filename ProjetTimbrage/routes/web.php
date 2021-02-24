@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ClockingController;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\ProjectController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ClockingController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
