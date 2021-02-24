@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,4 +36,14 @@ Route::get('departments', 'App\Http\Controllers\DepartmentController@index')->na
 Route::get('departments/{id}', 'App\Http\Controllers\DepartmentController@show')->name('departments.show');
 */
 
-Route::resource('departments', DepartmentController::class);
+Route::resource('departments', DepartmentController::class)->except(['edit']);
+
+Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
+
+Route::resource('projects', ProjectController::class)->except(['edit']);
+
+// Assignments
+Route::get('/user', [AssignmentController::class, 'index']);
+Route::patch('/user', [AssignmentController::class, 'edit']);
+Route::post('/user', [AssignmentController::class, 'post']);
+Route::delete('/user', [AssignmentController::class, 'destroy']);
