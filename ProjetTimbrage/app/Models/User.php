@@ -64,8 +64,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function stamp(){
-      return $this->hasMany(Stamp::class);
+    public function clocking(){
+      return $this->hasMany(Clocking::class);
     }
 
     public function inDepartment(){
@@ -76,8 +76,8 @@ class User extends Authenticatable
       return $this->hasMany(Department::class, 'user_id');
     }
 
-    public function affectation(){
-      return $this->hasMany(Affectation::class);
+    public function assignment(){
+      return $this->hasMany(Assignment::class);
     }
 
     public function grade(){

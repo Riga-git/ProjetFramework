@@ -21,7 +21,7 @@ class Project extends Model
     'name'
   ];
 
-  public function affectation(){
-    return $this->hasMany(Affectation::class);
+  public function assignment(){
+    return $this->hasMany(Assignment::class);
   }
 }
