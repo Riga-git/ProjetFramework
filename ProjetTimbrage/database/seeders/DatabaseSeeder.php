@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         'name' => 'user',
         'can_manage_users' => false,
         'can_manage_departments' => false,
-        'can_manage_stamps' => true,
+        'can_manage_clockings' => true,
         'can_manage_projects' => false,
       ]);
 
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         'name' => 'manager',
         'can_manage_users' => false,
         'can_manage_departments' => false,
-        'can_manage_stamps' => true,
+        'can_manage_clockings' => true,
         'can_manage_projects' => true,
       ]);
 
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         'name' => 'hr',
         'can_manage_users' => true,
         'can_manage_departments' => true,
-        'can_manage_stamps' => true,
+        'can_manage_clockings' => true,
         'can_manage_projects' => false,
       ]);
 

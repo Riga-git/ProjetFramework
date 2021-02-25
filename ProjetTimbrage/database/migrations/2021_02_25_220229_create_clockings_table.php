@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStampsTable extends Migration
+class CreateClockingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateStampsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stamps', function (Blueprint $table) {
+        Schema::create('clockings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->timestamp('stamp');
+            $table->timestamp('clocking');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateStampsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stamps');
+        Schema::dropIfExists('clockings');
     }
 }

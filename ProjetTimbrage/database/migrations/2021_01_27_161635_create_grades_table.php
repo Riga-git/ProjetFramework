@@ -18,7 +18,7 @@ class CreateGradesTable extends Migration
             $table->string('name');
             $table->boolean('can_manage_users');
             $table->boolean('can_manage_departments');
-            $table->boolean('can_manage_stamps');
+            $table->boolean('can_manage_clockings');
             $table->boolean('can_manage_projects');
             $table->timestamps();
         });

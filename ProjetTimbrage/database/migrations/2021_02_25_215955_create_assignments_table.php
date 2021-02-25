@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAffectationsTable extends Migration
+class CreateAssignmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAffectationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('affectations', function (Blueprint $table) {
+        Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('project_id')->constrained();
@@ -30,6 +30,6 @@ class CreateAffectationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('affectations');
+        Schema::dropIfExists('assignments');
     }
 }

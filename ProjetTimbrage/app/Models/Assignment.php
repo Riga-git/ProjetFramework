@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stamp extends Model
+class Assignment extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
   /**
    * The attributes that are mass assignable.
@@ -17,11 +17,16 @@ class Stamp extends Model
 
   protected $fillable = [
     'user_id',
-    'stamp'
+    'project_id',
+    'date',
+    'duration'
   ];
 
   public function user(){
     return $this->belongsTo(User::class);
   }
 
+  public function project(){
+    return $this->belongsTo(Project::class);
+  }
 }
