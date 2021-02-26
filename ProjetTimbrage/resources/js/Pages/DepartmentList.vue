@@ -9,8 +9,8 @@
                 <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ department.name }}</p>
               </div>
               <div class="card-content">
-                <p>Leader : {{ department.leader[0].firstName }} {{department.leader[0].lastName}} </p>
-                <p>Members : {{ department.memberNbre }}</p>
+                <p><span class="icon has-text-primary-dark"><em class="fas fa-user-tie"></em></span> {{ department.leader[0].firstName }} {{department.leader[0].lastName}} </p>
+                <p><span class="icon has-text-primary-dark"><em class="fas fa-users"></em></span> {{ department.memberNbre }}</p>
               </div>
             </div>
           </inertia-link>

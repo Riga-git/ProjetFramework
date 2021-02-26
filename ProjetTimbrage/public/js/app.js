@@ -4288,6 +4288,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['departmentDetail'],
   data: function data() {
@@ -32763,9 +32815,132 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v(_vm._s(_vm.department))])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header has-background-primary-dark" }, [
+        _c(
+          "p",
+          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
+          [_vm._v(_vm._s(_vm.department[0].name))]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "box" }, [
+          _c("p", { staticClass: "is-size-4 has-text-weight-semibold mb-2" }, [
+            _vm._v("Chef de département")
+          ]),
+          _vm._v(" "),
+          _c("article", { staticClass: "media" }, [
+            _c("figure", { staticClass: "media-left" }, [
+              _c("p", { staticClass: "image is-64x64" }, [
+                _c("img", {
+                  staticClass: "is-rounded",
+                  attrs: { src: _vm.department[0].leader[0].profile_photo_url }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-content" }, [
+              _c("div", { staticClass: "content" }, [
+                _c("p", [
+                  _c("strong", [
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.department[0].leader[0].firstName) +
+                        " " +
+                        _vm._s(_vm.department[0].leader[0].lastName)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "mailto:" + _vm.department[0].leader[0].email
+                      }
+                    },
+                    [
+                      _vm._v(
+                        " " + _vm._s(_vm.department[0].leader[0].email) + " "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("nav", { staticClass: "panel" }, [
+          _c("p", { staticClass: "panel-heading" }, [
+            _vm._v(
+              "\n          " +
+                _vm._s(_vm.department[0].members.length) +
+                " Membres\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "media-right" }, [
+      _c("span", { staticClass: "icon has-text-danger-dark" }, [
+        _c("em", { staticClass: "fas fa-trash-alt" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-block" }, [
+      _c("p", { staticClass: "control has-icons-left" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Search" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "icon is-left" }, [
+          _c("i", {
+            staticClass: "fas fa-search",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "panel-block is-active" }, [
+      _c("span", { staticClass: "panel-icon" }, [
+        _c("i", {
+          staticClass: "fas fa-book",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]),
+      _vm._v(
+        "\n          À remplir avec la liste des membres (v-for), ajouter une petite poubelle à droite et virer le lien qui ne sert à rien\n        "
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -32821,8 +32996,13 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "card-content" }, [
                     _c("p", [
+                      _c(
+                        "span",
+                        { staticClass: "icon has-text-primary-dark" },
+                        [_c("em", { staticClass: "fas fa-user-tie" })]
+                      ),
                       _vm._v(
-                        "Leader : " +
+                        " " +
                           _vm._s(department.leader[0].firstName) +
                           " " +
                           _vm._s(department.leader[0].lastName) +
@@ -32831,7 +33011,12 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", [
-                      _vm._v("Members : " + _vm._s(department.memberNbre))
+                      _c(
+                        "span",
+                        { staticClass: "icon has-text-primary-dark" },
+                        [_c("em", { staticClass: "fas fa-users" })]
+                      ),
+                      _vm._v(" " + _vm._s(department.memberNbre))
                     ])
                   ])
                 ])
