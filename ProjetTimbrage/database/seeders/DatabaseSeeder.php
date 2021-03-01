@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Assignment;
 use App\Models\Department;
 use App\Models\Grade;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -117,6 +119,32 @@ class DatabaseSeeder extends Seeder
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
         'grade_id' => 2,
+      ]);
+
+      Project::create([
+        'id' => 1,
+        'name' => 'LUM01',
+        'number' => 748596
+      ]);
+
+      Project::create([
+        'id' => 2,
+        'name' => 'Heraeus',
+        'number' => 968574
+      ]);
+
+      Assignment::create([
+        'user_id' => 1,
+        'project_id' => '1',
+        'date' => now(),
+        'duration' => 6
+      ]);
+
+      Assignment::create([
+        'user_id' => 2,
+        'project_id' => '2',
+        'date' => now(),
+        'duration' => 9
       ]);
 
     }

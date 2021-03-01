@@ -18,7 +18,7 @@ class ProjectsListResource extends JsonResource
             'id' => $this->id,
             'number' => $this->number,
             'name' => $this->name,
-            'assignments' => $this->assignment()
+            'assignments' => $this->assignment()->sum('duration')
           ];
     }
 }

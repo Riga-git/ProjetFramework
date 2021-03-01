@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="columns is-multiline">
       <div v-for="department in this.departmentList" v-bind:key="department.object" class="column">

@@ -18,7 +18,6 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = ProjectsListResource::collection(Project::all());
-        dd($projects);
         return Inertia::render('ProjectsList', [ 'projects' => $projects]);
     }
 
