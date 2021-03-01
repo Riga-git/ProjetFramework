@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clocking;
+use Inertia\Inertia;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Http\Resources\ProjectsListResource;
 
-class ClockingsController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,9 @@ class ClockingsController extends Controller
      */
     public function index()
     {
-        //
+        $projects = ProjectsListResource::collection(Project::all());
+        dd($projects);
+        return Inertia::render('ProjectsList', [ 'projects' => $projects]);
     }
 
     /**
@@ -41,10 +46,10 @@ class ClockingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Clocking  $clocking
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Clocking $clocking)
+    public function show(Project $project)
     {
         //
     }
@@ -52,10 +57,10 @@ class ClockingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Clocking  $clocking
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clocking $clocking)
+    public function edit(Project $project)
     {
         //
     }
@@ -64,10 +69,10 @@ class ClockingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Clocking  $clocking
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clocking $clocking)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -75,10 +80,10 @@ class ClockingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Clocking  $clocking
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clocking $clocking)
+    public function destroy(Project $project)
     {
         //
     }

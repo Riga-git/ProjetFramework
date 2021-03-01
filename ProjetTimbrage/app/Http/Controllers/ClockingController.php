@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Clocking;
 use Illuminate\Http\Request;
 
-class ProjectsController extends Controller
+class ClockingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Clocking $clocking)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Clocking $clocking)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProjectsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Clocking $clocking)
     {
         //
     }
@@ -75,10 +75,10 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Clocking $clocking)
     {
         //
     }
