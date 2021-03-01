@@ -44,7 +44,7 @@ Route::resource('clockings', ClockingController::class)->except(['edit', 'create
 Route::resource('projects', ProjectController::class)->except(['edit']);
 
 // Assignments
-Route::get('/user', [AssignmentController::class, 'index']);
-Route::patch('/user', [AssignmentController::class, 'edit']);
-Route::post('/user', [AssignmentController::class, 'create']);
-Route::delete('/user', [AssignmentController::class, 'destroy']);
+Route::get('/assignments', [AssignmentController::class, 'index']);
+Route::patch('/assignments', [AssignmentController::class, 'edit']);
+Route::post('/assignments', [AssignmentController::class, 'store']);
+Route::delete('/assignments', [AssignmentController::class, 'destroy']);
