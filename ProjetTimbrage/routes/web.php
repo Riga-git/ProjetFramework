@@ -46,5 +46,5 @@ Route::resource('projects', ProjectController::class)->except(['edit']);
 // Assignments
 Route::get('/user', [AssignmentController::class, 'index']);
 Route::patch('/user', [AssignmentController::class, 'edit']);
-Route::post('/user', [AssignmentController::class, 'post']);
+Route::post('/user', [AssignmentController::class, 'create']);
 Route::delete('/user', [AssignmentController::class, 'destroy']);
