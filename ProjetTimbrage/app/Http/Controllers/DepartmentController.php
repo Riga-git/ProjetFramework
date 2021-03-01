@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\Department;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use App\Http\Resources\DepartmentDetailResource;
 use App\Http\Resources\DepartmentOverviewResource;
+use App\Models\Department;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DepartmentController extends Controller
 {
@@ -18,8 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = DepartmentOverviewResource::collection(Department::all());
-        return Inertia::render('DepartmentsList', [ 'departments' => $departments]);
+      $departments = DepartmentOverviewResource::collection(Department::all());
+      return Inertia::render('DepartmentList', [ 'departments' => $departments]);
     }
 
     /**
@@ -29,7 +28,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return Inertia::render('DepartmentCreate');
+        //
     }
 
     /**
@@ -46,34 +45,34 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function show(Department $department)
     {
-        $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-        return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
+      $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
+      return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit($department)
+    public function edit(Department $department)
     {
-        return Inertia::render('DepartmentEdit', [ 'department' => $department]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
         //
     }
@@ -81,10 +80,10 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
         //
     }
