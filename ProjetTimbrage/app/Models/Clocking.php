@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Affectation extends Model
+class Clocking extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
   /**
    * The attributes that are mass assignable.
@@ -17,16 +17,12 @@ class Affectation extends Model
 
   protected $fillable = [
     'user_id',
-    'project_id',
-    'date',
-    'duration'
+    'clocking'
   ];
 
   public function user(){
     return $this->belongsTo(User::class);
   }
 
-  public function project(){
-    return $this->belongsTo(Project::class);
-  }
+
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class AssignmentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = 1;
-        return Inertia::render('ProjectsList', [ 'projects' => $projects]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return Inertia::render('ProjectCreate');
+        //
     }
 
     /**
@@ -42,33 +41,33 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function show($project)
+    public function show(Assignment $assignment)
     {
-        return Inertia::render('ProjectDetail', ['project' => $project]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function edit($project)
+    public function edit(Assignment $assignment)
     {
-        return Inertia::render('ProjectEdit', [ 'project' => $project]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Assignment $assignment)
     {
         //
     }
@@ -76,10 +75,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Assignment $assignment)
     {
         //
     }

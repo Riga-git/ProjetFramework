@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
+use App\Models\Clocking;
 use Illuminate\Http\Request;
 
-class ClockingController extends Controller
+class ClockingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class ClockingController extends Controller
      */
     public function index()
     {
-        $clockings = 1;
-        return Inertia::render('Clockings',[ 'clockings' => $clockings]);
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class ClockingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Clocking $clocking)
     {
         //
     }
@@ -53,22 +52,22 @@ class ClockingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function edit($clocking)
+    public function edit(Clocking $clocking)
     {
-        return Inertia::render('Clockings',[ 'clockingEdit' => $clocking]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Clocking $clocking)
     {
         //
     }
@@ -76,10 +75,10 @@ class ClockingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Clocking  $clocking
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Clocking $clocking)
     {
         //
     }
