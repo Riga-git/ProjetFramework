@@ -6,7 +6,8 @@ use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Resources\ProjectsListResource;
+use App\Http\Resources\ProjectListResource;
+use App\Http\Resources\ProjectDetailResource;
 
 class ProjectController extends Controller
 {
@@ -17,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = ProjectsListResource::collection(Project::all());
+        $projects = ProjectListResource::collection(Project::all());
         return Inertia::render('ProjectsList', [ 'projects' => $projects]);
     }
 
@@ -50,7 +51,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $projectsDetails = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
+        return Inertia::render('ProjectDetail', ['project' => $projectsDetails]);
     }
 
     /**

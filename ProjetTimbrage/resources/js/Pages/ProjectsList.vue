@@ -5,10 +5,11 @@
           <inertia-link :href="'projects/' + project.id" :active=false>
             <div class="card">
               <div class="card-header has-background-primary-dark">
-                <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ project.name }} - {{ project.number}}</p>
+                <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ project.name }}</p>
               </div>
               <div class="card-content">
-                <p><span class="icon has-text-primary-dark"><em class="fas fa-clock"></em></span> {{ project.assignments[0]}}h</p>
+                <p class="tag is-primary-dark has-text-weight-bold is-medium mb-2">{{ project.number }}</p>
+                <p><span class="icon has-text-primary-dark"><em class="fas fa-clock"></em></span> {{ project.totalHours}}</p>
               </div>
             </div>
           </inertia-link>

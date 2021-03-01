@@ -5505,19 +5505,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
 //
 //
 //
 //
-//import JetNavLink from '@/Jetstream/NavLink'
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  //props: ['departments'],
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-  /*components:{
-    JetNavLink
-  },*/
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['project'],
+  components: {
+    JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   data: function data() {
-    return {};
+    return {
+      projectDetail: this.project
+    };
   }
 });
 
@@ -5564,6 +5593,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
+//
 //
 //
 //
@@ -35750,9 +35780,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("HomePage")])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header has-background-primary-dark" }, [
+        _c(
+          "p",
+          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
+          [_vm._v(_vm._s(_vm.projectDetail[0].name))]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c(
+          "nav",
+          { staticClass: "panel" },
+          [
+            _c("p", { staticClass: "panel-heading" }, [
+              _vm._v(
+                _vm._s(_vm.projectDetail[0].totalHours) +
+                  " already spent on the project "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(this.projectDetail[0].assignments, function(assignment) {
+              return _c(
+                "a",
+                { key: assignment.object, staticClass: "panel-block" },
+                [
+                  _c("p", [
+                    _c("strong", [
+                      _vm._v(
+                        " " +
+                          _vm._s(assignment.user.firstName) +
+                          " " +
+                          _vm._s(assignment.user.lastName) +
+                          " "
+                      )
+                    ]),
+                    _vm._v(
+                      " \n          on " +
+                        _vm._s(assignment.date) +
+                        " : " +
+                        _vm._s(assignment.duration) +
+                        " \n        "
+                    )
+                  ])
+                ]
+              )
+            })
+          ],
+          2
+        )
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-block" }, [
+      _c("p", { staticClass: "control has-icons-left" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Search" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "icon is-left" }, [
+          _c("i", {
+            staticClass: "fas fa-search",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -35824,25 +35930,28 @@ var render = function() {
                           staticClass:
                             "has-text-white has-text-weight-bold is-size-3 pl-2"
                         },
-                        [
-                          _vm._v(
-                            _vm._s(project.name) +
-                              " - " +
-                              _vm._s(project.number)
-                          )
-                        ]
+                        [_vm._v(_vm._s(project.name))]
                       )
                     ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-content" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "tag is-primary-dark has-text-weight-bold is-medium mb-2"
+                      },
+                      [_vm._v(_vm._s(project.number))]
+                    ),
+                    _vm._v(" "),
                     _c("p", [
                       _c(
                         "span",
                         { staticClass: "icon has-text-primary-dark" },
                         [_c("em", { staticClass: "fas fa-clock" })]
                       ),
-                      _vm._v(" " + _vm._s(project.assignments[0]) + "h")
+                      _vm._v(" " + _vm._s(project.totalHours))
                     ])
                   ])
                 ])
