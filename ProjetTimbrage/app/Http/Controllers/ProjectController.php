@@ -75,7 +75,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        Project::findOrFail($project->id)->update(['name' => $project->name, 'number' => $project->number ]);
+        return response(200);
     }
 
     /**

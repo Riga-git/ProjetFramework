@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="container">
     <div class="card">
       <div class="card-header has-background-primary-dark">
@@ -23,9 +24,45 @@
           </a>
         </nav>
       </div>
+      <div class="card-footer">
+        <div class="card-footer-item">
+          <div class="box">
+              <figure class="image is-32x32">
+                <img v-on:click="toggleEdit" src="/Icons/Edit.png" alt="edit">
+              </figure>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div v-bind:class="{'is-active': editionMode}" class="modal">
+    <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit project</p>
+          <button v-on:click="toggleEdit" class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="block">
+            <input v-model="this.tempProjectDetail[0].name" class="input" type="text" placeholder="project name">
+          </div>
+          <div class="block">
+            <input v-model="this.tempProjectDetail[0].number" class="input" type="text" placeholder="project number">
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <div class="card-footer-item">
+            <div class="box">
+                <figure class="image is-32x32">
+                  <img v-on:click="updateProjectRequest" src="/Icons/Save.png" alt="edit">
+                </figure>
+            </div>
+          </div>
+        </footer>
+      </div>
+  </div>
+</div>
 
 </template>
 
@@ -41,9 +78,32 @@
 
     data() {
       return {
-        projectDetail : this.project
+        projectDetail : this.project,
+        tempProjectDetail : this.project,
+        editionMode : false
       }
     },
+
+    methods: {
+    toggleEdit() {
+        this.editionMode = !this.editionMode;
+    },
+
+      updateProjectRequest() {
+        axios.put('/projects/'+ this.projectDetail[0].id, {
+            data: this.tempProjectDetail
+        })
+        .then(response => {
+          console.log(response);
+            if (response.status === 200) {
+                this.toggleEdit();
+            }
+        })
+        .catch(error => console.log(error));
+      }
+    },
+
+
   }
 
 </script>
