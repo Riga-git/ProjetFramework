@@ -35901,13 +35901,8 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-footer" }, [
           _c("div", { staticClass: "card-footer-item" }, [
-            _c("div", { staticClass: "box" }, [
-              _c("figure", { staticClass: "image is-32x32" }, [
-                _c("img", {
-                  attrs: { src: "/Icons/Edit.png", alt: "edit" },
-                  on: { click: _vm.toggleEdit }
-                })
-              ])
+            _c("div", { staticClass: "box", on: { click: _vm.toggleEdit } }, [
+              _vm._m(1)
             ])
           ])
         ])
@@ -35989,14 +35984,11 @@ var render = function() {
           _vm._v(" "),
           _c("footer", { staticClass: "modal-card-foot" }, [
             _c("div", { staticClass: "card-footer-item" }, [
-              _c("div", { staticClass: "box" }, [
-                _c("figure", { staticClass: "image is-32x32" }, [
-                  _c("img", {
-                    attrs: { src: "/Icons/Save.png", alt: "edit" },
-                    on: { click: _vm.updateProjectRequest }
-                  })
-                ])
-              ])
+              _c(
+                "div",
+                { staticClass: "box", on: { click: _vm.updateProjectRequest } },
+                [_vm._m(2)]
+              )
             ])
           ])
         ])
@@ -36023,6 +36015,22 @@ var staticRenderFns = [
           })
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Edit.png", alt: "edit" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Save.png", alt: "edit" } })
     ])
   }
 ]

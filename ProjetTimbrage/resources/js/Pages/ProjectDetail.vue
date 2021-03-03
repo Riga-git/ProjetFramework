@@ -26,9 +26,9 @@
       </div>
       <div class="card-footer">
         <div class="card-footer-item">
-          <div class="box">
+          <div v-on:click="toggleEdit"  class="box">
               <figure class="image is-32x32">
-                <img v-on:click="toggleEdit" src="/Icons/Edit.png" alt="edit">
+                <img src="/Icons/Edit.png" alt="edit">
               </figure>
           </div>
         </div>
@@ -53,9 +53,9 @@
         </section>
         <footer class="modal-card-foot">
           <div class="card-footer-item">
-            <div class="box">
+            <div v-on:click="updateProjectRequest" class="box">
                 <figure class="image is-32x32">
-                  <img v-on:click="updateProjectRequest" src="/Icons/Save.png" alt="edit">
+                  <img src="/Icons/Save.png" alt="edit">
                 </figure>
             </div>
           </div>
