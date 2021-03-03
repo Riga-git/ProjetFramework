@@ -5537,6 +5537,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['project'],
@@ -5545,8 +5582,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      projectDetail: this.project
+      projectDetail: this.project,
+      name: '',
+      number: '',
+      editionMode: false
     };
+  },
+  methods: {
+    toggleEdit: function toggleEdit() {
+      this.editionMode = !this.editionMode;
+    },
+    updateProjectRequest: function updateProjectRequest() {
+      var _this = this;
+
+      var tmp = this.projectDetail;
+      tmp[0].name = this.name;
+      tmp[0].number = this.number;
+      axios.patch('/projects/' + this.projectDetail[0].id, {
+        newValues: tmp
+      }).then(function (response) {
+        console.log(response);
+
+        if (response.status === 200) {
+          _this.toggleEdit();
+        }
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
   }
 });
 
@@ -35780,61 +35843,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header has-background-primary-dark" }, [
-        _c(
-          "p",
-          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
-          [_vm._v(_vm._s(_vm.projectDetail[0].name))]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-content" }, [
-        _c(
-          "nav",
-          { staticClass: "panel" },
-          [
-            _c("p", { staticClass: "panel-heading" }, [
-              _vm._v(
-                _vm._s(_vm.projectDetail[0].totalHours) +
-                  " already spent on the project "
-              )
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header has-background-primary-dark" }, [
+          _c(
+            "p",
+            {
+              staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2"
+            },
+            [_vm._v(_vm._s(_vm.projectDetail[0].name))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-content" }, [
+          _c(
+            "nav",
+            { staticClass: "panel" },
+            [
+              _c("p", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  _vm._s(_vm.projectDetail[0].totalHours) +
+                    " already spent on the project "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(this.projectDetail[0].assignments, function(assignment) {
+                return _c(
+                  "a",
+                  { key: assignment.object, staticClass: "panel-block" },
+                  [
+                    _c("p", [
+                      _c("strong", [
+                        _vm._v(
+                          " " +
+                            _vm._s(assignment.user.firstName) +
+                            " " +
+                            _vm._s(assignment.user.lastName) +
+                            " "
+                        )
+                      ]),
+                      _vm._v(
+                        " \r\n            on " +
+                          _vm._s(assignment.date) +
+                          " : " +
+                          _vm._s(assignment.duration) +
+                          " \r\n          "
+                      )
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c("div", { staticClass: "card-footer-item" }, [
+            _c("div", { staticClass: "box" }, [
+              _c("figure", { staticClass: "image is-32x32" }, [
+                _c("img", {
+                  attrs: { src: "/Icons/Edit.png", alt: "edit" },
+                  on: { click: _vm.toggleEdit }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", class: { "is-active": _vm.editionMode } },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _c("header", { staticClass: "modal-card-head" }, [
+            _c("p", { staticClass: "modal-card-title" }, [
+              _vm._v("Edit project")
             ]),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(this.projectDetail[0].assignments, function(assignment) {
-              return _c(
-                "a",
-                { key: assignment.object, staticClass: "panel-block" },
-                [
-                  _c("p", [
-                    _c("strong", [
-                      _vm._v(
-                        " " +
-                          _vm._s(assignment.user.firstName) +
-                          " " +
-                          _vm._s(assignment.user.lastName) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(
-                      " \n          on " +
-                        _vm._s(assignment.date) +
-                        " : " +
-                        _vm._s(assignment.duration) +
-                        " \n        "
-                    )
-                  ])
-                ]
-              )
+            _c("button", {
+              staticClass: "delete",
+              attrs: { "aria-label": "close" },
+              on: { click: _vm.toggleEdit }
             })
-          ],
-          2
-        )
-      ])
-    ])
+          ]),
+          _vm._v(" "),
+          _c("section", { staticClass: "modal-card-body" }, [
+            _c("div", { staticClass: "block" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", placeholder: "project name" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "block" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.number,
+                    expression: "number"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", placeholder: "project number" },
+                domProps: { value: _vm.number },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.number = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-card-foot" }, [
+            _c("div", { staticClass: "card-footer-item" }, [
+              _c("div", { staticClass: "box" }, [
+                _c("figure", { staticClass: "image is-32x32" }, [
+                  _c("img", {
+                    attrs: { src: "/Icons/Save.png", alt: "edit" },
+                    on: { click: _vm.updateProjectRequest }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [

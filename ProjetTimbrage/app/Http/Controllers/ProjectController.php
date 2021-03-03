@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
+use PhpParser\Node\Stmt\TryCatch;
+use Throwable;
 
 class ProjectController extends Controller
 {
@@ -75,8 +77,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        Project::findOrFail($project->id)->update(['name' => $project->name, 'number' => $project->number ]);
-        return response(200);
+        try {
+            $data =  $request->input('data');
+            $project->name = $data[0]['name'];
+            $project->number = $data[0]['number'];
+            $project->save();
+            $newProj = Project::findOrFail($project->id);
+            
+;           return response()->json(['newProj' => $newProj], 200);
+        } catch (Throwable $e) {
+            return response(500);
+        }    
     }
 
     /**
