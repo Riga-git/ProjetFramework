@@ -5582,11 +5582,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      projectDetail: this.project,
-      name: '',
-      number: '',
+      projectDetail: '',
       editionMode: false
     };
+  },
+  created: function created() {
+    this.projectDetail = this.project;
   },
   methods: {
     toggleEdit: function toggleEdit() {
@@ -5595,15 +5596,12 @@ __webpack_require__.r(__webpack_exports__);
     updateProjectRequest: function updateProjectRequest() {
       var _this = this;
 
-      var tmp = this.projectDetail;
-      tmp[0].name = this.name;
-      tmp[0].number = this.number;
       axios.patch('/projects/' + this.projectDetail[0].id, {
-        newValues: tmp
+        newValues: this.projectDetail
       }).then(function (response) {
-        console.log(response);
-
         if (response.status === 200) {
+          console.log(response);
+
           _this.toggleEdit();
         }
       })["catch"](function (error) {
@@ -35942,19 +35940,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
+                    value: _vm.projectDetail[0].name,
+                    expression: "projectDetail[0].name"
                   }
                 ],
                 staticClass: "input",
                 attrs: { type: "text", placeholder: "project name" },
-                domProps: { value: _vm.name },
+                domProps: { value: _vm.projectDetail[0].name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.name = $event.target.value
+                    _vm.$set(_vm.projectDetail[0], "name", $event.target.value)
                   }
                 }
               })
@@ -35966,19 +35964,23 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.number,
-                    expression: "number"
+                    value: _vm.projectDetail[0].number,
+                    expression: "projectDetail[0].number"
                   }
                 ],
                 staticClass: "input",
                 attrs: { type: "text", placeholder: "project number" },
-                domProps: { value: _vm.number },
+                domProps: { value: _vm.projectDetail[0].number },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.number = $event.target.value
+                    _vm.$set(
+                      _vm.projectDetail[0],
+                      "number",
+                      $event.target.value
+                    )
                   }
                 }
               })

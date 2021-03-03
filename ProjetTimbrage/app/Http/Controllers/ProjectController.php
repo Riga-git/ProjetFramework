@@ -77,8 +77,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+
         try {
-            $data =  $request->input('data');
+            $data =  $request->input('newValues');
             $project->name = $data[0]['name'];
             $project->number = $data[0]['number'];
             $project->save();
@@ -86,8 +87,8 @@ class ProjectController extends Controller
             
 ;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
-            return response(500);
-        }    
+            return response('Error',500);
+        }  
     }
 
     /**

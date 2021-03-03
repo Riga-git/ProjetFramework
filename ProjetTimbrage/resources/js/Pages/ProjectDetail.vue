@@ -45,10 +45,10 @@
         </header>
         <section class="modal-card-body">
           <div class="block">
-            <input v-model="name" class="input" type="text" placeholder="project name">
+            <input v-model="projectDetail[0].name" class="input" type="text" placeholder="project name">
           </div>
           <div class="block">
-            <input v-model="number" class="input" type="text" placeholder="project number">
+            <input v-model="projectDetail[0].number" class="input" type="text" placeholder="project number">
           </div>
         </section>
         <footer class="modal-card-foot">
@@ -78,29 +78,27 @@
 
     data() {
       return {
-        projectDetail : this.project,
-        name : '',
-        number : '',
+        projectDetail : '',
         editionMode : false
       }
     },
 
-    methods: {
+    created(){
+      this.projectDetail = this.project;
+    },
 
+    methods: {
     toggleEdit() {
         this.editionMode = !this.editionMode;
     },
 
       updateProjectRequest() {
-        let tmp = this.projectDetail;
-        tmp[0].name = this.name;
-        tmp[0].number = this.number;
         axios.patch('/projects/'+ this.projectDetail[0].id, {
-            newValues : tmp
+            newValues : this.projectDetail
         })
         .then(response => {
-          console.log(response);
             if (response.status === 200) {
+              console.log(response);
                 this.toggleEdit();
             }
         })
