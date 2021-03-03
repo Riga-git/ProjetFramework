@@ -4340,11 +4340,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['departmentDetail'],
+  props: ['departmentDetail', 'usersWithoutDepartment'],
   data: function data() {
     return {
-      department: this.departmentDetail
+      department: this.departmentDetail,
+      dropdownActive: false,
+      userOutOfDepartemnt: this.usersWithoutDepartment
     };
   }
 });
@@ -32831,12 +32869,15 @@ var render = function() {
             _vm._v("Chef de département")
           ]),
           _vm._v(" "),
-          _c("article", { staticClass: "media" }, [
+          _c("article", { staticClass: "media is-align-items-center" }, [
             _c("figure", { staticClass: "media-left" }, [
               _c("p", { staticClass: "image is-64x64" }, [
                 _c("img", {
                   staticClass: "is-rounded",
-                  attrs: { src: _vm.department[0].leader[0].profile_photo_url }
+                  attrs: {
+                    src: _vm.department[0].leader[0].profile_photo_url,
+                    alt: "Profile photo leader"
+                  }
                 })
               ])
             ]),
@@ -32876,19 +32917,131 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("nav", { staticClass: "panel" }, [
-          _c("p", { staticClass: "panel-heading" }, [
-            _vm._v(
-              "\n          " +
-                _vm._s(_vm.department[0].members.length) +
-                " Membres\n        "
-            )
-          ]),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2)
-        ])
+        _c(
+          "nav",
+          { staticClass: "panel" },
+          [
+            _c("p", { staticClass: "panel-heading" }, [
+              _vm._v(
+                "\n          " +
+                  _vm._s(_vm.department[0].members.length) +
+                  " Membres\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.department[0].members, function(member) {
+              return _c(
+                "div",
+                {
+                  key: member.id,
+                  staticClass: "panel-block is-align-items-center"
+                },
+                [
+                  _c("div", { staticClass: "media mb-0" }, [
+                    _c("figure", { staticClass: "media-left" }, [
+                      _c("p", { staticClass: "image is-48x48" }, [
+                        _c("img", {
+                          staticClass: "is-rounded",
+                          attrs: {
+                            src: member.profile_photo_url,
+                            alt: "Profile photo member"
+                          }
+                        })
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "media-content" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("p", [
+                        _c("strong", [
+                          _vm._v(
+                            " " +
+                              _vm._s(member.firstName) +
+                              " " +
+                              _vm._s(member.lastName)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("a", { attrs: { href: "mailto:" + member.email } }, [
+                          _vm._v(" " + _vm._s(member.email) + " ")
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "panel-block" }, [
+              _c(
+                "div",
+                { class: [_vm.dropdownActive ? "is-active" : "", "dropdown"] },
+                [
+                  _c("div", { staticClass: "dropdown-trigger" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button",
+                        attrs: {
+                          "aria-haspopup": "true",
+                          "aria-controls": "dropdown-menu"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.dropdownActive = !_vm.dropdownActive
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [
+                          _vm._v("Ajouter un membre au département")
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dropdown-menu",
+                      attrs: { id: "dropdown-menu", role: "menu" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "dropdown-content" },
+                        _vm._l(_vm.userOutOfDepartemnt, function(user) {
+                          return _c(
+                            "div",
+                            { key: user.id, staticClass: "dropdown-item" },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(user.firstName + " " + user.lastName) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -32928,16 +33081,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "panel-block is-active" }, [
-      _c("span", { staticClass: "panel-icon" }, [
-        _c("i", {
-          staticClass: "fas fa-book",
-          attrs: { "aria-hidden": "true" }
-        })
-      ]),
-      _vm._v(
-        "\n          À remplir avec la liste des membres (v-for), ajouter une petite poubelle à droite et virer le lien qui ne sert à rien\n        "
-      )
+    return _c("div", { staticClass: "media-right" }, [
+      _c("span", { staticClass: "icon has-text-danger-dark" }, [
+        _c("em", { staticClass: "fas fa-trash-alt" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", {
+        staticClass: "fas fa-angle-down",
+        attrs: { "aria-hidden": "true" }
+      })
     ])
   }
 ]
