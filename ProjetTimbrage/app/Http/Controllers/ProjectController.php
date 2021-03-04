@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
-use PhpParser\Node\Stmt\TryCatch;
-use Throwable;
 
 class ProjectController extends Controller
 {
@@ -78,10 +79,19 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:1|max:255',
+            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator,501);
+        }
+
         try {
-            $data =  $request->input('newValues');
-            $project->name = $data[0]['name'];
-            $project->number = $data[0]['number'];
+            //$data =  $request->input('name');
+            $project->name = $request->input('name');
+            $project->number = $request->input('number');
             $project->save();
             $newProj = Project::findOrFail($project->id);
             

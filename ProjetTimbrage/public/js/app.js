@@ -5574,6 +5574,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['project'],
@@ -5583,11 +5586,16 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       projectDetail: '',
+      editForm: '',
       editionMode: false
     };
   },
   created: function created() {
     this.projectDetail = this.project;
+    this.editForm = {
+      name: this.projectDetail[0].name,
+      number: this.projectDetail[0].number
+    };
   },
   methods: {
     toggleEdit: function toggleEdit() {
@@ -5597,15 +5605,19 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.patch('/projects/' + this.projectDetail[0].id, {
-        newValues: this.projectDetail
+        name: this.editForm.name,
+        number: this.editForm.number
       }).then(function (response) {
         if (response.status === 200) {
-          console.log(response);
-
-          _this.toggleEdit();
+          console.log(response.data.newProj);
+          _this.projectDetail[0] = response.data.newProj;
         }
+
+        _this.toggleEdit();
       })["catch"](function (error) {
-        return console.log(error);
+        console.log(error);
+
+        _this.toggleEdit();
       });
     }
   }
@@ -35846,11 +35858,30 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header has-background-primary-dark" }, [
           _c(
-            "p",
+            "div",
             {
-              staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2"
+              staticClass:
+                "container block is-flex is-justify-content-space-between is-align-items-center"
             },
-            [_vm._v(_vm._s(_vm.projectDetail[0].name))]
+            [
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "has-text-white has-text-weight-bold is-size-3 pl-2"
+                },
+                [_vm._v(_vm._s(_vm.projectDetail[0].name))]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "tag mr-4 is-primary-dark has-text-weight-bold is-medium mb-2"
+                },
+                [_vm._v(_vm._s(_vm.projectDetail[0].number))]
+              )
+            ]
           )
         ]),
         _vm._v(" "),
@@ -35935,19 +35966,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.projectDetail[0].name,
-                    expression: "projectDetail[0].name"
+                    value: _vm.editForm.name,
+                    expression: "editForm.name"
                   }
                 ],
                 staticClass: "input",
                 attrs: { type: "text", placeholder: "project name" },
-                domProps: { value: _vm.projectDetail[0].name },
+                domProps: { value: _vm.editForm.name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.projectDetail[0], "name", $event.target.value)
+                    _vm.$set(_vm.editForm, "name", $event.target.value)
                   }
                 }
               })
@@ -35959,23 +35990,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.projectDetail[0].number,
-                    expression: "projectDetail[0].number"
+                    value: _vm.editForm.number,
+                    expression: "editForm.number"
                   }
                 ],
                 staticClass: "input",
                 attrs: { type: "text", placeholder: "project number" },
-                domProps: { value: _vm.projectDetail[0].number },
+                domProps: { value: _vm.editForm.number },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(
-                      _vm.projectDetail[0],
-                      "number",
-                      $event.target.value
-                    )
+                    _vm.$set(_vm.editForm, "number", $event.target.value)
                   }
                 }
               })

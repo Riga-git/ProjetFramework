@@ -3,7 +3,10 @@
   <div class="container">
     <div class="card">
       <div class="card-header has-background-primary-dark">
-        <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ projectDetail[0].name }}</p>
+        <div class="container block is-flex is-justify-content-space-between is-align-items-center">
+          <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ projectDetail[0].name }}</p>
+          <p class="tag mr-4 is-primary-dark has-text-weight-bold is-medium mb-2">{{ projectDetail[0].number }}</p>
+        </div>
       </div>
       <div class="card-content">
         <nav class="panel">
@@ -45,10 +48,10 @@
         </header>
         <section class="modal-card-body">
           <div class="block">
-            <input v-model="projectDetail[0].name" class="input" type="text" placeholder="project name">
+            <input v-model="editForm.name" class="input" type="text" placeholder="project name">
           </div>
           <div class="block">
-            <input v-model="projectDetail[0].number" class="input" type="text" placeholder="project number">
+            <input v-model="editForm.number" class="input" type="text" placeholder="project number">
           </div>
         </section>
         <footer class="modal-card-foot">
@@ -79,12 +82,14 @@
     data() {
       return {
         projectDetail : '',
+        editForm : '',
         editionMode : false
       }
     },
 
     created(){
-      this.projectDetail = this.project;
+      this.projectDetail =  this.project;
+      this.editForm = { name : this.projectDetail[0].name, number : this.projectDetail[0].number }
     },
 
     methods: {
@@ -94,17 +99,23 @@
 
       updateProjectRequest() {
         axios.patch('/projects/'+ this.projectDetail[0].id, {
-            newValues : this.projectDetail
+        name : this.editForm.name, number : this.editForm.number 
         })
         .then(response => {
             if (response.status === 200) {
-              console.log(response);
-                this.toggleEdit();
-            }
+              console.log(response.data.newProj);
+              this.projectDetail[0] = response.data.newProj;
+            } 
+            this.toggleEdit();
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          console.log(error);
+          this.toggleEdit();
+          });
       }
     },
+
+    
   }
 
 </script>
