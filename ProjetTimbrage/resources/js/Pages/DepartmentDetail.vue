@@ -36,13 +36,13 @@
           </p>
           <div class="panel-block">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Search">
+              <input class="input" type="text" v-model="searchQ" placeholder="Search">
               <span class="icon is-left">
                 <i class="fas fa-search" aria-hidden="true"></i>
               </span>
             </p>
           </div>
-          <div v-for="member in department[0].members" v-bind:key="member.id" class="panel-block is-align-items-center">
+          <div v-for="member in getFilteredMembers" v-bind:key="member.id" class="panel-block is-align-items-center">
             <div class="media mb-0">
               <figure class="media-left">
                 <p class="image is-48x48">
@@ -65,48 +65,34 @@
               </span>
             </div>
           </div>
-          <div class="panel-block">
-            <div v-bind:class="[dropdownActive ? 'is-active' : '', 'dropdown']">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="dropdownActive = !dropdownActive">
-                  <span>Ajouter un membre au département</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <div v-for="user in userOutOfDepartemnt" v-bind:key="user.id" class="dropdown-item">
-                    {{user.firstName + ' ' + user.lastName}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </nav>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
 export default {
   props: [
     'departmentDetail',
-    'usersWithoutDepartment'
   ],
 
   data() {
     return {
       department : this.departmentDetail,
-      dropdownActive : false,
-      userOutOfDepartemnt : this.usersWithoutDepartment
+      searchQ :''
+    }
+  },
+
+  computed: {
+    getFilteredMembers(){
+      return this.department[0].members.filter(member => {
+        return  member.firstName.toLowerCase().includes(this.searchQ.toLowerCase()) ||
+                member.lastName.toLowerCase().includes(this.searchQ.toLowerCase()) ||
+                member.email.toLowerCase().includes(this.searchQ.toLowerCase());
+      });
     }
   }
-
 
 }
 </script>

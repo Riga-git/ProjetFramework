@@ -4355,35 +4355,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['departmentDetail', 'usersWithoutDepartment'],
+  props: ['departmentDetail'],
   data: function data() {
     return {
       department: this.departmentDetail,
-      dropdownActive: false,
-      userOutOfDepartemnt: this.usersWithoutDepartment
+      searchQ: ''
     };
+  },
+  computed: {
+    getFilteredMembers: function getFilteredMembers() {
+      var _this = this;
+
+      return this.department[0].members.filter(function (member) {
+        return member.firstName.toLowerCase().includes(_this.searchQ.toLowerCase()) || member.lastName.toLowerCase().includes(_this.searchQ.toLowerCase()) || member.email.toLowerCase().includes(_this.searchQ.toLowerCase());
+      });
+    }
   }
 });
 
@@ -32929,9 +32916,35 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "panel-block" }, [
+              _c("p", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchQ,
+                      expression: "searchQ"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", placeholder: "Search" },
+                  domProps: { value: _vm.searchQ },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.searchQ = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]),
             _vm._v(" "),
-            _vm._l(_vm.department[0].members, function(member) {
+            _vm._l(_vm.getFilteredMembers, function(member) {
               return _c(
                 "div",
                 {
@@ -32977,68 +32990,7 @@ var render = function() {
                   _vm._m(2, true)
                 ]
               )
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-block" }, [
-              _c(
-                "div",
-                { class: [_vm.dropdownActive ? "is-active" : "", "dropdown"] },
-                [
-                  _c("div", { staticClass: "dropdown-trigger" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "button",
-                        attrs: {
-                          "aria-haspopup": "true",
-                          "aria-controls": "dropdown-menu"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.dropdownActive = !_vm.dropdownActive
-                          }
-                        }
-                      },
-                      [
-                        _c("span", [
-                          _vm._v("Ajouter un membre au département")
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(3)
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "dropdown-menu",
-                      attrs: { id: "dropdown-menu", role: "menu" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "dropdown-content" },
-                        _vm._l(_vm.userOutOfDepartemnt, function(user) {
-                          return _c(
-                            "div",
-                            { key: user.id, staticClass: "dropdown-item" },
-                            [
-                              _vm._v(
-                                "\n                  " +
-                                  _vm._s(user.firstName + " " + user.lastName) +
-                                  "\n                "
-                              )
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
+            })
           ],
           2
         )
@@ -33061,20 +33013,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-block" }, [
-      _c("p", { staticClass: "control has-icons-left" }, [
-        _c("input", {
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Search" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon is-left" }, [
-          _c("i", {
-            staticClass: "fas fa-search",
-            attrs: { "aria-hidden": "true" }
-          })
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", {
+        staticClass: "fas fa-search",
+        attrs: { "aria-hidden": "true" }
+      })
     ])
   },
   function() {
@@ -33085,17 +33028,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "icon has-text-danger-dark" }, [
         _c("em", { staticClass: "fas fa-trash-alt" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon is-small" }, [
-      _c("i", {
-        staticClass: "fas fa-angle-down",
-        attrs: { "aria-hidden": "true" }
-      })
     ])
   }
 ]

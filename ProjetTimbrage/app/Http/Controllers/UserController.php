@@ -83,8 +83,13 @@ class UserController extends Controller
         //
     }
 
-
-    public static function getUserWithoutDepartment(){
+    /**
+     * Select all user without a related department.
+     * Used by an axios request, don't need a ressource to add external items
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserWithoutDepartment(){
       return User::all()->where('department_id', "=", null);
     }
 }

@@ -51,10 +51,8 @@ class DepartmentController extends Controller
     public function show(Department $department)
     {
       $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-      $userWithoutDepartment = UserController::getUserWithoutDepartment();
 
-      return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails,
-                                                  'usersWithoutDepartment' => $userWithoutDepartment]);
+      return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
     }
 
     /**
