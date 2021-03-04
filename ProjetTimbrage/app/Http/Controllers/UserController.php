@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\DepartmentDetailResource;
-use App\Http\Resources\DepartmentOverviewResource;
-use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class DepartmentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-      $departments = DepartmentOverviewResource::collection(Department::all());
-      return Inertia::render('DepartmentsList', [ 'departments' => $departments]);
+        //
     }
 
     /**
@@ -45,23 +41,21 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show(User $user)
     {
-      $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-
-      return Inertia::render('DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit(User $user)
     {
         //
     }
@@ -70,10 +64,10 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -81,11 +75,21 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(User $user)
     {
         //
+    }
+
+    /**
+     * Select all user without a related department.
+     * Used by an axios request, don't need a ressource to add external items
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserWithoutDepartment(){
+      return User::all()->where('department_id', "=", null);
     }
 }
