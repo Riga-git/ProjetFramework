@@ -4500,6 +4500,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['departmentDetail'],
   data: function data() {
@@ -34188,46 +34190,46 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c(
-          "nav",
-          { staticClass: "panel" },
-          [
-            _c("p", { staticClass: "panel-heading" }, [
-              _vm._v(
-                "\n          " +
-                  _vm._s(_vm.department[0].members.length) +
-                  " Membres\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-block" }, [
-              _c("p", { staticClass: "control has-icons-left" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchQ,
-                      expression: "searchQ"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: { type: "text", placeholder: "Search" },
-                  domProps: { value: _vm.searchQ },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.searchQ = $event.target.value
-                    }
+        _c("nav", { staticClass: "panel" }, [
+          _c("p", { staticClass: "panel-heading" }, [
+            _vm._v(
+              "\n          " +
+                _vm._s(_vm.department[0].members.length) +
+                " Membres\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-block" }, [
+            _c("p", { staticClass: "control has-icons-left" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchQ,
+                    expression: "searchQ"
                   }
-                }),
-                _vm._v(" "),
-                _vm._m(1)
-              ])
-            ]),
-            _vm._v(" "),
+                ],
+                staticClass: "input",
+                attrs: { type: "text", placeholder: "Search" },
+                domProps: { value: _vm.searchQ },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.searchQ = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { "max-height": "2em", overflow: "auto" } },
             _vm._l(_vm.getFilteredMembers, function(member) {
               return _c(
                 "div",
@@ -34274,10 +34276,10 @@ var render = function() {
                   _vm._m(2, true)
                 ]
               )
-            })
-          ],
-          2
-        )
+            }),
+            0
+          )
+        ])
       ])
     ])
   ])

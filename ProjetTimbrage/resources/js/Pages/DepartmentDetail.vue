@@ -42,27 +42,29 @@
               </span>
             </p>
           </div>
-          <div v-for="member in getFilteredMembers" v-bind:key="member.id" class="panel-block is-align-items-center">
-            <div class="media mb-0">
-              <figure class="media-left">
-                <p class="image is-48x48">
-                  <img class="is-rounded" :src="member.profile_photo_url" alt="Profile photo member">
-                </p>
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong> {{ member.firstName }} {{member.lastName}}</strong>
-                  <br>
-                  <a :href="'mailto:' + member.email"> {{ member.email }} </a>
-                </p>
+          <div style="  max-height: 2em; overflow: auto;">
+            <div v-for="member in getFilteredMembers" v-bind:key="member.id" class="panel-block is-align-items-center">
+              <div class="media mb-0">
+                <figure class="media-left">
+                  <p class="image is-48x48">
+                    <img class="is-rounded" :src="member.profile_photo_url" alt="Profile photo member">
+                  </p>
+                </figure>
               </div>
-            </div>
-            <div class="media-right">
-              <span class="icon has-text-danger-dark">
-                <em class="fas fa-trash-alt"></em>
-              </span>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong> {{ member.firstName }} {{member.lastName}}</strong>
+                    <br>
+                    <a :href="'mailto:' + member.email"> {{ member.email }} </a>
+                  </p>
+                </div>
+              </div>
+              <div class="media-right">
+                <span class="icon has-text-danger-dark">
+                  <em class="fas fa-trash-alt"></em>
+                </span>
+              </div>
             </div>
           </div>
         </nav>
