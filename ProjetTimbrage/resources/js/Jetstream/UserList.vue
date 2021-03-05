@@ -20,7 +20,7 @@
                         </p>
                     </figure>
                 </div>
-                <div class="media-content" @click="selectMember(member.id)">
+                <div class="media-content" @click="selectMember(member)">
                     <div class="content">
                         <p>
                         <strong> {{ member.firstName }} {{member.lastName}}</strong>
@@ -29,7 +29,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="media-right" @click="deleteMember(member.id)">
+                <div class="media-right" @click="deleteMember(member)">
                     <span class="icon has-text-danger-dark">
                         <em class="fas fa-trash-alt"></em>
                     </span>

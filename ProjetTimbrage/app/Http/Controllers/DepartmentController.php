@@ -75,7 +75,8 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $department->user_id = $request->input('leader');
+        return $department->save();
     }
 
     /**

@@ -22,7 +22,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="media-right">
+                        <div class="media-right" @click="removeLeader()">
                         <span class="icon has-text-danger-dark">
                             <em class="fas fa-trash-alt"></em>
                         </span>
@@ -32,7 +32,7 @@
 
                 <user-list :title="department[0].members.length + ' Membres'"
                             :content="department[0].members" :editable="editMode"
-                            @member-deleted="alertDeleted($event)">
+                            @member-deleted="removeMember($event)">
                 </user-list>
 
             </div>
@@ -42,6 +42,7 @@
 
 <script>
 import UserList from "../Jetstream/UserList.vue"
+
 
 export default{
     components: {
@@ -60,11 +61,15 @@ export default{
     },
 
     methods: {
+        removeMember(member){
+            //axios.put()
+        },
 
-        alertDeleted(id){
-            window.alert('Id N° ' + id + ' supprimé');
-        }
-
+        removeLeader(){
+            axios.patch('/departments/' + this.department[0].id, {'leader' : null})
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error));
+        },
     },
 }
 </script>
