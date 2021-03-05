@@ -5635,6 +5635,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['project'],
@@ -5643,8 +5683,41 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      projectDetail: this.project
+      projectDetail: '',
+      editForm: '',
+      editionMode: false
     };
+  },
+  created: function created() {
+    this.projectDetail = this.project;
+    this.editForm = {
+      name: this.projectDetail[0].name,
+      number: this.projectDetail[0].number
+    };
+  },
+  methods: {
+    toggleEdit: function toggleEdit() {
+      this.editionMode = !this.editionMode;
+    },
+    updateProjectRequest: function updateProjectRequest() {
+      var _this = this;
+
+      axios.patch('/projects/' + this.projectDetail[0].id, {
+        name: this.editForm.name,
+        number: this.editForm.number
+      }).then(function (response) {
+        if (response.status === 200) {
+          console.log(response.data.newProj);
+          _this.projectDetail[0] = response.data.newProj;
+        }
+
+        _this.toggleEdit();
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this.toggleEdit();
+      });
+    }
   }
 });
 
@@ -36103,61 +36176,174 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header has-background-primary-dark" }, [
-        _c(
-          "p",
-          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
-          [_vm._v(_vm._s(_vm.projectDetail[0].name))]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-content" }, [
-        _c(
-          "nav",
-          { staticClass: "panel" },
-          [
-            _c("p", { staticClass: "panel-heading" }, [
-              _vm._v(
-                _vm._s(_vm.projectDetail[0].totalHours) +
-                  " already spent on the project "
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header has-background-primary-dark" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "container block is-flex is-justify-content-space-between is-align-items-center"
+            },
+            [
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "has-text-white has-text-weight-bold is-size-3 pl-2"
+                },
+                [_vm._v(_vm._s(_vm.projectDetail[0].name))]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "tag mr-4 is-primary-dark has-text-weight-bold is-medium mb-2"
+                },
+                [_vm._v(_vm._s(_vm.projectDetail[0].number))]
               )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-content" }, [
+          _c(
+            "nav",
+            { staticClass: "panel" },
+            [
+              _c("p", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  _vm._s(_vm.projectDetail[0].totalHours) +
+                    " already spent on the project "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(this.projectDetail[0].assignments, function(assignment) {
+                return _c(
+                  "a",
+                  { key: assignment.object, staticClass: "panel-block" },
+                  [
+                    _c("p", [
+                      _c("strong", [
+                        _vm._v(
+                          " " +
+                            _vm._s(assignment.user.firstName) +
+                            " " +
+                            _vm._s(assignment.user.lastName) +
+                            " "
+                        )
+                      ]),
+                      _vm._v(
+                        " \r\n            on " +
+                          _vm._s(assignment.date) +
+                          " : " +
+                          _vm._s(assignment.duration) +
+                          " \r\n          "
+                      )
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c("div", { staticClass: "card-footer-item" }, [
+            _c("div", { staticClass: "box", on: { click: _vm.toggleEdit } }, [
+              _vm._m(1)
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", class: { "is-active": _vm.editionMode } },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _c("header", { staticClass: "modal-card-head" }, [
+            _c("p", { staticClass: "modal-card-title" }, [
+              _vm._v("Edit project")
             ]),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(this.projectDetail[0].assignments, function(assignment) {
-              return _c(
-                "a",
-                { key: assignment.object, staticClass: "panel-block" },
-                [
-                  _c("p", [
-                    _c("strong", [
-                      _vm._v(
-                        " " +
-                          _vm._s(assignment.user.firstName) +
-                          " " +
-                          _vm._s(assignment.user.lastName) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(
-                      " \n          on " +
-                        _vm._s(assignment.date) +
-                        " : " +
-                        _vm._s(assignment.duration) +
-                        " \n        "
-                    )
-                  ])
-                ]
-              )
+            _c("button", {
+              staticClass: "delete",
+              attrs: { "aria-label": "close" },
+              on: { click: _vm.toggleEdit }
             })
-          ],
-          2
-        )
-      ])
-    ])
+          ]),
+          _vm._v(" "),
+          _c("section", { staticClass: "modal-card-body" }, [
+            _c("div", { staticClass: "block" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.editForm.name,
+                    expression: "editForm.name"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", placeholder: "project name" },
+                domProps: { value: _vm.editForm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.editForm, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "block" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.editForm.number,
+                    expression: "editForm.number"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", placeholder: "project number" },
+                domProps: { value: _vm.editForm.number },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.editForm, "number", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-card-foot" }, [
+            _c("div", { staticClass: "card-footer-item" }, [
+              _c(
+                "div",
+                { staticClass: "box", on: { click: _vm.updateProjectRequest } },
+                [_vm._m(2)]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -36179,6 +36365,22 @@ var staticRenderFns = [
           })
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Edit.png", alt: "edit" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Save.png", alt: "edit" } })
     ])
   }
 ]
