@@ -73,7 +73,7 @@ class User extends Authenticatable
     }
 
     public function leadDepartment(){
-      return $this->hasMany(Department::class, 'user_id');
+      return $this->hasOne(Department::class);
     }
 
     public function assignment(){
