@@ -5,7 +5,7 @@
       <div class="card-header has-background-primary-dark">
         <div class="container block is-flex is-justify-content-space-between is-align-items-center">
           <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ projectDetail[0].name }}</p>
-          <p class="tag mr-4 is-primary-dark has-text-weight-bold is-medium mb-2">{{ projectDetail[0].number }}</p>
+          <p class="tag mr-4 is-primary-dark has-text-weight-bold is-medium">{{ projectDetail[0].number }}</p>
         </div>
       </div>
       <div class="card-content">
