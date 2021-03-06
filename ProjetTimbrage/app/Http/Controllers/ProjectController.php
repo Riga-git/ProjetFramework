@@ -42,7 +42,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:1|max:255',
+            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator,501);
+        }
+        try {
+            $project = new Project;
+            $project->name = $request->input('name');
+            $project->number = $request->input('number');
+            $project->save();
+;           redirect('/projects');
+        } catch (Throwable $e) {
+            return response('Error',500);
+        }  
     }
 
     /**
