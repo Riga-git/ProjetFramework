@@ -6,7 +6,6 @@ use Throwable;
 use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
@@ -22,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = ProjectListResource::collection(Project::all());
-        return Inertia::render('ProjectsList', [ 'projects' => $projects]);
+        return Inertia::render('Project/ProjectsList', [ 'projects' => $projects]);
     }
 
     /**
@@ -55,7 +54,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $projectsDetails = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
-        return Inertia::render('ProjectDetail', ['project' => $projectsDetails]);
+        return Inertia::render('Project/ProjectDetail', ['project' => $projectsDetails]);
     }
 
     /**
