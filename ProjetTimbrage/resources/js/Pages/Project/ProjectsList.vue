@@ -73,7 +73,7 @@
         })
         .then(response => {
               if (response.status === 200) {
-                // notification ok
+                this.projectsList = response.data.newProj;
               } 
             this.updateShowModal(false);
         })

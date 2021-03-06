@@ -5863,7 +5863,8 @@ __webpack_require__.r(__webpack_exports__);
         name: data.name,
         number: data.number
       }).then(function (response) {
-        if (response.status === 200) {// notification ok
+        if (response.status === 200) {
+          _this.projectsList = response.data.newProj;
         }
 
         _this.updateShowModal(false);

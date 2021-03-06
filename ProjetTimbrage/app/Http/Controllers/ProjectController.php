@@ -55,7 +55,8 @@ class ProjectController extends Controller
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
-;           redirect('/projects');
+            $projects = Project::all();
+;           return response()->json(['newProj' => $projects], 200);
         } catch (Throwable $e) {
             return response('Error',500);
         }  
