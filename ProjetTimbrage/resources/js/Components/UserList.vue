@@ -29,7 +29,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="media-right" @click="deleteMember(member)">
+                <div v-if="editable" class="media-right" @click="deleteMember(member)">
                     <span class="icon has-text-danger-dark">
                         <em class="fas fa-trash-alt"></em>
                     </span>
@@ -85,7 +85,6 @@
                });
             }
         }
-
     }
 </script>
 
