@@ -23,7 +23,7 @@ class ProjectDetailResource extends JsonResource
             'number' => $this->number,
             'name' => $this->name,
             'assignments' => $this->assignment()->with('user')->get(),
-            'totalHours' => CarbonInterval::seconds($this->assignment()->sum(DB::raw('TIME_TO_SEC(`duration`)')))->cascade()->format('%H:%I:%S')
+            'totalHours' => CarbonInterval::seconds($this->assignment()->sum(DB::raw('TIME_TO_SEC(`duration`)')))->cascade()->format('%Hh%I')
           ];
     }
 }

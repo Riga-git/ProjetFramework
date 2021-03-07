@@ -5646,11 +5646,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       projectDetail: '',
       editForm: '',
-      editionMode: false
+      editionMode: false,
+      searchedValue: ''
     };
   },
   created: function created() {
     this.projectDetail = this.project;
+    console.log(this.projectDetail[0].assignments);
   },
   methods: {
     updateEditionMode: function updateEditionMode(newValue) {
@@ -5680,6 +5682,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (error) {
         console.log(error);
+      });
+    }
+  },
+  computed: {
+    getFilteredAssignments: function getFilteredAssignments() {
+      var _this2 = this;
+
+      return this.projectDetail[0].assignments.filter(function (assignment) {
+        return assignment.user.firstName.toLowerCase().includes(_this2.searchedValue.toLowerCase()) || assignment.user.lastName.toLowerCase().includes(_this2.searchedValue.toLowerCase()) || assignment.date.toLowerCase().includes(_this2.searchedValue.toLowerCase()) || assignment.duration.toLowerCase().includes(_this2.searchedValue.toLowerCase());
       });
     }
   }
@@ -5878,7 +5889,7 @@ __webpack_require__.r(__webpack_exports__);
         number: data.number
       }).then(function (response) {
         if (response.status === 200) {
-          _this.projectsList = response.data.newProj;
+          window.location.href = '/projects';
         }
 
         _this.updateShowModal(false);
@@ -36249,7 +36260,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "container mt-5" }, [
         _c("div", { staticClass: "card" }, [
           _c(
             "div",
@@ -36292,13 +36303,41 @@ var render = function() {
                 _c("p", { staticClass: "panel-heading" }, [
                   _vm._v(
                     _vm._s(_vm.projectDetail[0].totalHours) +
-                      " already spent on the project "
+                      " affectées sur le projet "
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(0),
+                this.projectDetail[0].assignments.length > 0
+                  ? _c("div", { staticClass: "panel-block" }, [
+                      _c("p", { staticClass: "control has-icons-left" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.searchedValue,
+                              expression: "searchedValue"
+                            }
+                          ],
+                          staticClass: "input",
+                          attrs: { type: "text", placeholder: "Search" },
+                          domProps: { value: _vm.searchedValue },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.searchedValue = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0)
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._l(this.projectDetail[0].assignments, function(assignment) {
+                _vm._l(_vm.getFilteredAssignments, function(assignment) {
                   return _c(
                     "a",
                     { key: assignment.object, staticClass: "panel-block" },
@@ -36314,7 +36353,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(
-                          " \r\n            on " +
+                          " \r\n            le " +
                             _vm._s(assignment.date) +
                             " : " +
                             _vm._s(assignment.duration) +
@@ -36388,20 +36427,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-block" }, [
-      _c("p", { staticClass: "control has-icons-left" }, [
-        _c("input", {
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Search" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon is-left" }, [
-          _c("i", {
-            staticClass: "fas fa-search",
-            attrs: { "aria-hidden": "true" }
-          })
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", {
+        staticClass: "fas fa-search",
+        attrs: { "aria-hidden": "true" }
+      })
     ])
   },
   function() {

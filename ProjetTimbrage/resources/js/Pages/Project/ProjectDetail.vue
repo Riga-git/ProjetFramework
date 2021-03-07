@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="container">
+  <div class="container mt-5">
     <div class="card">
       <div class="card-header has-background-primary-dark">
         <div class="container block is-flex is-justify-content-space-between is-align-items-center">
@@ -10,19 +10,19 @@
       </div>
       <div class="card-content">
         <nav class="panel">
-          <p class="panel-heading">{{ projectDetail[0].totalHours}} already spent on the project </p>
-          <div class="panel-block">
+          <p class="panel-heading">{{ projectDetail[0].totalHours}} affectées sur le projet </p>
+          <div v-if="this.projectDetail[0].assignments.length > 0" class="panel-block">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Search">
+              <input class="input" type="text" v-model="searchedValue" placeholder="Search">
               <span class="icon is-left">
                 <i class="fas fa-search" aria-hidden="true"></i>
               </span>
             </p>
           </div>
-          <a v-for="assignment in this.projectDetail[0].assignments" v-bind:key="assignment.object" class="panel-block" >
+          <a v-for="assignment in getFilteredAssignments" v-bind:key="assignment.object" class="panel-block" >
           <p>
             <strong> {{ assignment.user.firstName}} {{ assignment.user.lastName}} </strong> 
-            on {{assignment.date}} : {{assignment.duration}} 
+            le {{assignment.date}} : {{assignment.duration}} 
           </p>
           </a>
         </nav>
@@ -72,12 +72,14 @@
       return {
         projectDetail : '',
         editForm : '',
-        editionMode : false
+        editionMode : false,
+        searchedValue : ''
       }
     },
 
     created(){
       this.projectDetail =  this.project;
+      console.log(this.projectDetail[0].assignments)
     },
 
     methods: {
@@ -113,8 +115,17 @@
           console.log(error);
           });
       }
-    }
-    
+    },
+    computed: {
+            getFilteredAssignments(){
+                return this.projectDetail[0].assignments.filter(assignment => {
+                    return  assignment.user.firstName.toLowerCase().includes(this.searchedValue.toLowerCase()) ||
+                            assignment.user.lastName.toLowerCase().includes(this.searchedValue.toLowerCase()) ||
+                            assignment.date.toLowerCase().includes(this.searchedValue.toLowerCase()) ||
+                            assignment.duration.toLowerCase().includes(this.searchedValue.toLowerCase());
+               });
+            }
+        }
   }
 
 </script>

@@ -71,7 +71,7 @@
         })
         .then(response => {
               if (response.status === 200) {
-                this.projectsList = response.data.newProj;
+                window.location.href = '/projects';
               } 
             this.updateShowModal(false);
         })

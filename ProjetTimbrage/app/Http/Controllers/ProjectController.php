@@ -56,8 +56,7 @@ class ProjectController extends Controller
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
-            $projects = Project::all();
-;           return response()->json(['newProj' => $projects], 200);
+;           return response(200);
         } catch (Throwable $e) {
             return response('Error',500);
         }  
@@ -110,7 +109,7 @@ class ProjectController extends Controller
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
-            $newProj = Project::findOrFail($project->id);
+            $newProj = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
             
 ;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
