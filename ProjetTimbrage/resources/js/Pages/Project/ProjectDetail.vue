@@ -106,7 +106,6 @@
         axios.delete('/projects/'+ this.projectDetail[0].id)
         .then(response => {
             if (response.status === 200) {
-              this.projectDetail[0] = response.data.newProj;
               window.location.href = '/projects';
             } 
         })
