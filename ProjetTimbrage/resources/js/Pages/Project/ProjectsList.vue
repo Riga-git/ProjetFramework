@@ -2,7 +2,7 @@
   <div>
     <div class="container mt-5">
       <div class="columns is-multiline">
-        <div v-for="project in this.projectsList" v-bind:key="project.object" class="column">
+        <div v-for="project in this.projectsList" v-bind:key="project.object" class="column is-3">
             <inertia-link :href="'projects/' + project.id" :active=false>
               <div class="card">
                 <div class="card-header has-background-primary-dark">
@@ -15,8 +15,7 @@
               </div>
             </inertia-link>
         </div>
-        <div class="column">
-    
+        <div class="column is-3">
           <div class="card">
             <div class="card-header has-background-primary-dark">
               <p class="has-text-white has-text-weight-bold is-size-3 pl-2">New Project</p>
@@ -27,7 +26,6 @@
               </figure>
             </div>
           </div>
-
         </div>
       </div>
     </div>
