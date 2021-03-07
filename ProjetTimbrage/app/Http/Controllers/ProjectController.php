@@ -128,7 +128,7 @@ class ProjectController extends Controller
     {
         try{
             $project->delete();
-            return Redirect::route('projects.index');
+            return response(200);
         } catch(Throwable $e){
             return response('Error',500);
         }
