@@ -107,6 +107,7 @@
         .then(response => {
             if (response.status === 200) {
               this.projectDetail[0] = response.data.newProj;
+              window.location.href = '/projects';
             } 
         })
         .catch(error => {

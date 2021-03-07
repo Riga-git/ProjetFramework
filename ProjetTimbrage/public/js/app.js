@@ -5679,6 +5679,7 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]('/projects/' + this.projectDetail[0].id).then(function (response) {
         if (response.status === 200) {
           _this2.projectDetail[0] = response.data.newProj;
+          window.location.href = '/projects';
         }
       })["catch"](function (error) {
         console.log(error);
