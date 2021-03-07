@@ -56,10 +56,10 @@ class ProjectController extends Controller
             $project->number = $request->input('number');
             $project->save();
             $projects = Project::all();
-;           return response()->json(['newProj' => $projects], 200);
+            return response()->json(['newProj' => $projects], 200);
         } catch (Throwable $e) {
             return response('Error',500);
-        }  
+        }
     }
 
     /**
@@ -105,16 +105,14 @@ class ProjectController extends Controller
         }
 
         try {
-            //$data =  $request->input('name');
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
             $newProj = Project::findOrFail($project->id);
-            
-;           return response()->json(['newProj' => $newProj], 200);
+            return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
             return response('Error',500);
-        }  
+        }
     }
 
     /**

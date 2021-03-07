@@ -4565,6 +4565,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4574,10 +4610,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       department: this.departmentDetail,
-      editMode: true
+      editionMode: false,
+      showModalNewLeaderStatus: false,
+      allUsers: []
     };
   },
   methods: {
+    updateEditionMode: function updateEditionMode(newValue) {
+      this.editionMode = newValue;
+    },
     removeMember: function removeMember(member) {//axios.put()
     },
     removeLeader: function removeLeader() {
@@ -4585,6 +4626,32 @@ __webpack_require__.r(__webpack_exports__);
         'leader': null
       }).then(function (response) {
         return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    showModalNewLeader: function showModalNewLeader() {
+      this.getAllUsers();
+      this.showModalNewLeaderStatus = true;
+    },
+    getAllUsers: function getAllUsers() {
+      var _this = this;
+
+      axios.get('/users/allusers').then(function (response) {
+        return _this.allUsers = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    addLeader: function addLeader(selected) {
+      var _this2 = this;
+
+      axios.patch('/departments/' + this.department[0].id, {
+        'leader': selected.id
+      }).then(function (response) {
+        console.log(response);
+        _this2.showModalNewLeaderStatus = false;
+        _this2.department = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -30101,18 +30168,20 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "media-right",
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteMember(member)
-                      }
-                    }
-                  },
-                  [_vm._m(1, true)]
-                )
+                _vm.editable
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "media-right",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteMember(member)
+                          }
+                        }
+                      },
+                      [_vm._m(1, true)]
+                    )
+                  : _vm._e()
               ]
             )
           }),
@@ -34660,70 +34729,97 @@ var render = function() {
               [_vm._v("Chef de département")]
             ),
             _vm._v(" "),
-            _c("article", { staticClass: "media is-align-items-center" }, [
-              _c("figure", { staticClass: "media-left" }, [
-                _c("p", { staticClass: "image is-64x64" }, [
-                  _c("img", {
-                    staticClass: "is-rounded",
-                    attrs: {
-                      src: _vm.department[0].leader[0].profile_photo_url,
-                      alt: "Profile photo leader"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-content" }, [
-                _c("div", { staticClass: "content" }, [
-                  _c("p", [
-                    _c("strong", [
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.department[0].leader[0].firstName) +
-                          " " +
-                          _vm._s(_vm.department[0].leader[0].lastName)
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
+            _vm.department[0].leader.length > 0
+              ? _c("article", { staticClass: "media is-align-items-center" }, [
+                  _c("figure", { staticClass: "media-left" }, [
+                    _c("p", { staticClass: "image is-64x64" }, [
+                      _c("img", {
+                        staticClass: "is-rounded",
                         attrs: {
-                          href: "mailto:" + _vm.department[0].leader[0].email
+                          src: _vm.department[0].leader[0].profile_photo_url,
+                          alt: "Profile photo leader"
                         }
-                      },
-                      [
-                        _vm._v(
-                          " " + _vm._s(_vm.department[0].leader[0].email) + " "
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "media-content" }, [
+                    _c("div", { staticClass: "content" }, [
+                      _c("p", [
+                        _c("strong", [
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.department[0].leader[0].firstName) +
+                              " " +
+                              _vm._s(_vm.department[0].leader[0].lastName)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "mailto:" + _vm.department[0].leader[0].email
+                            }
+                          },
+                          [
+                            _vm._v(
+                              " " +
+                                _vm._s(_vm.department[0].leader[0].email) +
+                                " "
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "media-right",
+                      on: {
+                        click: function($event) {
+                          return _vm.removeLeader()
+                        }
+                      }
+                    },
+                    [_vm._m(0)]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "media-right",
-                  on: {
-                    click: function($event) {
-                      return _vm.removeLeader()
-                    }
-                  }
-                },
-                [_vm._m(0)]
-              )
-            ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.department[0].leader.length == 0 && _vm.editionMode
+              ? _c("div", [
+                  _c(
+                    "figure",
+                    {
+                      staticClass: "image is-48x48",
+                      staticStyle: { margin: "0 auto" },
+                      on: {
+                        click: function($event) {
+                          return _vm.showModalNewLeader()
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/Icons/Add.png", alt: "edit" }
+                      })
+                    ]
+                  )
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("user-list", {
             attrs: {
               title: _vm.department[0].members.length + " Membres",
               content: _vm.department[0].members,
-              editable: _vm.editMode
+              editable: _vm.editionMode
             },
             on: {
               "member-deleted": function($event) {
@@ -34733,8 +34829,59 @@ var render = function() {
           })
         ],
         1
-      )
-    ])
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer" }, [
+        _c("div", { staticClass: "card-footer-item" }, [
+          _c(
+            "div",
+            {
+              staticClass: "box",
+              on: {
+                click: function($event) {
+                  return _vm.updateEditionMode(true)
+                }
+              }
+            },
+            [_vm._m(1)]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal",
+        class: { "is-active": _vm.showModalNewLeaderStatus }
+      },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-card-body" },
+            [
+              _c("user-list", {
+                attrs: {
+                  title: "Sélection nouveau leader",
+                  content: _vm.allUsers
+                },
+                on: {
+                  "member-selected": function($event) {
+                    return _vm.addLeader($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -34744,6 +34891,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon has-text-danger-dark" }, [
       _c("em", { staticClass: "fas fa-trash-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Edit.png", alt: "edit" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [_vm._v("Edition")]),
+      _vm._v(" "),
+      _c("button", { staticClass: "delete", attrs: { "aria-label": "close" } })
     ])
   }
 ]
