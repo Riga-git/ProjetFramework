@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DepartmentDetailResource;
 use App\Http\Resources\DepartmentOverviewResource;
 use App\Models\Department;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Throwable;
 
 class DepartmentController extends Controller
 {
@@ -75,8 +77,14 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        $department->user_id = $request->input('leader');
-        return $department->save();
+        try {
+            $department->user_id = $request->input('leader');
+            $department->save();
+            $result = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
+        } catch (Throwable $e){
+            $result = response('error', 500);
+        }
+        return $result;
     }
 
     /**

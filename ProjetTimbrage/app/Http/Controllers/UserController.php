@@ -92,4 +92,8 @@ class UserController extends Controller
     public function getUserWithoutDepartment(){
       return User::all()->where('department_id', "=", null);
     }
+
+    public function getAllUsers(){
+        return User::all();
+    }
 }
