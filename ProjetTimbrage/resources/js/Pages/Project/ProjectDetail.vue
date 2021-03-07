@@ -35,6 +35,13 @@
               </figure>
           </div>
         </div>
+        <div class="card-footer-item">
+          <div @click="deleteProjectRequest()"  class="box">
+            <figure class="image is-32x32">
+              <img src="/Icons/Delete.png" alt="delete">
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -93,8 +100,21 @@
           console.log(error);
           updateEditionMode(false);
           });
+      },
+
+      deleteProjectRequest() {
+        axios.delete('/projects/'+ this.projectDetail[0].id)
+        .then(response => {
+            if (response.status === 200) {
+              this.projectDetail[0] = response.data.newProj;
+            } 
+        })
+        .catch(error => {
+          console.log(error);
+          });
       }
-    },
+    }
+    
   }
 
 </script>

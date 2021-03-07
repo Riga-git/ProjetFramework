@@ -5627,6 +5627,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5664,6 +5671,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
         updateEditionMode(false);
+      });
+    },
+    deleteProjectRequest: function deleteProjectRequest() {
+      var _this2 = this;
+
+      axios["delete"]('/projects/' + this.projectDetail[0].id).then(function (response) {
+        if (response.status === 200) {
+          _this2.projectDetail[0] = response.data.newProj;
+        }
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -5793,8 +5811,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/NavLink */ "./resources/js/Jetstream/NavLink.vue");
 /* harmony import */ var _ProjectModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectModal.vue */ "./resources/js/Pages/Project/ProjectModal.vue");
-//
-//
 //
 //
 //
@@ -36326,6 +36342,21 @@ var render = function() {
                 },
                 [_vm._m(1)]
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer-item" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "box",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteProjectRequest()
+                    }
+                  }
+                },
+                [_vm._m(2)]
+              )
             ])
           ])
         ])
@@ -36378,6 +36409,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", { staticClass: "image is-32x32" }, [
       _c("img", { attrs: { src: "/Icons/Edit.png", alt: "edit" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Delete.png", alt: "delete" } })
     ])
   }
 ]
@@ -36547,7 +36586,7 @@ var render = function() {
             _vm._l(this.projectsList, function(project) {
               return _c(
                 "div",
-                { key: project.object, staticClass: "column" },
+                { key: project.object, staticClass: "column is-4" },
                 [
                   _c(
                     "inertia-link",
@@ -36601,7 +36640,7 @@ var render = function() {
               )
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "column is-4" }, [
               _c("div", { staticClass: "card" }, [
                 _vm._m(0),
                 _vm._v(" "),

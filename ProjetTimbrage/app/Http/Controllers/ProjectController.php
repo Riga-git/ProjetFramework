@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
@@ -125,6 +126,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        try{
+            $project->delete();
+            return Redirect::route('projects.index');
+        } catch(Throwable $e){
+            return response('Error',500);
+        }
     }
 }
