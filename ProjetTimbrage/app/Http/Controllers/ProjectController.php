@@ -44,7 +44,7 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
-            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+            'number' => 'required|digits_between:1,15',
         ]);
 
         if ($validator->fails()) {
@@ -97,7 +97,7 @@ class ProjectController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
-            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+            'number' => 'required|required|digits_between:1,15',
         ]);
 
         if ($validator->fails()) {
