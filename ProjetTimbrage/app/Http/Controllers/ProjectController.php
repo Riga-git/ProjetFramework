@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
@@ -49,7 +50,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response($validator,501);
+            return response('Valeurs invalides',500);
         }
         try {
             $project = new Project;
@@ -58,7 +59,7 @@ class ProjectController extends Controller
             $project->save();
 ;           return response(200);
         } catch (Throwable $e) {
-            return response('Error',500);
+            return response(500);
         }  
     }
 
@@ -101,7 +102,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response($validator,501);
+            return response(500);
         }
 
         try {
@@ -113,7 +114,7 @@ class ProjectController extends Controller
             
 ;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
-            return response('Error',500);
+            return response(500);
         }  
     }
 
@@ -129,7 +130,7 @@ class ProjectController extends Controller
             $project->delete();
             return response(200);
         } catch(Throwable $e){
-            return response('Error',500);
+            return response(500);
         }
     }
 }
