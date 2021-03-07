@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import UserList from "../Jetstream/UserList.vue"
+import UserList from "../../Components/UserList.vue"
 
 
 export default{
