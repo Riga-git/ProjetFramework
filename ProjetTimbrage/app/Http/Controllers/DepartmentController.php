@@ -78,7 +78,14 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         try {
-            $department->user_id = $request->input('leader');
+            if ($request->has('leader')) {
+                $department->user_id = $request->input('leader');
+            }
+
+            if ($request->has('name')) {
+                $department->name = $request->input('name');
+            }
+
             $department->save();
             $result = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
         } catch (Throwable $e){
