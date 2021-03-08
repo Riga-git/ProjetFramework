@@ -7,6 +7,7 @@ use App\Http\Resources\DepartmentOverviewResource;
 use App\Models\Department;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
 
@@ -77,19 +78,26 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        try {
-            if ($request->has('leader')) {
-                $department->user_id = $request->input('leader');
-            }
+        $validator = Validator::make($request->all(), [
+            'leader' => 'sometimes|nullable|exists:users,id',
+            'name' => 'sometimes|required|min:1|max:255'
+        ]);
 
-            if ($request->has('name')) {
-                $department->name = $request->input('name');
+        if ($validator->fails()) {
+            $result = response('Validation fail : ' . $validator->failed(), 500);
+        } else {
+            try {
+                if ($request->has('leader')) {
+                    $department->user_id = $request->input('leader');
+                }
+                if ($request->has('name')) {
+                    $department->name = $request->input('name');
+                }
+                $department->save();
+                $result = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
+            } catch (Throwable $e) {
+                $result = response('error during department update', 500);
             }
-
-            $department->save();
-            $result = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-        } catch (Throwable $e){
-            $result = response('error', 500);
         }
         return $result;
     }
