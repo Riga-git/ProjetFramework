@@ -2971,60 +2971,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -31772,19 +31718,7 @@ var render = function() {
           "div",
           [_c("jet-application-logo", { staticClass: "block h-12 w-auto" })],
           1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-8 text-2xl" }, [
-          _vm._v(
-            "\n            Welcome to your Jetstream application!\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-6 text-gray-500" }, [
-          _vm._v(
-            "\n            Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed\n            to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe\n            you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel\n            ecosystem to be a breath of fresh air. We hope you love it.\n        "
-          )
-        ])
+        )
       ]
     ),
     _vm._v(" "),
@@ -31796,146 +31730,63 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2"
-      },
-      [
-        _c("div", { staticClass: "p-6" }, [
-          _c("div", { staticClass: "flex items-center" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "ml-4 text-lg text-gray-600 leading-7 font-semibold"
-              },
-              [
-                _c("a", { attrs: { href: "https://laravel.com/docs" } }, [
-                  _vm._v("Documentation")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ml-12" }, [
-            _c("div", { staticClass: "mt-2 text-sm text-gray-500" }, [
-              _vm._v(
-                "\n                    Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "https://laravel.com/docs" } }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "mt-3 flex items-center text-sm font-semibold text-indigo-700"
-                },
-                [
-                  _c("div", [_vm._v("Explore the documentation")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ml-1 text-indigo-500" })
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column is-5 is-offset-1" }, [
         _c(
           "div",
           {
             staticClass:
-              "p-6 border-t border-gray-200 md:border-t-0 md:border-l"
+              "is-flex is-justify-content-space-around is-align-items-center"
           },
           [
-            _c("div", { staticClass: "flex items-center" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "ml-4 text-lg text-gray-600 leading-7 font-semibold"
-                },
-                [
-                  _c("a", { attrs: { href: "https://laracasts.com" } }, [
-                    _vm._v("Laracasts")
-                  ])
-                ]
-              )
+            _c("div", { staticClass: "box" }, [
+              _c("figure", { staticClass: "image is-64x64" }, [
+                _c("img", {
+                  attrs: { src: "/Icons/ClockIn.png", alt: "Clock In" }
+                })
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "ml-12" }, [
-              _c("div", { staticClass: "mt-2 text-sm text-gray-500" }, [
-                _vm._v(
-                  "\n                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "https://laracasts.com" } }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mt-3 flex items-center text-sm font-semibold text-indigo-700"
-                  },
-                  [
-                    _c("div", [_vm._v("Start watching Laracasts")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ml-1 text-indigo-500" })
-                  ]
-                )
+            _c("div", { staticClass: "box" }, [
+              _c("figure", { staticClass: "image is-64x64" }, [
+                _c("img", {
+                  attrs: { src: "/Icons/Clockings.png", alt: "Clockings" }
+                })
               ])
             ])
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "p-6 border-t border-gray-200" }, [
-          _c("div", { staticClass: "flex items-center" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "ml-4 text-lg text-gray-600 leading-7 font-semibold"
-              },
-              [
-                _c("a", { attrs: { href: "https://tailwindcss.com/" } }, [
-                  _vm._v("Tailwind")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ml-12" }, [
-            _c("div", { staticClass: "mt-2 text-sm text-gray-500" }, [
-              _vm._v(
-                "\n                    Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.\n                "
-              )
+        _c(
+          "div",
+          {
+            staticClass:
+              "is-flex is-justify-content-space-around is-align-items-center"
+          },
+          [
+            _c("div", { staticClass: "box" }, [
+              _c("figure", { staticClass: "image is-64x64" }, [
+                _c("img", {
+                  attrs: { src: "/Icons/Projects.png", alt: "Projects" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "box" }, [
+              _c("figure", { staticClass: "image is-64x64" }, [
+                _c("img", {
+                  attrs: { src: "/Icons/Assignments.png", alt: "Assignments" }
+                })
+              ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-6 border-t border-gray-200 md:border-l" }, [
-          _c("div", { staticClass: "flex items-center" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "ml-4 text-lg text-gray-600 leading-7 font-semibold"
-              },
-              [_vm._v("Authentication")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ml-12" }, [
-            _c("div", { staticClass: "mt-2 text-sm text-gray-500" }, [
-              _vm._v(
-                "\n                    Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started what matters most: building your application.\n                "
-              )
-            ])
-          ])
-        ])
-      ]
-    )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-5 is-offset-1" }, [
+        _vm._v("\n                gdfgsdfh\n            ")
+      ])
+    ])
   }
 ]
 render._withStripped = true
