@@ -39,8 +39,9 @@ Route::resource('clockings', ClockingController::class)->except(['edit', 'create
 
 Route::resource('projects', ProjectController::class)->except(['edit']);
 
-Route::resource('user', UserManagementController::class);
-Route::get('users/allusers', [UserManagementController::class, 'getAllUsers'])->name('allUsers');
+Route::resource('users-management', UserManagementController::class);
+Route::get('users-management-allusers', [UserManagementController::class, 'getAllUsers'])->name('allUsers');
+Route::get('users-management-without-department', [UserManagementController::class, 'getUserWithoutDepartment'])->name('usersWithoutDepartment');
 
 // Assignments
 /*

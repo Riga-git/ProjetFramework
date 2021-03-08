@@ -1,7 +1,7 @@
 <template>
     <div class="panel">
         <p class="panel-heading">
-            {{title}}
+            <span>{{title}}</span> <span v-if="editable" @click="addMember()" class="icon has-text-black ml-2"><em class="fas fa-plus-circle"></em></span>
         </p>
         <div class="panel-block">
         <p class="control has-icons-left">
@@ -74,6 +74,10 @@
             selectMember(id){
                 this.$emit('member-selected', id);
             },
+
+            addMember(){
+                this.$emit('member-add');
+            }
         },
 
         computed: {

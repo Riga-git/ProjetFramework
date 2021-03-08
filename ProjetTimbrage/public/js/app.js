@@ -1938,6 +1938,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     selectMember: function selectMember(id) {
       this.$emit('member-selected', id);
+    },
+    addMember: function addMember() {
+      this.$emit('member-add');
     }
   },
   computed: {
@@ -4628,6 +4631,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4640,7 +4661,9 @@ __webpack_require__.r(__webpack_exports__);
       editionMode: false,
       showModalNewLeaderStatus: false,
       showModalDepartmentNameStatus: false,
+      showModalNewMemberStatus: false,
       allUsers: [],
+      userWithoutDepartment: [],
       errorInDepartmentNameForm: false
     };
   },
@@ -4674,30 +4697,59 @@ __webpack_require__.r(__webpack_exports__);
     closeModalDepartmentName: function closeModalDepartmentName() {
       this.showModalDepartmentNameStatus = false;
     },
+    showModalNewMember: function showModalNewMember() {
+      this.getUsersWithoutDepartment();
+      this.showModalNewMemberStatus = true;
+    },
+    closeModalNewMember: function closeModalNewMember() {
+      this.showModalNewMemberStatus = false;
+    },
     getAllUsers: function getAllUsers() {
       var _this2 = this;
 
-      axios.get('/users/allusers').then(function (response) {
+      axios.get('/users-management-allusers').then(function (response) {
         return _this2.allUsers = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
-    addLeader: function addLeader(selected) {
+    getUsersWithoutDepartment: function getUsersWithoutDepartment() {
       var _this3 = this;
+
+      axios.get('/users-management-without-department').then(function (response) {
+        return _this3.userWithoutDepartment = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    addLeader: function addLeader(selected) {
+      var _this4 = this;
 
       axios.patch('/departments/' + this.department[0].id, {
         'leader': selected.id
       }).then(function (response) {
-        _this3.closeModalNewLeader();
+        _this4.closeModalNewLeader();
 
-        _this3.department = response.data;
+        _this4.department = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    addMember: function addMember(selected) {
+      var _this5 = this;
+
+      axios.patch('/users-management/' + selected.id, {
+        'department_id': this.department[0].id
+      }).then(function (response) {
+        _this5.closeModalNewMember();
+
+        _this5.department[0].member.put(response);
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     saveDepartmentName: function saveDepartmentName() {
-      var _this4 = this;
+      var _this6 = this;
 
       var trimmedName = this.department[0].name.trim();
 
@@ -4705,9 +4757,9 @@ __webpack_require__.r(__webpack_exports__);
         axios.patch('/departments/' + this.department[0].id, {
           'name': this.department[0].name
         }).then(function (response) {
-          _this4.closeModalDepartmentName();
+          _this6.closeModalDepartmentName();
 
-          _this4.department = response.data;
+          _this6.department = response.data;
         })["catch"](function (error) {
           return console.log(error);
         });
@@ -30026,7 +30078,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "panel" }, [
     _c("p", { staticClass: "panel-heading" }, [
-      _vm._v("\n        " + _vm._s(_vm.title) + "\n    ")
+      _c("span", [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _vm.editable
+        ? _c(
+            "span",
+            {
+              staticClass: "icon has-text-black ml-2",
+              on: {
+                click: function($event) {
+                  return _vm.addMember()
+                }
+              }
+            },
+            [_c("em", { staticClass: "fas fa-plus-circle" })]
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel-block" }, [
@@ -34800,6 +34867,9 @@ var render = function() {
             on: {
               "member-deleted": function($event) {
                 return _vm.removeMember($event)
+              },
+              "member-add": function($event) {
+                return _vm.showModalNewMember()
               }
             }
           })
@@ -34947,6 +35017,54 @@ var render = function() {
               )
             ])
           ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal",
+        class: { "is-active": _vm.showModalNewMemberStatus }
+      },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _c("header", { staticClass: "modal-card-head" }, [
+            _c("p", { staticClass: "modal-card-title" }, [
+              _vm._v("Edition Département")
+            ]),
+            _vm._v(" "),
+            _c("button", {
+              staticClass: "delete",
+              attrs: { "aria-label": "close" },
+              on: {
+                click: function($event) {
+                  return _vm.closeModalNewMember()
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "section",
+            { staticClass: "modal-card-body" },
+            [
+              _c("user-list", {
+                attrs: {
+                  title: "Sélection nouveau membre",
+                  content: _vm.userWithoutDepartment
+                },
+                on: {
+                  "member-selected": function($event) {
+                    return _vm.addMember($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
         ])
       ]
     )
