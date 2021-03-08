@@ -4622,10 +4622,12 @@ __webpack_require__.r(__webpack_exports__);
     removeMember: function removeMember(member) {//axios.put()
     },
     removeLeader: function removeLeader() {
+      var _this = this;
+
       axios.patch('/departments/' + this.department[0].id, {
         'leader': null
       }).then(function (response) {
-        return console.log(response);
+        return _this.department = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -4635,23 +4637,22 @@ __webpack_require__.r(__webpack_exports__);
       this.showModalNewLeaderStatus = true;
     },
     getAllUsers: function getAllUsers() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/users/allusers').then(function (response) {
-        return _this.allUsers = response.data;
+        return _this2.allUsers = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     addLeader: function addLeader(selected) {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.patch('/departments/' + this.department[0].id, {
         'leader': selected.id
       }).then(function (response) {
-        console.log(response);
-        _this2.showModalNewLeaderStatus = false;
-        _this2.department = response.data;
+        _this3.showModalNewLeaderStatus = false;
+        _this3.department = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });

@@ -109,7 +109,7 @@ export default{
 
         removeLeader(){
             axios.patch('/departments/' + this.department[0].id, {'leader' : null})
-                    .then(response => console.log(response))
+                    .then(response => this.department = response.data)
                     .catch(error => console.log(error));
         },
 
@@ -126,10 +126,9 @@ export default{
 
         addLeader(selected){
             axios.patch('/departments/' + this.department[0].id, {'leader' : selected.id})
-                .then(response => {console.log(response);
-                                    this.showModalNewLeaderStatus = false;
+                .then(response => { this.showModalNewLeaderStatus = false;
                                     this.department = response.data;
-                                    })
+                                  })
                 .catch(error => console.log(error));
         },
     },

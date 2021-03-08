@@ -7,7 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +39,8 @@ Route::resource('clockings', ClockingController::class)->except(['edit', 'create
 
 Route::resource('projects', ProjectController::class)->except(['edit']);
 
-Route::resource('user', UserController::class);
-Route::get('users/allusers', [UserController::class, 'getAllUsers'])->name('allUsers');
+Route::resource('user', UserManagementController::class);
+Route::get('users/allusers', [UserManagementController::class, 'getAllUsers'])->name('allUsers');
 
 // Assignments
 /*
