@@ -14,7 +14,7 @@ class AddExtraColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->foreignId('department_id')->after('profile_photo_path')->constrained();
+          $table->foreignId('department_id')->after('profile_photo_path')->nullable()->constrained();
           $table->foreignId('grade_id')->after('department_id')->constrained();
         });
     }
