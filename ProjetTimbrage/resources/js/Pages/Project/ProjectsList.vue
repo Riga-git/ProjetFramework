@@ -76,7 +76,7 @@
             this.updateShowModal(false);
         })
         .catch(error => {
-          this.$toasted.show(error,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
           this.updateShowModal(false);
           });
       },

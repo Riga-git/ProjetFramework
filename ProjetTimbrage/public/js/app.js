@@ -5671,7 +5671,7 @@ __webpack_require__.r(__webpack_exports__);
 
         updateEditionMode(false);
       })["catch"](function (error) {
-        _this.$toasted.show(error, {
+        _this.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -5688,7 +5688,7 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = '/projects';
         }
       })["catch"](function (error) {
-        _this2.$toasted.show(error, {
+        _this2.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -5905,7 +5905,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.updateShowModal(false);
       })["catch"](function (error) {
-        _this.$toasted.show(error, {
+        _this.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'

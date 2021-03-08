@@ -50,7 +50,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response('Valeurs invalides',500);
+            return response('Données invalides', 500);
         }
         try {
             $project = new Project;
@@ -59,7 +59,7 @@ class ProjectController extends Controller
             $project->save();
 ;           return response(200);
         } catch (Throwable $e) {
-            return response(500);
+            return response("Erreur lors de la création d'un nouveau projet", 500);
         }  
     }
 
@@ -102,7 +102,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(500);
+            return response('Données invalides', 500);
         }
 
         try {
@@ -114,7 +114,7 @@ class ProjectController extends Controller
             
 ;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
-            return response(500);
+            return response('Erreur lors de la mise à jour du projet', 500);
         }  
     }
 
@@ -128,7 +128,7 @@ class ProjectController extends Controller
     {
         try{
             $project->delete();
-            return response(200);
+            return response('Erreur lors de la suppression', 500);
         } catch(Throwable $e){
             return response(500);
         }
