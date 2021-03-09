@@ -39,10 +39,11 @@
                     </div>
                 </div>
 
-                <!-- Members section -->
+                <!-- Members list -->
                 <user-list :title="department[0].members.length + ' Membres'"
                             :content="department[0].members" :editable="editionMode"
-                            @member-deleted="removeMember($event)">
+                            @member-deleted="removeMember($event)"
+                            @member-add="showModalNewMember()">
                 </user-list>
             </div>
 
@@ -100,6 +101,23 @@
                 </footer>
             </div>
         </div>
+
+        <!-- Modal new member -->
+        <div v-bind:class="{'is-active': showModalNewMemberStatus}" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Edition Département</p>
+                    <button class="delete" aria-label="close" @click="closeModalNewMember()"></button>
+                </header>
+                <section class="modal-card-body">
+                    <user-list :title="'Sélection nouveau membre'"
+                                :content="userWithoutDepartment"
+                                @member-selected="addMember($event)">
+                    </user-list>
+                </section>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -122,7 +140,9 @@ export default{
             editionMode : false,
             showModalNewLeaderStatus : false,
             showModalDepartmentNameStatus : false,
+            showModalNewMemberStatus : false,
             allUsers : [],
+            userWithoutDepartment : [],
             errorInDepartmentNameForm : false,
         }
     },
@@ -159,9 +179,24 @@ export default{
             this.showModalDepartmentNameStatus = false;
         },
 
+        showModalNewMember(){
+            this.getUsersWithoutDepartment();
+            this.showModalNewMemberStatus = true;
+        },
+
+        closeModalNewMember(){
+            this.showModalNewMemberStatus = false;
+        },
+
         getAllUsers(){
-            axios.get('/users/allusers')
+            axios.get('/users-management-allusers')
                 .then(response => this.allUsers = response.data)
+                .catch(error => console.log(error));
+        },
+
+        getUsersWithoutDepartment(){
+            axios.get('/users-management-without-department')
+                .then(response => this.userWithoutDepartment = response.data)
                 .catch(error => console.log(error));
         },
 
@@ -169,6 +204,14 @@ export default{
             axios.patch('/departments/' + this.department[0].id, {'leader' : selected.id})
                 .then(response => { this.closeModalNewLeader();
                                     this.department = response.data;
+                                  })
+                .catch(error => console.log(error));
+        },
+
+        addMember(selected){
+            axios.patch('/users-management/' + selected.id, {'department_id' : this.department[0].id})
+                .then(response => { this.closeModalNewMember();
+                                    this.department[0].member.put(response)
                                   })
                 .catch(error => console.log(error));
         },
