@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UserManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -91,5 +91,9 @@ class UserController extends Controller
      */
     public function getUserWithoutDepartment(){
       return User::all()->where('department_id', "=", null);
+    }
+
+    public function getAllUsers(){
+        return User::all();
     }
 }

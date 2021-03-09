@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,19 +33,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-/*
-Route::get('departments', 'App\Http\Controllers\DepartmentController@index')->name('departments');
-Route::get('departments/{id}', 'App\Http\Controllers\DepartmentController@show')->name('departments.show');
-*/
-
 Route::resource('departments', DepartmentController::class)->except(['edit']);
 
 Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
 
 Route::resource('projects', ProjectController::class)->except(['edit']);
 
+Route::resource('user', UserManagementController::class);
+Route::get('users/allusers', [UserManagementController::class, 'getAllUsers'])->name('allUsers');
+
 // Assignments
+/*
 Route::get('/assignments', [AssignmentController::class, 'index']);
 Route::patch('/assignments', [AssignmentController::class, 'edit']);
 Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::delete('/assignments', [AssignmentController::class, 'destroy']);
+*/
