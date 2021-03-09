@@ -25,7 +25,7 @@
                         <p>
                         <strong> {{ member.firstName }} {{member.lastName}}</strong>
                         <br>
-                        <a :href="'mailto:' + member.email"> {{ member.email }} </a>
+                        <a href="#"> {{ member.email }} </a>
                         </p>
                     </div>
                 </div>

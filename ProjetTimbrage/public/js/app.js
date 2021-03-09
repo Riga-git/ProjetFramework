@@ -4671,15 +4671,24 @@ __webpack_require__.r(__webpack_exports__);
     updateEditionMode: function updateEditionMode(newValue) {
       this.editionMode = newValue;
     },
-    removeMember: function removeMember(member) {//axios.put()
+    removeMember: function removeMember(selected) {
+      var _this = this;
+
+      axios.patch('/users/' + selected.id, {
+        'department_id': null
+      }).then(function (response) {
+        return _this.department[0].members = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     },
     removeLeader: function removeLeader() {
-      var _this = this;
+      var _this2 = this;
 
       axios.patch('/departments/' + this.department[0].id, {
         'leader': null
       }).then(function (response) {
-        return _this.department = response.data;
+        return _this2.department = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -4705,51 +4714,52 @@ __webpack_require__.r(__webpack_exports__);
       this.showModalNewMemberStatus = false;
     },
     getAllUsers: function getAllUsers() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get('/users-management-allusers').then(function (response) {
-        return _this2.allUsers = response.data;
+      axios.get('/users' + '?option=all').then(function (response) {
+        return _this3.allUsers = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     getUsersWithoutDepartment: function getUsersWithoutDepartment() {
-      var _this3 = this;
+      var _this4 = this;
 
-      axios.get('/users-management-without-department').then(function (response) {
-        return _this3.userWithoutDepartment = response.data;
+      axios.get('/users' + '?option=without-department').then(function (response) {
+        return _this4.userWithoutDepartment = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     addLeader: function addLeader(selected) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.patch('/departments/' + this.department[0].id, {
         'leader': selected.id
       }).then(function (response) {
-        _this4.closeModalNewLeader();
+        _this5.closeModalNewLeader();
 
-        _this4.department = response.data;
+        _this5.department = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     addMember: function addMember(selected) {
-      var _this5 = this;
+      var _this6 = this;
 
-      axios.patch('/users-management/' + selected.id, {
+      axios.patch('/users/' + selected.id, {
         'department_id': this.department[0].id
       }).then(function (response) {
-        _this5.closeModalNewMember();
+        _this6.closeModalNewMember(); //this.department[0].members.push(response.data[0]);
 
-        _this5.department[0].member.put(response);
+
+        _this6.department[0].members = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     saveDepartmentName: function saveDepartmentName() {
-      var _this6 = this;
+      var _this7 = this;
 
       var trimmedName = this.department[0].name.trim();
 
@@ -4757,9 +4767,9 @@ __webpack_require__.r(__webpack_exports__);
         axios.patch('/departments/' + this.department[0].id, {
           'name': this.department[0].name
         }).then(function (response) {
-          _this6.closeModalDepartmentName();
+          _this7.closeModalDepartmentName();
 
-          _this6.department = response.data;
+          _this7.department = response.data;
         })["catch"](function (error) {
           return console.log(error);
         });
@@ -30185,7 +30195,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
-                        _c("a", { attrs: { href: "mailto:" + member.email } }, [
+                        _c("a", { attrs: { href: "#" } }, [
                           _vm._v(" " + _vm._s(member.email) + " ")
                         ])
                       ])

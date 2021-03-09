@@ -7,16 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
 
-class UserManagementController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->has('option') && $request->input('option') == 'without-department'){
+            return User::where('department_id', null)->get();
+        } elseif ($request->has('option') && $request->input('option') == 'all') {
+            return User::all();
+        } else {
+            return response('Inertia render',200);
+        }
+
     }
 
     /**
@@ -71,7 +78,6 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        dd(User::where('id', '6')->get());
         $validator = Validator::make($request->all(), [
             'department_id' => 'sometimes|nullable|exists:departments,id',
         ]);
@@ -81,10 +87,11 @@ class UserManagementController extends Controller
         } else {
             try {
                 if ($request->has('department_id')) {
+                    $departmentToReturn = $request->input('department_id') != null ? $request->input('department_id') : $user->department_id;
                     $user->department_id = $request->input('department_id');
                 }
                 $user->save();
-                $result = User::where('id',  $user->id)->get();
+                $result = User::where('department_id',  $departmentToReturn)->get();
             } catch (Throwable $e) {
                 $result = response('error during user update : ' . $e, 500);
             }
@@ -101,19 +108,5 @@ class UserManagementController extends Controller
     public function destroy(User $user)
     {
         //
-    }
-
-    /**
-     * Select all user without a related department.
-     * Used by an axios request, don't need a ressource to add external items
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getUserWithoutDepartment(){
-      return User::where('department_id', null)->get();
-    }
-
-    public function getAllUsers(){
-        return User::all();
     }
 }

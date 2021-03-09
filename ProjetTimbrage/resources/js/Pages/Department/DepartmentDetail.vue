@@ -152,14 +152,16 @@ export default{
             this.editionMode = newValue;
         },
 
-        removeMember(member){
-            //axios.put()
+        removeMember(selected){
+            axios.patch('/users/' + selected.id, {'department_id' : null})
+                .then(response => this.department[0].members = response.data)
+                .catch(error => console.log(error));
         },
 
         removeLeader(){
             axios.patch('/departments/' + this.department[0].id, {'leader' : null})
-                    .then(response => this.department = response.data)
-                    .catch(error => console.log(error));
+                .then(response => this.department = response.data)
+                .catch(error => console.log(error));
         },
 
         showModalNewLeader(){
@@ -189,13 +191,13 @@ export default{
         },
 
         getAllUsers(){
-            axios.get('/users-management-allusers')
+            axios.get('/users' + '?option=all')
                 .then(response => this.allUsers = response.data)
                 .catch(error => console.log(error));
         },
 
         getUsersWithoutDepartment(){
-            axios.get('/users-management-without-department')
+            axios.get('/users' + '?option=without-department')
                 .then(response => this.userWithoutDepartment = response.data)
                 .catch(error => console.log(error));
         },
@@ -209,9 +211,10 @@ export default{
         },
 
         addMember(selected){
-            axios.patch('/users-management/' + selected.id, {'department_id' : this.department[0].id})
+            axios.patch('/users/' + selected.id, {'department_id' : this.department[0].id})
                 .then(response => { this.closeModalNewMember();
-                                    this.department[0].member.put(response)
+                                    //this.department[0].members.push(response.data[0]);
+                                    this.department[0].members = response.data;
                                   })
                 .catch(error => console.log(error));
         },
