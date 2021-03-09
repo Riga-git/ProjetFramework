@@ -86,7 +86,7 @@
                 </header>
                 <section class="modal-card-body">
                     <div class="block">
-                        <input v-model="department[0].name" class="input" type="text" placeholder="project name">
+                        <input v-model="department[0].name" class="input" type="text" placeholder="Nouveau nom du département">
                         <p v-if="errorInDepartmentNameForm" class="notification is-danger is-light">Le nom du départment n'est pas correct</p>
                     </div>
                 </section>
@@ -222,7 +222,7 @@ export default{
         saveDepartmentName(){
             let trimmedName = this.department[0].name.trim();
             if (trimmedName.length > 0){
-                axios.patch('/departments/' + this.department[0].id, {'name' : this.department[0].name})
+                axios.patch('/departments/' + this.department[0].id, {'name' : trimmedName})
                     .then(response => { this.closeModalDepartmentName();
                                         this.department = response.data;
                                     })

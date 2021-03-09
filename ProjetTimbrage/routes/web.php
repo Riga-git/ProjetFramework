@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::resource('departments', DepartmentController::class)->except(['edit']);
+Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);
 
 Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
 

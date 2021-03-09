@@ -4435,35 +4435,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//import JetNavLink from '@/Jetstream/NavLink'
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  //props: ['departments'],
-
-  /*components:{
-    JetNavLink
-  },*/
-  data: function data() {
-    return {};
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=script&lang=js& ***!
@@ -4715,7 +4686,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (trimmedName.length > 0) {
         axios.patch('/departments/' + this.department[0].id, {
-          'name': this.department[0].name
+          'name': trimmedName
         }).then(function (response) {
           _this7.closeModalDepartmentName();
 
@@ -4765,6 +4736,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['departments'],
@@ -4773,8 +4786,40 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      departmentList: this.departments
+      departmentList: this.departments,
+      showModalDepartmentNameStatus: false,
+      emptyDepartment: {
+        'name': ""
+      },
+      errorInDepartmentNameForm: false
     };
+  },
+  methods: {
+    showModalNewDepartment: function showModalNewDepartment() {
+      this.showModalDepartmentNameStatus = true;
+    },
+    closeModalNewDepartment: function closeModalNewDepartment() {
+      this.showModalDepartmentNameStatus = false;
+    },
+    saveNewDepartment: function saveNewDepartment() {
+      var _this = this;
+
+      var trimmedName = this.emptyDepartment.name.trim();
+
+      if (trimmedName.length > 0) {
+        axios.post('/departments', {
+          'name': trimmedName
+        }).then(function (response) {
+          _this.closeModalNewDepartment();
+
+          _this.departmentList = response.data;
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      } else {
+        this.errorInDepartmentNameForm = true;
+      }
+    }
   }
 });
 
@@ -27507,45 +27552,6 @@ component.options.__file = "resources/js/Pages/Dashboard.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Department/DepartmentCreate.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/Pages/Department/DepartmentCreate.vue ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DepartmentCreate.vue?vue&type=template&id=a7b72cdc& */ "./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc&");
-/* harmony import */ var _DepartmentCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DepartmentCreate.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _DepartmentCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__.render,
-  _DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/Pages/Department/DepartmentCreate.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/Pages/Department/DepartmentDetail.vue":
 /*!************************************************************!*\
   !*** ./resources/js/Pages/Department/DepartmentDetail.vue ***!
@@ -28764,22 +28770,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DepartmentCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DepartmentCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DepartmentCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=script&lang=js& ***!
@@ -29776,23 +29766,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_097ba13b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_097ba13b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=template&id=097ba13b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dashboard.vue?vue&type=template&id=097ba13b&");
-
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc& ***!
-  \*******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DepartmentCreate_vue_vue_type_template_id_a7b72cdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DepartmentCreate.vue?vue&type=template&id=a7b72cdc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc&");
 
 
 /***/ }),
@@ -34643,31 +34616,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentCreate.vue?vue&type=template&id=a7b72cdc& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("HomePage")])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=template&id=1cc32e67&":
 /*!**********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Department/DepartmentDetail.vue?vue&type=template&id=1cc32e67& ***!
@@ -34932,7 +34880,10 @@ var render = function() {
                   }
                 ],
                 staticClass: "input",
-                attrs: { type: "text", placeholder: "project name" },
+                attrs: {
+                  type: "text",
+                  placeholder: "Nouveau nom du département"
+                },
                 domProps: { value: _vm.department[0].name },
                 on: {
                   input: function($event) {
@@ -35073,73 +35024,205 @@ var render = function() {
     _c(
       "div",
       { staticClass: "columns is-multiline" },
-      _vm._l(this.departmentList, function(department) {
-        return _c(
-          "div",
-          { key: department.object, staticClass: "column" },
-          [
-            _c(
-              "inertia-link",
-              {
-                attrs: { href: "departments/" + department.id, active: false }
-              },
-              [
-                _c("div", { staticClass: "card" }, [
-                  _c(
-                    "div",
-                    { staticClass: "card-header has-background-primary-dark" },
-                    [
-                      _c(
-                        "p",
-                        {
-                          staticClass:
-                            "has-text-white has-text-weight-bold is-size-3 pl-2"
-                        },
-                        [_vm._v(_vm._s(department.name))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-content" }, [
-                    _c("p", [
-                      _c(
-                        "span",
-                        { staticClass: "icon has-text-primary-dark" },
-                        [_c("em", { staticClass: "fas fa-user-tie" })]
-                      ),
-                      _vm._v(" "),
-                      department.leader.length > 0
-                        ? _c("span", [
-                            _vm._v(
-                              _vm._s(department.leader[0].firstName) +
-                                " " +
-                                _vm._s(department.leader[0].lastName)
-                            )
-                          ])
-                        : _vm._e()
-                    ]),
+      [
+        _vm._l(this.departmentList, function(department) {
+          return _c(
+            "div",
+            { key: department.object, staticClass: "column is-one-quarter" },
+            [
+              _c(
+                "inertia-link",
+                {
+                  attrs: { href: "departments/" + department.id, active: false }
+                },
+                [
+                  _c("div", { staticClass: "card" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card-header has-background-primary-dark"
+                      },
+                      [
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "has-text-white has-text-weight-bold is-size-3 pl-2"
+                          },
+                          [_vm._v(_vm._s(department.name))]
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("p", [
-                      _c(
-                        "span",
-                        { staticClass: "icon has-text-primary-dark" },
-                        [_c("em", { staticClass: "fas fa-users" })]
-                      ),
-                      _vm._v(" " + _vm._s(department.memberNbre))
+                    _c("div", { staticClass: "card-content" }, [
+                      _c("p", [
+                        _c(
+                          "span",
+                          { staticClass: "icon has-text-primary-dark" },
+                          [_c("em", { staticClass: "fas fa-user-tie" })]
+                        ),
+                        _vm._v(" "),
+                        department.leader.length > 0
+                          ? _c("span", [
+                              _vm._v(
+                                _vm._s(department.leader[0].firstName) +
+                                  " " +
+                                  _vm._s(department.leader[0].lastName)
+                              )
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _c(
+                          "span",
+                          { staticClass: "icon has-text-primary-dark" },
+                          [_c("em", { staticClass: "fas fa-users" })]
+                        ),
+                        _vm._v(" " + _vm._s(department.memberNbre))
+                      ])
                     ])
                   ])
-                ])
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
+                ]
+              )
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-one-quarter" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c(
+                "figure",
+                {
+                  staticClass: "image is-48x48",
+                  staticStyle: { margin: "0 auto" },
+                  on: {
+                    click: function($event) {
+                      return _vm.showModalNewDepartment()
+                    }
+                  }
+                },
+                [_c("img", { attrs: { src: "/Icons/Add.png", alt: "edit" } })]
+              )
+            ])
+          ])
+        ])
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal",
+        class: { "is-active": _vm.showModalDepartmentNameStatus }
+      },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-card" }, [
+          _c("header", { staticClass: "modal-card-head" }, [
+            _c("p", { staticClass: "modal-card-title" }, [
+              _vm._v("Nouveau Département")
+            ]),
+            _vm._v(" "),
+            _c("button", {
+              staticClass: "delete",
+              attrs: { "aria-label": "close" },
+              on: {
+                click: function($event) {
+                  return _vm.closeModalNewDepartment()
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("section", { staticClass: "modal-card-body" }, [
+            _c("div", { staticClass: "block" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.emptyDepartment.name,
+                    expression: "emptyDepartment.name"
+                  }
+                ],
+                staticClass: "input",
+                attrs: {
+                  type: "text",
+                  placeholder: "Nom du nouveau département"
+                },
+                domProps: { value: _vm.emptyDepartment.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.emptyDepartment, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errorInDepartmentNameForm
+                ? _c("p", { staticClass: "notification is-danger is-light" }, [
+                    _vm._v("Le nom du départment n'est pas correct")
+                  ])
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-card-foot" }, [
+            _c("div", { staticClass: "card-footer-item" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "box",
+                  on: {
+                    click: function($event) {
+                      return _vm.saveNewDepartment()
+                    }
+                  }
+                },
+                [_vm._m(1)]
+              )
+            ])
+          ])
+        ])
+      ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header has-background-primary-dark" },
+      [
+        _c(
+          "p",
+          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
+          [_vm._v("Nouveau")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Save.png", alt: "edit" } })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -49588,8 +49671,6 @@ var map = {
 	"./Clockings.vue": "./resources/js/Pages/Clockings.vue",
 	"./Dashboard": "./resources/js/Pages/Dashboard.vue",
 	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
-	"./Department/DepartmentCreate": "./resources/js/Pages/Department/DepartmentCreate.vue",
-	"./Department/DepartmentCreate.vue": "./resources/js/Pages/Department/DepartmentCreate.vue",
 	"./Department/DepartmentDetail": "./resources/js/Pages/Department/DepartmentDetail.vue",
 	"./Department/DepartmentDetail.vue": "./resources/js/Pages/Department/DepartmentDetail.vue",
 	"./Department/DepartmentsList": "./resources/js/Pages/Department/DepartmentsList.vue",
