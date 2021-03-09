@@ -60,7 +60,7 @@ class ProjectController extends Controller
 ;           return response(200);
         } catch (Throwable $e) {
             return response("Erreur lors de la création d'un nouveau projet", 500);
-        }  
+        }
     }
 
     /**
@@ -111,11 +111,11 @@ class ProjectController extends Controller
             $project->number = $request->input('number');
             $project->save();
             $newProj = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
-            
+
 ;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
             return response('Erreur lors de la mise à jour du projet', 500);
-        }  
+        }
     }
 
     /**

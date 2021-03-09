@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DepartmentDetailResource;
 use App\Http\Resources\DepartmentOverviewResource;
 use App\Models\Department;
-use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
+use App\Http\Controllers\UserController;
 
 class DepartmentController extends Controller
 {
@@ -110,6 +110,15 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        try{
+            UserController::removeMembersFromDepartment($department->id);
+            $department->delete();
+            $result = response('OK', 200);
+        } catch (Throwable $e) {
+            $result = response('Error during department suppression : ' . $e, 500);
+        }
+
+        return $result;
+
     }
 }

@@ -4570,6 +4570,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4697,6 +4704,15 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.errorInDepartmentNameForm = true;
       }
+    },
+    deleteDepartment: function deleteDepartment() {
+      axios["delete"]('/departments/' + this.department[0].id).then(function (response) {
+        if (response.status === 200) {
+          window.location.href = '/departments';
+        }
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   }
 });
@@ -34790,7 +34806,24 @@ var render = function() {
             },
             [_vm._m(1)]
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _vm.editionMode
+          ? _c("div", { staticClass: "card-footer-item" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "box",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteDepartment()
+                    }
+                  }
+                },
+                [_vm._m(2)]
+              )
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -34915,7 +34948,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._m(2)]
+                [_vm._m(3)]
               )
             ])
           ])
@@ -34987,6 +35020,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", { staticClass: "image is-32x32" }, [
       _c("img", { attrs: { src: "/Icons/Edit.png", alt: "edit" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image is-32x32" }, [
+      _c("img", { attrs: { src: "/Icons/Delete.png", alt: "delete" } })
     ])
   },
   function() {

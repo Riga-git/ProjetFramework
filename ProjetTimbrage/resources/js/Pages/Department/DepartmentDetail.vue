@@ -56,6 +56,13 @@
                         </figure>
                     </div>
                 </div>
+                <div v-if="editionMode" class="card-footer-item">
+                    <div @click="deleteDepartment()"  class="box">
+                        <figure class="image is-32x32">
+                            <img src="/Icons/Delete.png" alt="delete">
+                        </figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -230,6 +237,16 @@ export default{
             } else {
                 this.errorInDepartmentNameForm = true;
             }
+        },
+
+        deleteDepartment(){
+            axios.delete('/departments/' + this.department[0].id)
+                .then(response => {
+                    if (response.status === 200) {
+                        window.location.href = '/departments';
+                    }
+                })
+                .catch(error => console.log(error));
         }
     },
 }

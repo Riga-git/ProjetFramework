@@ -109,4 +109,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public static function removeMembersFromDepartment(int $id){
+        User::where('department_id', $id)->update(['department_id' => null]);
+    }
+
 }
