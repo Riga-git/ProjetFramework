@@ -7,6 +7,8 @@ use Inertia\Inertia;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
@@ -44,22 +46,21 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
-            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+            'number' => 'required|digits_between:1,15',
         ]);
 
         if ($validator->fails()) {
-            return response($validator,501);
+            return response('Données invalides', 500);
         }
         try {
             $project = new Project;
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
-            $projects = Project::all();
-            return response()->json(['newProj' => $projects], 200);
+;           return response(200);
         } catch (Throwable $e) {
-            return response('Error',500);
-        }
+            return response("Erreur lors de la création d'un nouveau projet", 500);
+        }  
     }
 
     /**
@@ -97,22 +98,24 @@ class ProjectController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:1|max:255',
-            'number' => 'required|integer|min:1', // |max:255' -> cause an error
+            'number' => 'required|required|digits_between:1,15',
         ]);
 
         if ($validator->fails()) {
-            return response($validator,501);
+            return response('Données invalides', 500);
         }
 
         try {
+            //$data =  $request->input('name');
             $project->name = $request->input('name');
             $project->number = $request->input('number');
             $project->save();
-            $newProj = Project::findOrFail($project->id);
-            return response()->json(['newProj' => $newProj], 200);
+            $newProj = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
+            
+;           return response()->json(['newProj' => $newProj], 200);
         } catch (Throwable $e) {
-            return response('Error',500);
-        }
+            return response('Erreur lors de la mise à jour du projet', 500);
+        }  
     }
 
     /**
@@ -123,6 +126,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        try{
+            $project->delete();
+            return response('Erreur lors de la suppression', 500);
+        } catch(Throwable $e){
+            return response(500);
+        }
     }
 }
