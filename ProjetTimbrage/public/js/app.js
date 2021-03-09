@@ -2971,6 +2971,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -31730,61 +31734,98 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-5 is-offset-1" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "is-flex is-justify-content-space-around is-align-items-center"
-          },
-          [
-            _c("div", { staticClass: "box" }, [
-              _c("figure", { staticClass: "image is-64x64" }, [
-                _c("img", {
-                  attrs: { src: "/Icons/ClockIn.png", alt: "Clock In" }
-                })
+    return _c("div", { staticClass: "columns is-2 " }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "column is-half is-justify-content-space-around is-align-items-center"
+        },
+        [
+          _c("div", { staticClass: "box" }, [
+            _c("div", { staticClass: "columns is-centered" }, [
+              _c("div", { staticClass: "column is-half" }, [
+                _c(
+                  "figure",
+                  {
+                    staticClass: "image is-64x64",
+                    staticStyle: { margin: "auto" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "block",
+                      attrs: { src: "/Icons/ClockIn.png", alt: "Clock In" }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-half" }, [
+                _c(
+                  "figure",
+                  {
+                    staticClass: "image is-64x64",
+                    staticStyle: { margin: "auto" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "block",
+                      attrs: { src: "/Icons/Clockings.png", alt: "Clockings" }
+                    })
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "box" }, [
-              _c("figure", { staticClass: "image is-64x64" }, [
-                _c("img", {
-                  attrs: { src: "/Icons/Clockings.png", alt: "Clockings" }
-                })
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "is-flex is-justify-content-space-around is-align-items-center"
-          },
-          [
-            _c("div", { staticClass: "box" }, [
-              _c("figure", { staticClass: "image is-64x64" }, [
-                _c("img", {
-                  attrs: { src: "/Icons/Projects.png", alt: "Projects" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "box" }, [
-              _c("figure", { staticClass: "image is-64x64" }, [
-                _c("img", {
-                  attrs: { src: "/Icons/Assignments.png", alt: "Assignments" }
-                })
-              ])
-            ])
-          ]
-        )
-      ]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "columns is-justify-content-space-around is-align-items-center"
+              },
+              [
+                _c("div", { staticClass: "column is-half" }, [
+                  _c(
+                    "figure",
+                    {
+                      staticClass: "image is-64x64",
+                      staticStyle: { margin: "auto" }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/Icons/Projects.png", alt: "Clock In" }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column is-half" }, [
+                  _c(
+                    "figure",
+                    {
+                      staticClass: "image is-64x64",
+                      staticStyle: { margin: "auto" }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/Icons/Assignments.png",
+                          alt: "Clockings"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            )
+          ])
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "column is-5 is-offset-1" }, [
-        _vm._v("\n                gdfgsdfh\n            ")
+      _c("div", { staticClass: "column is-half" }, [
+        _c("div", { staticClass: "box" }, [
+          _vm._v("\n                gdfgsdfh\n            ")
+        ])
       ])
     ])
   }
