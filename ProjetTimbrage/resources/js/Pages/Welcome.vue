@@ -1,5 +1,6 @@
+<!-- root -->
 <template>
-    <div class="container mb-5">
+    <div class="container mt-5">
         <div class="columns is-2 ">
             <div class="column is-half is-justify-content-space-around is-align-items-center">
                 <div class="box">
