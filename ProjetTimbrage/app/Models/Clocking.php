@@ -7,22 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clocking extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'clocking'
+    ];
 
-  protected $fillable = [
-    'user_id',
-    'clocking'
-  ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
-  public function user(){
-    return $this->belongsTo(User::class);
-  }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
 
 }
