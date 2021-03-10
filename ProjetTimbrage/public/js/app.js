@@ -3885,13 +3885,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -30433,26 +30426,49 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
-    },
+    { staticClass: "columns is-flex", staticStyle: { "min-height": "100vh" } },
     [
-      _c("div", [_vm._t("logo")], 2),
-      _vm._v(" "),
       _c(
         "div",
         {
           staticClass:
-            "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+            "card column is-half is-align-self-center is-offset-one-quarter p-0"
         },
-        [_vm._t("default")],
-        2
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+            },
+            [_vm._t("default")],
+            2
+          )
+        ]
       )
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header has-background-primary-dark" },
+      [
+        _c(
+          "p",
+          { staticClass: "has-text-white has-text-weight-bold is-size-3 pl-2" },
+          [_vm._v("LOGIN")]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -30691,8 +30707,7 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass:
-        "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+      staticClass: "is-inline-flex  px-4 py-2 button is-primary is-dark",
       attrs: { type: _vm.type }
     },
     [_vm._t("default")],
@@ -30731,8 +30746,7 @@ var render = function() {
         expression: "proxyChecked"
       }
     ],
-    staticClass:
-      "rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
+    staticClass: "is-rounded ",
     attrs: { type: "checkbox" },
     domProps: {
       value: _vm.value,
@@ -31352,8 +31366,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("input", {
     ref: "input",
-    staticClass:
-      "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+    staticClass: "input",
     domProps: { value: _vm.value },
     on: {
       input: function($event) {
@@ -31429,7 +31442,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "label",
-    { staticClass: "block font-medium text-sm text-gray-700" },
+    { staticClass: "is block has-text-weight-medium is-size-4 has-text-dark" },
     [
       _vm.value
         ? _c("span", [_vm._v(_vm._s(_vm.value))])
@@ -33682,19 +33695,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "jet-authentication-card",
-    {
-      scopedSlots: _vm._u([
-        {
-          key: "logo",
-          fn: function() {
-            return [_c("jet-authentication-card-logo")]
-          },
-          proxy: true
-        }
-      ])
-    },
     [
-      _vm._v(" "),
       _c("jet-validation-errors", { staticClass: "mb-4" }),
       _vm._v(" "),
       _vm.status
@@ -33722,7 +33723,7 @@ var render = function() {
               _c("jet-label", { attrs: { for: "email", value: "Email" } }),
               _vm._v(" "),
               _c("jet-input", {
-                staticClass: "mt-1 block w-full",
+                staticClass: "mt-1 is-block",
                 attrs: {
                   id: "email",
                   type: "email",
@@ -33750,7 +33751,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("jet-input", {
-                staticClass: "mt-1 block w-full",
+                staticClass: "mt-1 is-block",
                 attrs: {
                   id: "password",
                   type: "password",
@@ -33769,10 +33770,10 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "block mt-4" }, [
+          _c("div", { staticClass: "is-block mt-4" }, [
             _c(
               "label",
-              { staticClass: "flex items-center" },
+              { staticClass: "checkbox" },
               [
                 _c("jet-checkbox", {
                   attrs: { name: "remember" },
@@ -33785,9 +33786,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("span", { staticClass: "ml-2 text-sm text-gray-600" }, [
-                  _vm._v("Remember me")
-                ])
+                _c("span", { staticClass: "ml-2" }, [_vm._v("Remember me")])
               ],
               1
             )
@@ -33795,24 +33794,8 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "flex items-center justify-end mt-4" },
+            { staticClass: "is-flex is-justify-content-end mt-4" },
             [
-              _vm.canResetPassword
-                ? _c(
-                    "inertia-link",
-                    {
-                      staticClass:
-                        "underline text-sm text-gray-600 hover:text-gray-900",
-                      attrs: { href: _vm.route("password.request") }
-                    },
-                    [
-                      _vm._v(
-                        "\n                Forgot your password?\n            "
-                      )
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
               _c(
                 "jet-button",
                 {

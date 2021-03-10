@@ -42,10 +42,6 @@ Route::resource('projects', ProjectController::class)->except(['edit']);
 
 Route::resource('users', UserController::class);
 
-
-//Route::get('users-management-allusers', [UserManagementController::class, 'getAllUsers'])->name('allUsers');
-//Route::get('users-management-without-department', [UserManagementController::class, 'getUserWithoutDepartment'])->name('usersWithoutDepartment');
-
 // Assignments
 /*
 Route::get('/assignments', [AssignmentController::class, 'index']);

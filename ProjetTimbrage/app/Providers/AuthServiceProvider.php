@@ -13,7 +13,6 @@ use App\Policies\ClockingPolicy;
 use App\Policies\DepartmentPolicy;
 use App\Policies\GradePolicy;
 use App\Policies\ProjectPolicy;
-use App\Policies\ProjetPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
