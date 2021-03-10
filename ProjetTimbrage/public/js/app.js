@@ -4678,8 +4678,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.patch('/users/' + selected.id, {
         'department_id': this.department[0].id
       }).then(function (response) {
-        _this6.closeModalNewMember(); //this.department[0].members.push(response.data[0]);
-
+        _this6.closeModalNewMember();
 
         _this6.department[0].members = response.data;
       })["catch"](function (error) {

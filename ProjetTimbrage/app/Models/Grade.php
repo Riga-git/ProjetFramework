@@ -17,6 +17,15 @@ class Grade extends Model
       'can_manage_projects',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function user(){
       return $this->hasMany(User::class);
