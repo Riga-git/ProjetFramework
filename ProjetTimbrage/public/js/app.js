@@ -4822,7 +4822,9 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.departmentList = response.data;
         })["catch"](function (error) {
-          return console.log(error);
+          _this.closeModalNewDepartment();
+
+          console.log("une erreur : " + error);
         });
       } else {
         this.errorInDepartmentNameForm = true;

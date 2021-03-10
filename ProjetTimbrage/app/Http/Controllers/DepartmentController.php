@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
@@ -32,6 +33,7 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Department::class);
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:1|max:255',
             'leader' => 'sometimes|nullable|exists:users,id',

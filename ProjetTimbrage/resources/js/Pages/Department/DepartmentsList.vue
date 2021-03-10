@@ -95,8 +95,10 @@
                 axios.post('/departments', {'name' : trimmedName})
                     .then(response => { this.closeModalNewDepartment();
                                         this.departmentList = response.data;
-                                    })
-                    .catch(error => console.log(error));
+                                      })
+                    .catch(error => { this.closeModalNewDepartment();
+                                      console.log("une erreur : " + error);
+                    }               );
             } else {
                 this.errorInDepartmentNameForm = true;
             }
