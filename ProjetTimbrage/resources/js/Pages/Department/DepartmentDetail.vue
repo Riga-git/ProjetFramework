@@ -220,7 +220,6 @@ export default{
         addMember(selected){
             axios.patch('/users/' + selected.id, {'department_id' : this.department[0].id})
                 .then(response => { this.closeModalNewMember();
-                                    //this.department[0].members.push(response.data[0]);
                                     this.department[0].members = response.data;
                                   })
                 .catch(error => console.log(error));
