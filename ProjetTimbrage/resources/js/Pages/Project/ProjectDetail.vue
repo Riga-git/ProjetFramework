@@ -94,13 +94,13 @@
         })
         .then(response => {
             if (response.status === 200) {
-              this.projectDetail[0] = response.data.newProj;
+              this.projectDetail[0] = response.data.newProj[0];
             } 
-            updateEditionMode(false);
+            this.updateEditionMode(false);
         })
         .catch(error => {
-          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
-          updateEditionMode(false);
+          this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          this.updateEditionMode(false);
           });
       },
 
@@ -112,7 +112,7 @@
             } 
         })
         .catch(error => {
-          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
           });
       }
     },

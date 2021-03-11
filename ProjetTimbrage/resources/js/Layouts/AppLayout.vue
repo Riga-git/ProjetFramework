@@ -14,13 +14,13 @@
 
         <div id="navbarJLT" v-bind:class="{'is-active': sideNavActive}" class="navbar-menu">
             <div class="navbar-start">
-                <a href="/clockings" class="navbar-item">
+                <a href="/clockings" class="navbar-item ">
                     Clockings
                 </a>
                 <a href="/projects" class="navbar-item">
                     Projects
                 </a>
-                <a href="/departments" class="navbar-item">
+                <a href="/departments" class="navbar-item" v-bind:class="{'is-active': route().current('departments')}">
                     Departments
                 </a>
                 <a href="/assignments" class="navbar-item">
@@ -30,11 +30,11 @@
 
             <div class="navbar-end">
             <div class="navbar-item">
-                <div class="buttons">
-                <a class="button is-primary">
-                    <strong>Log-out</strong>
-                </a>
-                </div>
+                <form method="POST" @submit.prevent="logout">
+                    <jet-responsive-nav-link as="button">
+                        Logout
+                    </jet-responsive-nav-link>
+                </form>
             </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
     //import JetDropdown from '@/Jetstream/Dropdown'
     //import JetDropdownLink from '@/Jetstream/DropdownLink'
     //import JetNavLink from '@/Jetstream/NavLink'
-    //import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
     export default {
         components: {
@@ -58,7 +58,7 @@
             //JetDropdown,
             //JetDropdownLink,
             //JetNavLink,
-            //JetResponsiveNavLink,
+            JetResponsiveNavLink,
         },
 
         data() {
