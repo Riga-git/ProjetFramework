@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DepartmentDetailResource;
 use App\Http\Resources\DepartmentOverviewResource;
 use App\Models\Department;
-use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
@@ -25,16 +26,6 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,7 +33,30 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', Department::class);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:1|max:255',
+            'leader' => 'sometimes|nullable|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            $result = response('Validation fail : ' . $validator->failed(), 500);
+        } else {
+            try {
+                $department = new Department;
+                if ($request->has('leader')) {
+                    $department->user_id = $request->input('leader');
+                }
+                $department->name = $request->input('name');
+                $department->save();
+                $result = DepartmentOverviewResource::collection(Department::all());
+            }
+            catch (Throwable $e){
+                $result = response('Error during department creation', 500);
+            }
+
+            return $result;
+        }
     }
 
     /**
@@ -53,20 +67,8 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-      $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-
-      return Inertia::render('Department/DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Department $department)
-    {
-        //
+        $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
+        return Inertia::render('Department/DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
     }
 
     /**
@@ -96,7 +98,7 @@ class DepartmentController extends Controller
                 $department->save();
                 $result = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
             } catch (Throwable $e) {
-                $result = response('error during department update', 500);
+                $result = response('Error during department update', 500);
             }
         }
         return $result;
@@ -110,6 +112,15 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        try{
+            UserController::removeMembersFromDepartment($department->id);
+            $department->delete();
+            $result = response('OK', 200);
+        } catch (Throwable $e) {
+            $result = response('Error during department suppression : ' . $e, 500);
+        }
+
+        return $result;
+
     }
 }

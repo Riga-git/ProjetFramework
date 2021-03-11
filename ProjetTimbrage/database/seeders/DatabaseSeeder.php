@@ -66,6 +66,14 @@ class DatabaseSeeder extends Seeder
         'can_manage_projects' => false,
       ]);
 
+      Grade::create([
+        'name' => 'almighty',
+        'can_manage_users' => true,
+        'can_manage_departments' => true,
+        'can_manage_clockings' => true,
+        'can_manage_projects' => true,
+      ]);
+
       User::create([
         'firstName' => 'Jérôme',
         'lastName' => 'Garo',
@@ -74,7 +82,7 @@ class DatabaseSeeder extends Seeder
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
         'department_id' => 1,
-        'grade_id' => 1,
+        'grade_id' => 4,
       ]);
 
       User::create([
@@ -85,7 +93,7 @@ class DatabaseSeeder extends Seeder
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
         'department_id' => 1,
-        'grade_id' => 1,
+        'grade_id' => 4,
       ]);
 
       User::create([

@@ -8,20 +8,30 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-  use HasFactory;
-  use SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-  protected $fillable = [
-    'number',
-    'name'
-  ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'number',
+        'name'
+    ];
 
-  public function assignment(){
-    return $this->hasMany(Assignment::class);
-  }
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+    public function assignment(){
+        return $this->hasMany(Assignment::class);
+    }
 }
