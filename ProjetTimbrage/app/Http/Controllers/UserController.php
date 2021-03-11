@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserWithGrade;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -113,5 +114,10 @@ class UserController extends Controller
     public static function removeMembersFromDepartment(int $id){
         User::where('department_id', $id)->update(['department_id' => null]);
     }
+
+    public static function getSingleUserWithGrade(int $id){
+        return UserWithGrade::collection(User::where('department_id', $id));
+    }
+
 
 }

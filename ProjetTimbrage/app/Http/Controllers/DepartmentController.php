@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
 use App\Http\Controllers\UserController;
+use App\Http\Resources\UserWithGrade;
+use App\Models\Grade;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
@@ -33,7 +36,7 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create', Department::class);
+        $this->authorize('create', [Department::class, Grade::find($request->user()->grade_id)]);
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:1|max:255',
             'leader' => 'sometimes|nullable|exists:users,id',

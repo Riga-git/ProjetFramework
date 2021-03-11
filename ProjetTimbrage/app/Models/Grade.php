@@ -27,6 +27,15 @@ class Grade extends Model
         'updated_at',
     ];
 
+    protected $cast = [
+        'can_manage_users' => 'boolean',
+        'can_manage_departments' => 'boolean',
+        'can_manage_stamps' => 'boolean',
+        'can_manage_projects' => 'boolean',
+
+    ];
+
+
     public function user(){
       return $this->hasMany(User::class);
     }

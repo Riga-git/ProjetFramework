@@ -2,9 +2,12 @@
 
 namespace App\Policies;
 
+use App\Http\Resources\UserWithGrade;
 use App\Models\Department;
+use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Collection;
 
 class DepartmentPolicy
 {
@@ -39,9 +42,9 @@ class DepartmentPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Grade $params)
     {
-        return $user->grade()->can_manage_department === true;
+        return $user->grade_id === $params->id && $params->can_manage_departments === 1;
     }
 
     /**
