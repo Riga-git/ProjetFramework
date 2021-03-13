@@ -6,7 +6,16 @@
       <p class="has-text-weight-bold is-size-3">{{currentTime}}</p>
     </div>
     <div class="columns is-centered">
-      
+      <div class="column is-full">
+        <div class="columns is-centered">
+          <div class="column is-justify-content-center">
+           <p style="text-align: center" class="has-text-weight-bold is-size-5">in</p>
+          </div>
+            <div class="column is-justify-content-center">
+            <p style="text-align: center" class="has-text-weight-bold is-size-5">out</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1884,6 +1884,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     date: String
@@ -4446,12 +4455,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     CurrentClockings: _Components_CurrentClockings__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  methods: {
+    clockIn: function clockIn(event) {
+      this.$emit('ClockIn');
+    }
   }
 });
 
@@ -28568,11 +28588,44 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "columns is-centered" })
+      _vm._m(0)
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns is-centered" }, [
+      _c("div", { staticClass: "column is-full" }, [
+        _c("div", { staticClass: "columns is-centered" }, [
+          _c("div", { staticClass: "column is-justify-content-center" }, [
+            _c(
+              "p",
+              {
+                staticClass: "has-text-weight-bold is-size-5",
+                staticStyle: { "text-align": "center" }
+              },
+              [_vm._v("in")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-justify-content-center" }, [
+            _c(
+              "p",
+              {
+                staticClass: "has-text-weight-bold is-size-5",
+                staticStyle: { "text-align": "center" }
+              },
+              [_vm._v("out")]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -32526,7 +32579,8 @@ var render = function() {
                       "figure",
                       {
                         staticClass: "image is-64x64",
-                        staticStyle: { margin: "auto" }
+                        staticStyle: { margin: "auto" },
+                        on: { click: _vm.clockIn }
                       },
                       [
                         _c("img", {
@@ -32538,22 +32592,24 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "column is-half" }, [
-                    _c(
-                      "figure",
-                      {
-                        staticClass: "image is-64x64",
-                        staticStyle: { margin: "auto" }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "block",
-                          attrs: {
-                            src: "/Icons/Clockings.png",
-                            alt: "Clockings"
-                          }
-                        })
-                      ]
-                    )
+                    _c("a", { attrs: { href: "/clockings" } }, [
+                      _c(
+                        "figure",
+                        {
+                          staticClass: "image is-64x64",
+                          staticStyle: { margin: "auto" }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "block",
+                            attrs: {
+                              src: "/Icons/Clockings.png",
+                              alt: "Clockings"
+                            }
+                          })
+                        ]
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -32565,39 +32621,43 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "column is-half" }, [
-                      _c(
-                        "figure",
-                        {
-                          staticClass: "image is-64x64",
-                          staticStyle: { margin: "auto" }
-                        },
-                        [
-                          _c("img", {
-                            attrs: {
-                              src: "/Icons/Projects.png",
-                              alt: "Clock In"
-                            }
-                          })
-                        ]
-                      )
+                      _c("a", { attrs: { href: "/projects" } }, [
+                        _c(
+                          "figure",
+                          {
+                            staticClass: "image is-64x64",
+                            staticStyle: { margin: "auto" }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: "/Icons/Projects.png",
+                                alt: "Projects"
+                              }
+                            })
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "column is-half" }, [
-                      _c(
-                        "figure",
-                        {
-                          staticClass: "image is-64x64",
-                          staticStyle: { margin: "auto" }
-                        },
-                        [
-                          _c("img", {
-                            attrs: {
-                              src: "/Icons/Assignments.png",
-                              alt: "Clockings"
-                            }
-                          })
-                        ]
-                      )
+                      _c("a", { attrs: { href: "/assignments" } }, [
+                        _c(
+                          "figure",
+                          {
+                            staticClass: "image is-64x64",
+                            staticStyle: { margin: "auto" }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: "/Icons/Assignments.png",
+                                alt: "Assignments"
+                              }
+                            })
+                          ]
+                        )
+                      ])
                     ])
                   ]
                 )

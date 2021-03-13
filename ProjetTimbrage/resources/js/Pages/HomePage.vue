@@ -8,26 +8,32 @@
                 <div class="box">
                     <div class="columns is-centered">
                         <div class="column is-half">
-                            <figure class="image is-64x64" style="margin:auto">
+                            <figure @click="clockIn" class="image is-64x64" style="margin:auto">
                                 <img class="block" src="/Icons/ClockIn.png" alt="Clock In">
                             </figure>
                         </div>
                         <div class="column is-half">
-                            <figure class="image is-64x64" style="margin:auto">
-                                <img class="block" src="/Icons/Clockings.png" alt="Clockings">
-                            </figure>
+                            <a href="/clockings">
+                                <figure class="image is-64x64" style="margin:auto">
+                                    <img class="block" src="/Icons/Clockings.png" alt="Clockings">
+                                </figure>
+                            </a>
                         </div>
                     </div>
                     <div class="columns is-justify-content-space-around is-align-items-center">
                         <div class="column is-half">
-                            <figure class="image is-64x64" style="margin:auto">
-                                <img src="/Icons/Projects.png" alt="Clock In">
-                            </figure>
+                            <a href="/projects">
+                                <figure class="image is-64x64" style="margin:auto">
+                                    <img src="/Icons/Projects.png" alt="Projects">
+                                </figure>
+                            </a>
                         </div>
                         <div class="column is-half">
-                            <figure class="image is-64x64" style="margin:auto">
-                                <img src="/Icons/Assignments.png" alt="Clockings">
-                            </figure>
+                            <a href="/assignments">
+                                <figure class="image is-64x64" style="margin:auto">
+                                    <img src="/Icons/Assignments.png" alt="Assignments">
+                                </figure>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -51,6 +57,12 @@
             AppLayout,
             CurrentClockings
         },
+
+        methods : {
+            clockIn(event){
+                this.$emit('ClockIn')
+            }
+        }
 
     
     }
