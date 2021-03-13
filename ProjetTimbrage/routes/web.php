@@ -30,17 +30,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);
 
-Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
+    Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
 
-Route::resource('projects', ProjectController::class)->except(['edit']);
+    Route::resource('projects', ProjectController::class)->except(['edit']);
 
-Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class);
+
+});
 
 // Assignments
 /*
