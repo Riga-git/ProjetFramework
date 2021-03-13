@@ -48,7 +48,7 @@
             </div>
 
             <!-- Footer -->
-            <div class="card-footer">
+            <div v-if="canEdit" class="card-footer">
                 <div class="card-footer-item">
                     <div @click="updateEditionMode(true)"  class="box">
                         <figure class="image is-32x32">
@@ -139,6 +139,7 @@ export default{
 
     props: [
         'departmentDetail',
+        'hasAuth',
     ],
 
     data() {
@@ -151,6 +152,7 @@ export default{
             allUsers : [],
             userWithoutDepartment : [],
             errorInDepartmentNameForm : false,
+            canEdit : this.hasAuth,
         }
     },
 

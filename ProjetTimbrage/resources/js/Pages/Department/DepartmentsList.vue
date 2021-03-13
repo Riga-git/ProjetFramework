@@ -18,7 +18,7 @@
             </div>
 
             <!-- New department card -->
-            <div class="column is-one-quarter">
+            <div v-if="canEdit" class="column is-one-quarter">
                 <div class="card">
                     <div class="card-header has-background-primary-dark">
                         <p class="has-text-white has-text-weight-bold is-size-3 pl-2">Nouveau</p>
@@ -65,7 +65,8 @@
   import JetNavLink from '@/Jetstream/NavLink'
 
   export default {
-    props: ['departments'],
+    props: ['departments',
+            'hasAuth'],
 
     components:{
       JetNavLink
@@ -77,6 +78,7 @@
         showModalDepartmentNameStatus :false,
         emptyDepartment : {'name' : ""},
         errorInDepartmentNameForm : false,
+        canEdit : this.hasAuth,
       }
     },
 

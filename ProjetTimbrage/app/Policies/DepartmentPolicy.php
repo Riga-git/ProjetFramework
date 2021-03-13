@@ -56,7 +56,7 @@ class DepartmentPolicy
      */
     public function update(User $user, Department $department, Grade $params)
     {
-        return $user->grade_id === $params->id && $params->can_manage_departments === 1;
+      return $user->grade_id === $params->id && $params->can_manage_departments === 1;
     }
 
     /**
@@ -68,6 +68,6 @@ class DepartmentPolicy
      */
     public function delete(User $user, Department $department, Grade $params)
     {
-        return $user->grade_id === $params->id && $params->can_manage_departments === 1;
+      return $user->grade_id === $params->id && $params->can_manage_departments === 1;
     }
 }
