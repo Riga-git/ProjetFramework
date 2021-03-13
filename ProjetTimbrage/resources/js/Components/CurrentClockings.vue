@@ -6,7 +6,7 @@
       <p class="has-text-weight-bold is-size-3">{{currentTime}}</p>
     </div>
     <div class="columns is-centered">
-      liste pointage
+      
     </div>
   </div>
 </div>

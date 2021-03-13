@@ -34,7 +34,7 @@
             </div>
             <div class="column is-half">
                 <div class="box">
-                  <current-clockings :date="null"></current-clockings>
+                  <current-clockings :date="''"></current-clockings>
                 </div>
             </div>
         </div>
