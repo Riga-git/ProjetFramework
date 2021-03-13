@@ -4100,7 +4100,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     UserList: _Components_UserList_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  props: ['departmentDetail'],
+  props: ['departmentDetail', 'hasAuth'],
   data: function data() {
     return {
       department: this.departmentDetail,
@@ -4110,7 +4110,8 @@ __webpack_require__.r(__webpack_exports__);
       showModalNewMemberStatus: false,
       allUsers: [],
       userWithoutDepartment: [],
-      errorInDepartmentNameForm: false
+      errorInDepartmentNameForm: false,
+      canEdit: this.hasAuth
     };
   },
   methods: {
@@ -4349,7 +4350,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['departments'],
+  props: ['departments', 'hasAuth'],
   components: {
     JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -4360,7 +4361,8 @@ __webpack_require__.r(__webpack_exports__);
       emptyDepartment: {
         'name': ""
       },
-      errorInDepartmentNameForm: false
+      errorInDepartmentNameForm: false,
+      canEdit: this.hasAuth
     };
   },
   methods: {
@@ -32801,39 +32803,41 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer" }, [
-        _c("div", { staticClass: "card-footer-item" }, [
-          _c(
-            "div",
-            {
-              staticClass: "box",
-              on: {
-                click: function($event) {
-                  return _vm.updateEditionMode(true)
-                }
-              }
-            },
-            [_vm._m(1)]
-          )
-        ]),
-        _vm._v(" "),
-        _vm.editionMode
-          ? _c("div", { staticClass: "card-footer-item" }, [
+      _vm.canEdit
+        ? _c("div", { staticClass: "card-footer" }, [
+            _c("div", { staticClass: "card-footer-item" }, [
               _c(
                 "div",
                 {
                   staticClass: "box",
                   on: {
                     click: function($event) {
-                      return _vm.deleteDepartment()
+                      return _vm.updateEditionMode(true)
                     }
                   }
                 },
-                [_vm._m(2)]
+                [_vm._m(1)]
               )
-            ])
-          : _vm._e()
-      ])
+            ]),
+            _vm._v(" "),
+            _vm.editionMode
+              ? _c("div", { staticClass: "card-footer-item" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "box",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteDepartment()
+                        }
+                      }
+                    },
+                    [_vm._m(2)]
+                  )
+                ])
+              : _vm._e()
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c(
@@ -33140,27 +33144,33 @@ var render = function() {
           )
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "column is-one-quarter" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c(
-                "figure",
-                {
-                  staticClass: "image is-48x48",
-                  staticStyle: { margin: "0 auto" },
-                  on: {
-                    click: function($event) {
-                      return _vm.showModalNewDepartment()
-                    }
-                  }
-                },
-                [_c("img", { attrs: { src: "/Icons/Add.png", alt: "edit" } })]
-              )
+        _vm.canEdit
+          ? _c("div", { staticClass: "column is-one-quarter" }, [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-content" }, [
+                  _c(
+                    "figure",
+                    {
+                      staticClass: "image is-48x48",
+                      staticStyle: { margin: "0 auto" },
+                      on: {
+                        click: function($event) {
+                          return _vm.showModalNewDepartment()
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/Icons/Add.png", alt: "edit" }
+                      })
+                    ]
+                  )
+                ])
+              ])
             ])
-          ])
-        ])
+          : _vm._e()
       ],
       2
     ),

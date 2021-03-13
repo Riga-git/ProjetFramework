@@ -27,7 +27,8 @@ class DepartmentController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('viewAny', [Department::class, Grade::find(Auth::user()->grade_id)]);
+      $authUserGrade = Grade::find(Auth::user()->grade_id);
+      $this->authorize('viewAny', [Department::class, $authUserGrade]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);
@@ -35,7 +36,9 @@ class DepartmentController extends Controller
 
     /* Show all */
     $departments = DepartmentOverviewResource::collection(Department::all());
-    return Inertia::render('Department/DepartmentsList', [ 'departments' => $departments]);
+    $hasAuthorization = $authUserGrade->can_manage_departments;
+    return Inertia::render('Department/DepartmentsList', ['departments' => $departments,
+                                                          'hasAuth' => $hasAuthorization]);
   }
 
   /**
@@ -93,7 +96,8 @@ class DepartmentController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('view', [$department, Grade::find(Auth::user()->grade_id)]);
+      $authUserGrade = Grade::find(Auth::user()->grade_id);
+      $this->authorize('view', [$department, $authUserGrade]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);
@@ -101,7 +105,9 @@ class DepartmentController extends Controller
 
     /* Show */
     $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
-    return Inertia::render('Department/DepartmentDetail', ['departmentDetail' => $departmentWithDetails]);
+    $hasAuthorization = $authUserGrade->can_manage_departments;
+    return Inertia::render('Department/DepartmentDetail', ['departmentDetail' => $departmentWithDetails,
+                                                            'hasAuth' => $hasAuthorization]);
   }
 
   /**
@@ -160,7 +166,7 @@ class DepartmentController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('delete', [Department::class, Grade::find(Auth::user()->grade_id)]);
+      $this->authorize('delete', [$department, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);
