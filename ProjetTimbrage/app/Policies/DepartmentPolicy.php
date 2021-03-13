@@ -54,9 +54,9 @@ class DepartmentPolicy
      * @param  \App\Models\Department  $department
      * @return mixed
      */
-    public function update(User $user, Department $department)
+    public function update(User $user, Department $department, Grade $params)
     {
-        return $user->grade()->can_manage_department === true;
+        return $user->grade_id === $params->id && $params->can_manage_departments === 1;
     }
 
     /**
@@ -66,8 +66,8 @@ class DepartmentPolicy
      * @param  \App\Models\Department  $department
      * @return mixed
      */
-    public function delete(User $user, Department $department)
+    public function delete(User $user, Department $department, Grade $params)
     {
-        return $user->grade()->can_manage_department === true;
+        return $user->grade_id === $params->id && $params->can_manage_departments === 1;
     }
 }

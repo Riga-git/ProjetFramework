@@ -4125,7 +4125,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this.department[0].members = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     removeLeader: function removeLeader() {
@@ -4136,7 +4140,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this2.department = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this2.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     showModalNewLeader: function showModalNewLeader() {
@@ -4165,7 +4173,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/users' + '?option=all').then(function (response) {
         return _this3.allUsers = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this3.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     getUsersWithoutDepartment: function getUsersWithoutDepartment() {
@@ -4174,7 +4186,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/users' + '?option=without-department').then(function (response) {
         return _this4.userWithoutDepartment = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this4.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     addLeader: function addLeader(selected) {
@@ -4187,7 +4203,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this5.department = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this5.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     addMember: function addMember(selected) {
@@ -4200,7 +4220,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this6.department[0].members = response.data;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this6.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     },
     saveDepartmentName: function saveDepartmentName() {
@@ -4216,19 +4240,29 @@ __webpack_require__.r(__webpack_exports__);
 
           _this7.department = response.data;
         })["catch"](function (error) {
-          return console.log(error);
+          return _this7.$toasted.show(error.data, {
+            duration: 3000,
+            icon: 'fa-exclamation-triangle',
+            type: 'error'
+          });
         });
       } else {
         this.errorInDepartmentNameForm = true;
       }
     },
     deleteDepartment: function deleteDepartment() {
+      var _this8 = this;
+
       axios["delete"]('/departments/' + this.department[0].id).then(function (response) {
         if (response.status === 200) {
           window.location.href = '/departments';
         }
       })["catch"](function (error) {
-        return console.log(error);
+        return _this8.$toasted.show(error.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
       });
     }
   }
