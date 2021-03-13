@@ -21,34 +21,17 @@ use App\Http\Controllers\UserManagementController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Dashboard', [
-      'canLogin' => Route::has('login'),
-      'canRegister' => Route::has('register'),
-      'laravelVersion' => Application::VERSION,
-      'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function() {
+        return Inertia::render('Dashboard');
+    });
+
     Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);
-
     Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
-
     Route::resource('projects', ProjectController::class)->except(['edit']);
-
     Route::resource('users', UserController::class);
 
 });
 
-// Assignments
-/*
-Route::get('/assignments', [AssignmentController::class, 'index']);
-Route::patch('/assignments', [AssignmentController::class, 'edit']);
-Route::post('/assignments', [AssignmentController::class, 'store']);
-Route::delete('/assignments', [AssignmentController::class, 'destroy']);
-*/
