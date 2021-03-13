@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use App\Models\Clocking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClockingController extends Controller
 {
@@ -35,7 +37,21 @@ class ClockingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'timestamp' => 'required|string|min:1|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response('Données invalides', 500);
+        }
+        try {
+            $clocking = new Clocking;
+            $clocking->clocking = $request->input('timestamp');
+            $clocking->save();
+;           return response(200);
+        } catch (Throwable $e) {
+            return response("Erreur lors de la création d'un nouveau projet", 500);
+        }
     }
 
     /**

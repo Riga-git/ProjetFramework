@@ -25,7 +25,7 @@ use App\Http\Controllers\UserManagementController;
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function() {
-        return Inertia::render('Dashboard');
+        return Inertia::render('HomePage');
     });
 
     Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);

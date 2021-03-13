@@ -99,7 +99,7 @@
             this.updateEditionMode(false);
         })
         .catch(error => {
-          this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
           this.updateEditionMode(false);
           });
       },
@@ -112,7 +112,7 @@
             } 
         })
         .catch(error => {
-          this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
           });
       }
     },
