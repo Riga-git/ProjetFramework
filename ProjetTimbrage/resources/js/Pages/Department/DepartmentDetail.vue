@@ -162,13 +162,13 @@ export default{
         removeMember(selected){
             axios.patch('/users/' + selected.id, {'department_id' : null})
                 .then(response => this.department[0].members = response.data)
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         },
 
         removeLeader(){
             axios.patch('/departments/' + this.department[0].id, {'leader' : null})
                 .then(response => this.department = response.data)
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         },
 
         showModalNewLeader(){
@@ -200,13 +200,13 @@ export default{
         getAllUsers(){
             axios.get('/users' + '?option=all')
                 .then(response => this.allUsers = response.data)
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         },
 
         getUsersWithoutDepartment(){
             axios.get('/users' + '?option=without-department')
                 .then(response => this.userWithoutDepartment = response.data)
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         },
 
         addLeader(selected){
@@ -214,7 +214,9 @@ export default{
                 .then(response => { this.closeModalNewLeader();
                                     this.department = response.data;
                                   })
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => { this.closeModalNewLeader();
+                                  this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'})
+                                });
         },
 
         addMember(selected){
@@ -222,7 +224,7 @@ export default{
                 .then(response => { this.closeModalNewMember();
                                     this.department[0].members = response.data;
                                   })
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         },
 
         saveDepartmentName(){
@@ -232,7 +234,7 @@ export default{
                     .then(response => { this.closeModalDepartmentName();
                                         this.department = response.data;
                                     })
-                    .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                    .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
             } else {
                 this.errorInDepartmentNameForm = true;
             }
@@ -245,7 +247,7 @@ export default{
                         window.location.href = '/departments';
                     }
                 })
-                .catch(error => this.$toasted.show(error.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
+                .catch(error => this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'}));
         }
     },
 }

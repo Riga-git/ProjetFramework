@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 class DepartmentController extends Controller
 {
 
+  private $notAllowed = 'You don\'t have the rights to perform this action';
+
   /**
    * Display a listing of the resource.
    *
@@ -28,7 +30,7 @@ class DepartmentController extends Controller
       $this->authorize('viewAny', [Department::class, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
-      return response('You have not the rights to perform this action', 403);
+      return response($this->notAllowed, 403);
     }
 
     /* Show all */
@@ -49,7 +51,7 @@ class DepartmentController extends Controller
       $this->authorize('create', [Department::class, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
-      return response('You have not the rights to perform this action', 403);
+      return response($this->notAllowed, 403);
     }
 
     /* Validaiton */
@@ -91,10 +93,10 @@ class DepartmentController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('create', [$department, Grade::find(Auth::user()->grade_id)]);
+      $this->authorize('view', [$department, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
-      return response('You have not the rights to perform this action', 403);
+      return response($this->notAllowed, 403);
     }
 
     /* Show */
@@ -114,10 +116,10 @@ class DepartmentController extends Controller
 
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('create', [$department, Grade::find(Auth::user()->grade_id)]);
+      $this->authorize('update', [$department, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
-      return response('You have not the rights to perform this action', 403);
+      return response($this->notAllowed, 403);
     }
 
     /* Validation */
@@ -158,10 +160,10 @@ class DepartmentController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('create', [Department::class, Grade::find(Auth::user()->grade_id)]);
+      $this->authorize('delete', [Department::class, Grade::find(Auth::user()->grade_id)]);
     }
     catch (Throwable $e){
-      return response('You have not the rights to perform this action', 403);
+      return response($this->notAllowed, 403);
     }
 
     /* Delete */
@@ -171,7 +173,7 @@ class DepartmentController extends Controller
       $result = response('OK', 200);
     }
     catch (Throwable $e) {
-      $result = response('Error during department suppression : ' . $e, 500);
+      $result = response('Error during department suppression', 500);
     }
 
     return $result;

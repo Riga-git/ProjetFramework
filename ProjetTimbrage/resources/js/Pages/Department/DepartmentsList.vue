@@ -97,7 +97,7 @@
                                         this.departmentList = response.data;
                                       })
                     .catch(error => { this.closeModalNewDepartment();
-                                      console.log("une erreur : " + error);
+                                      this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
                     }               );
             } else {
                 this.errorInDepartmentNameForm = true;

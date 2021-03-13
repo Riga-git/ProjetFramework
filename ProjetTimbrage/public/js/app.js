@@ -4125,7 +4125,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this.department[0].members = response.data;
       })["catch"](function (error) {
-        return _this.$toasted.show(error.data, {
+        return _this.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4140,7 +4140,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this2.department = response.data;
       })["catch"](function (error) {
-        return _this2.$toasted.show(error.data, {
+        return _this2.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4173,7 +4173,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/users' + '?option=all').then(function (response) {
         return _this3.allUsers = response.data;
       })["catch"](function (error) {
-        return _this3.$toasted.show(error.data, {
+        return _this3.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4186,7 +4186,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/users' + '?option=without-department').then(function (response) {
         return _this4.userWithoutDepartment = response.data;
       })["catch"](function (error) {
-        return _this4.$toasted.show(error.data, {
+        return _this4.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4203,7 +4203,9 @@ __webpack_require__.r(__webpack_exports__);
 
         _this5.department = response.data;
       })["catch"](function (error) {
-        return _this5.$toasted.show(error.data, {
+        _this5.closeModalNewLeader();
+
+        _this5.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4220,7 +4222,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this6.department[0].members = response.data;
       })["catch"](function (error) {
-        return _this6.$toasted.show(error.data, {
+        return _this6.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4240,7 +4242,7 @@ __webpack_require__.r(__webpack_exports__);
 
           _this7.department = response.data;
         })["catch"](function (error) {
-          return _this7.$toasted.show(error.data, {
+          return _this7.$toasted.show(error.response.data, {
             duration: 3000,
             icon: 'fa-exclamation-triangle',
             type: 'error'
@@ -4258,7 +4260,7 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = '/departments';
         }
       })["catch"](function (error) {
-        return _this8.$toasted.show(error.data, {
+        return _this8.$toasted.show(error.response.data, {
           duration: 3000,
           icon: 'fa-exclamation-triangle',
           type: 'error'
@@ -4383,7 +4385,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           _this.closeModalNewDepartment();
 
-          console.log("une erreur : " + error);
+          _this.$toasted.show(error.response.data, {
+            duration: 3000,
+            icon: 'fa-exclamation-triangle',
+            type: 'error'
+          });
         });
       } else {
         this.errorInDepartmentNameForm = true;
