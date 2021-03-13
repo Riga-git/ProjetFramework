@@ -67,28 +67,4 @@ class GradePolicy
     {
         return $user->grade()->can_manage_users === true;
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Grade  $grade
-     * @return mixed
-     */
-    public function restore(User $user, Grade $grade)
-    {
-        return $user->grade()->name === 'almighty';
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Grade  $grade
-     * @return mixed
-     */
-    public function forceDelete(User $user, Grade $grade)
-    {
-        return $user->grade()->name === 'almighty';
-    }
 }

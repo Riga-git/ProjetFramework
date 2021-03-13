@@ -67,28 +67,4 @@ class ClockingPolicy
     {
         return true;
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Clocking  $clocking
-     * @return mixed
-     */
-    public function restore(User $user, Clocking $clocking)
-    {
-        return $user->grade()->name === 'almighty';
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Clocking  $clocking
-     * @return mixed
-     */
-    public function forceDelete(User $user, Clocking $clocking)
-    {
-        return $user->grade()->name === 'almighty';
-    }
 }

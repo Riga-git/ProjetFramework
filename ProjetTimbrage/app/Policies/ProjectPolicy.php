@@ -67,28 +67,4 @@ class ProjectPolicy
     {
         return $user->grade()->can_manage_project === true;
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Project  $project
-     * @return mixed
-     */
-    public function restore(User $user, Project $project)
-    {
-        return $user->grade()->name === 'almighty';
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Project  $project
-     * @return mixed
-     */
-    public function forceDelete(User $user, Project $project)
-    {
-        return $user->grade()->name === 'almighty';
-    }
 }

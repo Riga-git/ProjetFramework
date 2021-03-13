@@ -70,28 +70,4 @@ class DepartmentPolicy
     {
         return $user->grade()->can_manage_department === true;
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return mixed
-     */
-    public function restore(User $user, Department $department)
-    {
-        return $user->grade()->name === 'almighty';
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Department  $department
-     * @return mixed
-     */
-    public function forceDelete(User $user, Department $department)
-    {
-        return $user->grade()->name === 'almighty';
-    }
 }
