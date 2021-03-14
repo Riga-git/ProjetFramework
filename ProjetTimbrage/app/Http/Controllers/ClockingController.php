@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Throwable;
 use App\Models\Clocking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class ClockingController extends Controller
@@ -14,9 +15,26 @@ class ClockingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try{
+            $user = auth()->user();
+            $date = $request->query('date');
+            $nextDay = date('Y-m-d', strtotime($date . ' +1 day'));
+            $clocking = new Clocking;
+            $dayClockings = $clocking->select('clocking')
+                                     ->where('user_id', $user->id)
+                                     ->where('clocking', '>=', $date)
+                                     ->where('clocking', '<', $nextDay)
+                                     ->get();
+            $clockingsList = [];
+            foreach ($dayClockings as $dayClocking) {
+                array_push($clockingsList, substr($dayClocking['clocking'],10));
+            }
+            return response()->json(['clockingsList' => $clockingsList], 200);
+        } catch(Throwable $e) {
+            return response('Impossible récupérér les pointages', 500);
+        }
     }
 
     /**
@@ -38,15 +56,17 @@ class ClockingController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'timestamp' => 'required',
+            'timeStamp' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response('Données invalides', 500);
         }
         try {
+            $user = auth()->user();
             $clocking = new Clocking;
-            $clocking->clocking = $request->input('timestamp');
+            $clocking->user_id = $user->id;
+            $clocking->clocking = $request->input('timeStamp');
             $clocking->save();
 ;           return response(200);
         } catch (Throwable $e) {

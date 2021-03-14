@@ -1893,6 +1893,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     date: String
@@ -1903,7 +1905,10 @@ __webpack_require__.r(__webpack_exports__);
       currentDate: null,
       timeSeparator: '',
       currentTime: '-- : --',
-      interval: null
+      interval: null,
+      clockingsList: null,
+      clocksIn: [],
+      clocksOut: []
     };
   },
   created: function created() {
@@ -1914,6 +1919,33 @@ __webpack_require__.r(__webpack_exports__);
       return _this.updateTime();
     }, 1000);
   },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios.get('/clockings', {
+      params: {
+        date: this.getDate()
+      }
+    }).then(function (response) {
+      if (response.status === 200) {
+        _this2.clockingsList = response.data.clockingsList;
+
+        for (var index = 0; index < _this2.clockingsList.length; index++) {
+          if (index % 2) {
+            _this2.clocksOut.push(_this2.clockingsList[index]);
+          } else {
+            _this2.clocksIn.push(_this2.clockingsList[index]);
+          }
+        }
+      }
+    })["catch"](function (error) {
+      _this2.$toasted.show(error.response.data, {
+        duration: 3000,
+        icon: 'fa-exclamation-triangle',
+        type: 'error'
+      });
+    });
+  },
   methods: {
     updateTime: function updateTime() {
       this.currentDate = new Date();
@@ -1921,6 +1953,14 @@ __webpack_require__.r(__webpack_exports__);
       var minutes = this.currentDate.getMinutes() < 10 ? '0' + this.currentDate.getMinutes() : this.currentDate.getMinutes();
       this.timeSeparator = this.timeSeparator === ' ' ? ':' : ' ';
       this.currentTime = hours + this.timeSeparator + minutes;
+    },
+    getDate: function getDate() {
+      var date = new Date();
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1; // Jan -> 0
+
+      var year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear();
+      return year + '-' + month + '-' + day;
     }
   }
 });
@@ -4543,9 +4583,39 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     CurrentClockings: _Components_CurrentClockings__WEBPACK_IMPORTED_MODULE_1__.default
   },
+  data: function data() {
+    return {
+      updateCurrentClockings: false
+    };
+  },
   methods: {
-    clockIn: function clockIn(event) {
-      this.$emit('ClockIn');
+    clockIn: function clockIn() {
+      var _this = this;
+
+      axios.post('/clockings', {
+        timeStamp: this.getCurrentTimeStamp()
+      }).then(function (response) {
+        if (response.status === 200) {
+          _this.updateCurrentClockings ^= true; // toggle
+        }
+      })["catch"](function (error) {
+        _this.$toasted.show(error.response.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
+      });
+    },
+    getCurrentTimeStamp: function getCurrentTimeStamp() {
+      var date = new Date();
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1; // Jan -> 0
+
+      var year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear();
+      var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+      var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+      var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+      return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
     }
   }
 });
@@ -28572,44 +28642,71 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns is-centered" }, [
-      _c("div", { staticClass: "column is-full" }, [
-        _c("div", { staticClass: "columns is-centered" }, [
-          _c("div", { staticClass: "column is-justify-content-center" }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-full" }, [
+          _c("div", { staticClass: "columns is-centered" }, [
             _c(
-              "p",
-              {
-                staticClass: "has-text-weight-bold is-size-5",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("entrée")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-justify-content-center" }, [
+              "div",
+              { staticClass: "column is-justify-content-center" },
+              [
+                _c(
+                  "p",
+                  {
+                    staticClass: "has-text-weight-bold is-size-5 mb-2",
+                    staticStyle: { "text-align": "center" }
+                  },
+                  [_vm._v("entrée")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.clocksIn, function(clocking) {
+                  return _c(
+                    "p",
+                    {
+                      key: clocking.object,
+                      staticClass: "has-text-weight-bold is-size-5",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [_vm._v(_vm._s(clocking))]
+                  )
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
             _c(
-              "p",
-              {
-                staticClass: "has-text-weight-bold is-size-5",
-                staticStyle: { "text-align": "center" }
-              },
-              [_vm._v("sortie")]
+              "div",
+              { staticClass: "column is-justify-content-center" },
+              [
+                _c(
+                  "p",
+                  {
+                    staticClass: "has-text-weight-bold is-size-5 mb-2",
+                    staticStyle: { "text-align": "center" }
+                  },
+                  [_vm._v("sortie")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.clocksOut, function(clocking) {
+                  return _c(
+                    "p",
+                    {
+                      key: clocking.object,
+                      staticClass: "has-text-weight-bold is-size-5",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [_vm._v(_vm._s(clocking))]
+                  )
+                })
+              ],
+              2
             )
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32665,7 +32762,12 @@ var render = function() {
           _c(
             "div",
             { staticClass: "box" },
-            [_c("current-clockings", { attrs: { date: "" } })],
+            [
+              _c("current-clockings", {
+                key: _vm.updateCurrentClockings,
+                attrs: { date: "" }
+              })
+            ],
             1
           )
         ])
