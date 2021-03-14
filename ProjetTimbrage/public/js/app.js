@@ -1922,7 +1922,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    axios.get('/clockings', {
+    axios.get('/getClockings', {
       params: {
         date: this.getDate()
       }
@@ -4024,27 +4024,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Components_CurrentClockings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/CurrentClockings */ "./resources/js/Components/CurrentClockings.vue");
 //
 //
 //
 //
 //
 //
- //import JetNavLink from '@/Jetstream/NavLink'
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    CurrentClockings: _Components_CurrentClockings__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  //props: ['departments'],
-
-  /*components:{
-    JetNavLink
-  },*/
   data: function data() {
-    return {};
-  }
+    return {
+      updateCurrentClockings: false
+    };
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -31966,7 +31979,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("app-layout", [_c("div", [_vm._v("HomePage")])])
+  return _c("app-layout", [
+    _c("div", { staticClass: "container mt-5" }, [
+      _c("div", { staticClass: "columns is-2 " }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "column is-half is-justify-content-space-around is-align-items-center"
+          },
+          [
+            _c("div", { staticClass: "box" }, [
+              _vm._v("\n                    clockings list\n                ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-half" }, [
+          _c(
+            "div",
+            { staticClass: "box" },
+            [
+              _c("current-clockings", {
+                key: _vm.updateCurrentClockings,
+                attrs: { date: "" }
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

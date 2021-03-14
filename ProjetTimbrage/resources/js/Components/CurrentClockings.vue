@@ -50,7 +50,7 @@
     },
 
     mounted(){  
-      axios.get('/clockings', { params: { date: this.getDate() } })
+      axios.get('/getClockings', { params: { date: this.getDate() } })
         .then(response => {
           if (response.status === 200) {
               this.clockingsList = response.data.clockingsList;
