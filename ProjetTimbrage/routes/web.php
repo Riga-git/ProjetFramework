@@ -2,13 +2,11 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +30,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
     Route::resource('projects', ProjectController::class)->except(['edit']);
     Route::resource('users', UserController::class);
-
+    Route::resource('assignments', AssignmentController::class);
 });
 

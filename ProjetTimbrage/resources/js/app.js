@@ -5,6 +5,7 @@ import Vue from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue';
 import PortalVue from 'portal-vue';
 import Toasted from 'vue-toasted';
+import { MonthPickerInput } from 'vue-month-picker'
 
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaPlugin);
@@ -14,6 +15,7 @@ Vue.use(Toasted ,{
     fullWidth : true,
     position : 'bottom-center'
 });
+Vue.use(MonthPickerInput);
 
 const app = document.getElementById('app');
 

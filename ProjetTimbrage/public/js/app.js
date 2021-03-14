@@ -3247,25 +3247,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var vue_month_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-month-picker */ "./node_modules/vue-month-picker/src/index.js");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+
  //import JetNavLink from '@/Jetstream/NavLink'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    MonthPickerInput: vue_month_picker__WEBPACK_IMPORTED_MODULE_1__.MonthPickerInput
   },
-  //props: ['departments'],
-
-  /*components:{
-    JetNavLink
-  },*/
+  props: ['actualMonth', 'actualYear', 'assigmentsForBaseMonth'],
   data: function data() {
-    return {};
+    return {
+      date: {
+        from: null,
+        to: null,
+        month: null,
+        year: null
+      },
+      defaultCalandar: {
+        defaultMonth: this.actualMonth,
+        defaultYear: this.actualYear,
+        inputPrefilled: true
+      }
+    };
+  },
+  methods: {
+    showDate: function showDate(date) {
+      this.date = date;
+    }
   }
 });
 
@@ -5798,11 +5819,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue */ "./node_modules/@inertiajs/inertia-vue/dist/index.js");
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! portal-vue */ "./node_modules/portal-vue/dist/portal-vue.common.js");
 /* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
 /* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_month_picker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-month-picker */ "./node_modules/vue-month-picker/src/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import modules...
 
 
@@ -5810,22 +5832,24 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_3__.default.mixin({
+
+vue__WEBPACK_IMPORTED_MODULE_4__.default.mixin({
   methods: {
     route: route
   }
 });
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use(portal_vue__WEBPACK_IMPORTED_MODULE_1__.default);
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use((vue_toasted__WEBPACK_IMPORTED_MODULE_2___default()), {
+vue__WEBPACK_IMPORTED_MODULE_4__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
+vue__WEBPACK_IMPORTED_MODULE_4__.default.use(portal_vue__WEBPACK_IMPORTED_MODULE_1__.default);
+vue__WEBPACK_IMPORTED_MODULE_4__.default.use((vue_toasted__WEBPACK_IMPORTED_MODULE_2___default()), {
   iconPack: 'fontawesome',
   // set your iconPack, defaults to material. material|fontawesome|custom-class
   fullWidth: true,
   position: 'bottom-center'
 });
+vue__WEBPACK_IMPORTED_MODULE_4__.default.use(vue_month_picker__WEBPACK_IMPORTED_MODULE_3__.MonthPickerInput);
 var app = document.getElementById('app');
-vue__WEBPACK_IMPORTED_MODULE_3__.default.config.devtools = true;
-new vue__WEBPACK_IMPORTED_MODULE_3__.default({
+vue__WEBPACK_IMPORTED_MODULE_4__.default.config.devtools = true;
+new vue__WEBPACK_IMPORTED_MODULE_4__.default({
   render: function render(h) {
     return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.App, {
       props: {
@@ -5868,6 +5892,130 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.month-picker__container {\r\n  width: 400px;\r\n  position: relative;\r\n  border: 1px solid #DDDDDD;\r\n  border-radius: 5px;\n}\n.month-picker__container.year-picker {\r\n  width: 225px;\n}\n.month-picker {\r\n  box-sizing: border-box;\r\n  flex: 1;\r\n  width: auto;\r\n  display: flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);\r\n  font-family: sans-serif;\r\n  border-radius: 5px;\r\n  overflow: hidden;\n}\n.month-picker__year p {\r\n  width: 100%;\r\n  font-weight: 600;\r\n  letter-spacing: 1px;\r\n  font-size: 1.2rem;\r\n  margin: 1rem 0;\n}\n.month-picker__year input {\r\n  padding: 0;\r\n  font-weight: 600;\r\n  border-radius: 5px 5px 0 0;\r\n  outline: none;\r\n  border: none;\r\n  font-size: 1.2rem;\r\n  width: auto;\r\n  text-align: center;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  height: 3rem;\r\n  position: relative;\r\n  z-index: 1;\n}\n.month-picker__year input:focus {\r\n  border: 1px solid #55B0F2;\n}\n.month-picker__year div,\r\n.month-picker__year button,\r\n.month-picker__year p {\r\n  text-align: center;\r\n  flex: 1;\n}\n.month-picker__year button {\r\n  background-color: #FFFFFF;\r\n  position: absolute;\r\n  width: 4rem;\r\n  font-size: 1.75rem;\r\n  border-radius: 5px;\r\n  outline: none;\r\n  border: 0;\r\n  top: 0.5rem;\r\n  border: 1px solid #E8E8E8;\r\n  z-index: 2;\r\n  color: #686868;\n}\n.month-picker__year button:hover {\r\n  background-color: rgba(0, 0, 0, 0.025);\n}\n.month-picker__year button:active {\r\n  background-color: rgba(0, 0, 0, 0.04);\n}\n.month-picker__year button:first-child {\r\n  left: 10px;\n}\n.month-picker__year button:last-child {\r\n  right: 10px;\n}\n.month-picker__month {\r\n  flex-basis: calc(33.333% - 10px);\r\n  padding: 0.75rem 0.25rem;\r\n  cursor: pointer;\r\n  text-align: center;\r\n  border: 1px solid rgba(245, 245, 245, .75);\r\n  transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);\r\n  background-color: #FEFEFE;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\n}\n.month-picker .month-picker__month:hover {\r\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n  z-index: 10;\n}\n.month-picker__month.selected,\r\n.month-picker__month.selected-range-first,\r\n.month-picker__month.selected-range-second {\r\n  background-color: #55B0F2;\r\n  color: #FFFFFF;\r\n  border-radius: 5px;\r\n  box-shadow: inset 0 0 3px #3490d2, 0px 2px 5px rgba(85, 176, 242, 0.2);\r\n  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);\n}\n.month-picker__month.selected-range-first,\r\n.month-picker__month.selected-range-second {\r\n  border-color: transparent;\n}\n.month-picker__month.selected-range {\r\n  background-color: #7eb9e2;\r\n  color: #FFFFFF;\r\n  border-color: transparent;\n}\n.month-picker__month.inactive {\r\n  background-color: #f0f0f0;\r\n  color: #8a8a8a;\r\n  cursor: not-allowed;\r\n  box-shadow: none;\r\n  text-shadow: none;\n}\n.month-picker__month.inactive:hover {\r\n  box-shadow: none;\n}\r\n\r\n/* Dark threme */\n.month-picker--dark {\r\n  background-color: #5F5F5F;\n}\n.month-picker--dark .month-picker__year p,\r\n.month-picker--dark .month-picker__year input {\r\n  color: #EBEBEB;\n}\n.month-picker--dark .month-picker__year input {\r\n  background-color: #5F5F5F;\n}\n.month-picker--dark .month-picker__year button {\r\n  background-color: #505050;\r\n  color: #C9C9C9;\r\n  border-color: #1E1E1E;\n}\n.month-picker--dark .month-picker__year button:hover {\r\n  background-color: rgba(0, 0, 0, 0.3);\n}\n.month-picker--dark .month-picker__year button:active {\r\n  background-color: rgba(0, 0, 0, 0.6);\n}\n.month-picker--dark .month-picker__month {\r\n  background-color: #2F2F30;\r\n  border-color: rgba(245, 245, 245, .15);\r\n  color: #C9C9C9;\n}\n.month-picker--dark .month-picker__month.selected,\r\n.month-picker--dark .month-picker__month.selected-range-first,\r\n.month-picker--dark .month-picker__month.selected-range-second {\r\n  background-color: #505050;\r\n  box-shadow: inset 0 0 3px #505050, 0px 2px 5px #505050;\r\n  color: #FFFFFF;\r\n  border-color: #1d1b1b;\n}\n.month-picker--dark .month-picker__month.selected-range {\r\n  background-color: #636363;\r\n  color: #FFFFFF;\r\n  border-color: transparent;\n}\n.month-picker--dark .month-picker__month:hover {\r\n  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);\r\n  z-index: 10;\n}\n.month-picker--dark .month-picker__month.inactive {\r\n  background-color: #3f3f3f;\r\n  color: #8a8a8a;\r\n  cursor: not-allowed;\r\n  box-shadow: none;\r\n  text-shadow: none;\n}\n@media only screen and (max-width: 768px) {\n.month-picker__container {\r\n    width: 100%;\n}\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.month-picker-input-container[data-v-201d773d] {\n  position: relative;\n  width: 180px;\n  min-width: 140px;\n}\n.month-picker-input[data-v-201d773d] {\n  padding: 1em 1.5em;\n  font-size: .85em;\n  border-radius: 5px;\n  outline: none;\n  border: 1px solid rgba(0,0,0,.15);\n  transition: all 350ms cubic-bezier(0.165, 0.84, 0.44, 1);\n}\n.month-picker-input[data-v-201d773d]:focus {\n  border-color: rgba(0,0,0,.25);\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.month-picker__container[data-v-201d773d] {\n  position: absolute;\n  top: 3.5em;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join("");
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === "string") {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, ""]];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
 
 /***/ }),
 
@@ -24949,6 +25097,822 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./MonthPicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_style_index_0_id_201d773d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_style_index_0_id_201d773d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_style_index_0_id_201d773d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPicker.vue":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPicker.vue ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MonthPicker.vue?vue&type=template&id=f4204086& */ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086&");
+/* harmony import */ var _MonthPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MonthPicker.vue?vue&type=script&lang=js& */ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MonthPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MonthPicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _MonthPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "node_modules/vue-month-picker/src/MonthPicker.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _languages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./languages */ "./node_modules/vue-month-picker/src/languages.js");
+/* harmony import */ var _month_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./month-picker */ "./node_modules/vue-month-picker/src/month-picker.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'MonthPicker',
+  mixins: [_month_picker__WEBPACK_IMPORTED_MODULE_1__.default],
+  emits: [
+    'change',
+    'clear',
+    'input',
+    'change-year'
+  ],
+  data: () => ({
+    currentMonthIndex: null,
+    firstRangeMonthIndex: null,
+    secondRangeMonthIndex: null,
+    year: new Date().getFullYear()
+  }),
+  computed: {
+    currentMonth: function() {
+      if (this.currentMonthIndex !== null) {
+        return this.monthsByLang[this.currentMonthIndex]
+      }
+
+      return null
+    },
+    firstRangemonth: function () {
+      if (this.firstRangeMonthIndex !== null) {
+        return this.monthsByLang[this.firstRangeMonthIndex]
+      }
+
+      return null
+    },
+    secondRangemonth: function () {
+      if (this.secondRangeMonthIndex !== null) {
+        return this.monthsByLang[this.secondRangeMonthIndex]
+      }
+
+      return null
+    },
+    date: function() {
+      const month = this.monthsByLang.indexOf(this.currentMonth) + 1
+      let dateFrom = new Date(`${this.year}/${month}/01`)
+      let dateTo = new Date(this.year, month, 1)
+
+      const dateResult = {
+        from: dateFrom,
+        to: dateTo,
+        month: this.monthsByLang[month - 1],
+        monthIndex: month,
+        year: this.year,
+        rangeFrom: null,
+        rangeTo: null,
+        rangeFromMonth: null,
+        rangeToMonth: null
+      }
+
+      if (this.range) {
+        const monthRangeFrom = this.monthsByLang.indexOf(this.firstRangeMonthIndex) + 1
+        const monthRangeTo = this.monthsByLang.indexOf(this.secondRangeMonthIndex) + 1
+
+        dateFrom = new Date(`${this.year}/${monthRangeFrom}/01`)
+        dateTo = new Date(`${this.year}/${monthRangeTo}/01`)
+        
+
+        dateResult.rangeFrom = this.firstRangeMonthIndex
+        dateResult.rangeTo = this.secondRangeMonthIndex
+        dateResult.rangeFromMonth = this.monthsByLang[this.firstRangeMonthIndex]
+        dateResult.rangeToMonth = this.monthsByLang[this.secondRangeMonthIndex]
+      }
+      
+      return dateResult
+    }
+  },
+  watch: {
+    defaultMonth (newVal) {
+      this.currentMonthIndex = newVal
+    },
+    defaultYear (newVal) {
+      this.year = newVal
+    }
+  },
+  mounted() {
+    if (this.defaultYear) {
+      this.year = this.defaultYear
+    }
+
+    if (this.range) {
+      this.setDefaultMonthRange()
+      return
+    }
+
+    if (this.defaultMonth) {
+      this.selectMonth(this.defaultMonth - 1)
+    } else if (!this.noDefault) {
+      this.selectMonth(0)
+    }
+  },
+  methods: {
+    onChange() {
+      if (!Number.parseInt(this.year)) {
+        this.year = this.defaultYear || new Date().getFullYear()
+      }
+
+      this.$emit('change', this.date)
+    },
+    selectMonth(index, input = false) {
+      if (this.isInactive(index)) {
+        return
+      }
+
+      if (this.range) {
+        return this.selectMonthRange(index, input)
+      }
+
+      const isAlreadySelected = this.currentMonthIndex === index
+      if (this.clearable && isAlreadySelected) {
+        this.currentMonthIndex = null
+        this.$emit('clear')
+        return
+      }
+
+      if (this.isAlreadySelected) {
+        return
+      }
+
+      this.currentMonthIndex = index
+      this.onChange()
+
+      if (input) {
+        this.$emit('input', this.date)
+      }
+    },
+    selectMonthRange(index, input) {
+      if (this.firstRangeMonthIndex === null) {
+        this.firstRangeMonthIndex = index
+        return
+      }
+
+      if (this.firstRangeMonthIndex !== null && this.secondRangeMonthIndex !== null) {
+        this.firstRangeMonthIndex = index
+        this.secondRangeMonthIndex = null
+        return
+      }
+
+      if (index >= this.firstRangeMonthIndex) {
+        this.secondRangeMonthIndex = index
+        this.onChange()
+        
+        if (input) {
+          this.$emit('input', this.date)
+        }
+        return
+      }
+
+      this.firstRangeMonthIndex = index
+    },
+    setDefaultMonthRange () {
+      if (this.defaultMonthRange === null || this.defaultMonthRange.length !== 2) {
+        return
+      }
+
+      const [firstRange, secondRange] = this.defaultMonthRange
+      if (secondRange <= firstRange) {
+        return
+      }
+
+      this.firstRangeMonthIndex = firstRange
+      this.secondRangeMonthIndex = secondRange
+    },
+    changeYear(value) {
+      this.year += value
+      if (this.isInactive(0)) {
+        return
+      }
+
+      this.onChange()
+      this.$emit('change-year', this.year)
+    },
+    isInactive(month) {
+      let monthValue = month
+      if (this.minDate === null && this.maxDate === null) {
+        return false
+      }
+
+      if (Number.isInteger(monthValue)) {
+        monthValue = this.monthsByLang[monthValue]
+      }
+
+      const monthKey = this.monthsByLang.indexOf(monthValue) + 1
+      const date = new Date(`${this.year}/${monthKey}/01`)
+      const isValidDate = (date) => date !== null && (date instanceof Date)
+
+      if (isValidDate(this.minDate) && date < this.minDate) {
+        return true
+      }
+
+      if (isValidDate(this.maxDate) && date > this.maxDate) {
+        return true
+      }
+
+      return false
+    }
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPickerInput.vue":
+/*!****************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPickerInput.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true& */ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true&");
+/* harmony import */ var _MonthPickerInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MonthPickerInput.vue?vue&type=script&lang=js& */ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MonthPickerInput_vue_vue_type_style_index_0_id_201d773d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& */ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&");
+/* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _MonthPickerInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "201d773d",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "node_modules/vue-month-picker/src/MonthPickerInput.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MonthPicker.vue */ "./node_modules/vue-month-picker/src/MonthPicker.vue");
+/* harmony import */ var _month_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./month-picker */ "./node_modules/vue-month-picker/src/month-picker.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'MonthPickerInput',
+  directives: {
+    clickOutside: {
+      bind: function (el, binding, vnode) {
+        el.event = function (event) {
+          if (!(el === event.target || el.contains(event.target))) {
+            vnode.context[binding.expression](event)
+          }
+        }
+        document.body.addEventListener('click', el.event)
+      },
+      unbind: function (el) {
+        document.body.removeEventListener('click', el.event)
+      }
+    }
+  },
+  components: {
+		MonthPicker: _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__.default
+	},
+  components: {
+    MonthPicker: _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  mixins: [_month_picker__WEBPACK_IMPORTED_MODULE_1__.default],
+  emits: [
+    'change',
+    'input'
+  ],
+  data() {
+    return {
+      monthPickerVisible: false,
+      selectedDate: null
+    }
+  },
+  mounted() {
+    if (this.inputPreFilled && this.defaultMonth !== null && this.defaultYear !== null && !this.range) {
+      this.selectedDate = `${this.monthsByLang[this.defaultMonth - 1]}, ${this.defaultYear}`
+    }
+  },
+  methods: {
+    populateInput(date) {
+      if (this.range) {
+        this.selectedDate = `${date.rangeFromMonth} - ${date.rangeToMonth}, ${date.year}`
+      } else {
+        this.selectedDate = `${date.month}, ${date.year}`
+      }
+
+      this.monthPickerVisible = false
+      this.$emit("input", date)
+    },
+    showMonthPicker() {
+      this.monthPickerVisible = !this.monthPickerVisible
+    },
+    hide() {
+      this.monthPickerVisible = false
+    }
+  }
+});
+
+
+/***/ }),
+
 /***/ "./resources/js/Components/CurrentClockings.vue":
 /*!******************************************************!*\
   !*** ./resources/js/Components/CurrentClockings.vue ***!
@@ -27682,6 +28646,98 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_loader_dist_cjs_js_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader/dist/cjs.js!../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./MonthPicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_loader_dist_cjs_js_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_style_index_0_id_201d773d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader/dist/cjs.js!../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=style&index=0&id=201d773d&scoped=true&lang=css&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/index.js??vue-loader-options!./MonthPicker.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086&":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPicker_vue_vue_type_template_id_f4204086___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./MonthPicker.vue?vue&type=template&id=f4204086& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/index.js??vue-loader-options!./MonthPickerInput.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_MonthPickerInput_vue_vue_type_template_id_201d773d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/Components/CurrentClockings.vue?vue&type=template&id=564eebb1&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/Components/CurrentClockings.vue?vue&type=template&id=564eebb1& ***!
@@ -28545,6 +29601,237 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsOfService_vue_vue_type_template_id_63d45180___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TermsOfService_vue_vue_type_template_id_63d45180___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TermsOfService.vue?vue&type=template&id=63d45180& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/TermsOfService.vue?vue&type=template&id=63d45180&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPicker.vue?vue&type=template&id=f4204086& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _obj
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "month-picker__container",
+      class:
+        ((_obj = {}),
+        (_obj["month-picker--" + _vm.variant] = true),
+        (_obj["year-picker"] = _vm.yearOnly),
+        _obj)
+    },
+    [
+      _vm.showYear
+        ? _c("div", { staticClass: "month-picker__year" }, [
+            _c(
+              "button",
+              {
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.changeYear(-1)
+                  }
+                }
+              },
+              [_vm._v("\n      ‹\n    ")]
+            ),
+            _vm._v(" "),
+            !_vm.editableYear
+              ? _c("p", [_vm._v("\n      " + _vm._s(_vm.year) + "\n    ")])
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.number",
+                      value: _vm.year,
+                      expression: "year",
+                      modifiers: { number: true }
+                    }
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.year },
+                  on: {
+                    change: function($event) {
+                      return _vm.onChange()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.year = _vm._n($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$forceUpdate()
+                    }
+                  }
+                }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.changeYear(+1)
+                  }
+                }
+              },
+              [_vm._v("\n      ›\n    ")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.yearOnly
+        ? _c(
+            "div",
+            { staticClass: "month-picker" },
+            _vm._l(_vm.monthsByLang, function(month, monthIndex) {
+              return _c(
+                "div",
+                {
+                  key: month,
+                  staticClass: "month-picker__month",
+                  class: {
+                    inactive: _vm.isInactive(month),
+                    clearable: _vm.clearable,
+                    selected:
+                      !_vm.range && _vm.currentMonthIndex === monthIndex,
+                    "selected-range":
+                      _vm.range &&
+                      monthIndex > _vm.firstRangeMonthIndex &&
+                      monthIndex < _vm.secondRangeMonthIndex,
+                    "selected-range-first":
+                      _vm.range && _vm.firstRangeMonthIndex === monthIndex,
+                    "selected-range-second":
+                      _vm.range && _vm.secondRangeMonthIndex === monthIndex
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.selectMonth(monthIndex, true)
+                    }
+                  }
+                },
+                [_vm._v("\n      " + _vm._s(month) + "\n    ")]
+              )
+            }),
+            0
+          )
+        : _vm._e()
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-month-picker/src/MonthPickerInput.vue?vue&type=template&id=201d773d&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "click-outside",
+          rawName: "v-click-outside",
+          value: _vm.hide,
+          expression: "hide"
+        }
+      ],
+      staticClass: "month-picker-input-container"
+    },
+    [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selectedDate,
+            expression: "selectedDate"
+          }
+        ],
+        staticClass: "month-picker-input",
+        attrs: { type: "text", readonly: "" },
+        domProps: { value: _vm.selectedDate },
+        on: {
+          click: function($event) {
+            return _vm.showMonthPicker()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.selectedDate = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("month-picker", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.monthPickerVisible,
+            expression: "monthPickerVisible"
+          }
+        ],
+        attrs: {
+          "default-year": _vm.defaultYear,
+          "default-month": _vm.defaultMonth,
+          lang: _vm.lang,
+          months: _vm.months,
+          "no-default": _vm.noDefault,
+          "show-year": _vm.showYear,
+          clearable: _vm.clearable,
+          variant: _vm.variant,
+          "editable-year": _vm.editableYear,
+          "max-date": _vm.maxDate,
+          "min-date": _vm.minDate,
+          "year-only": _vm.yearOnly,
+          range: _vm.range
+        },
+        on: {
+          input: _vm.populateInput,
+          change: function($event) {
+            return _vm.$emit("change", $event)
+          }
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -30771,7 +32058,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("app-layout", [_c("div", [_vm._v("HomePage")])])
+  return _c(
+    "app-layout",
+    [
+      _c("month-picker-input", {
+        attrs: {
+          lang: "fr",
+          "default-month": _vm.defaultCalandar.defaultMonth,
+          "default-year": _vm.defaultCalandar.defaultYear,
+          "input-pre-filled": _vm.defaultCalandar.inputPrefilled
+        },
+        on: { input: _vm.showDate }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34633,6 +35934,229 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "MonthPicker": () => (/* reexport safe */ _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__.default),
+/* harmony export */   "MonthPickerInput": () => (/* reexport safe */ _MonthPickerInput_vue__WEBPACK_IMPORTED_MODULE_1__.default)
+/* harmony export */ });
+/* harmony import */ var _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MonthPicker.vue */ "./node_modules/vue-month-picker/src/MonthPicker.vue");
+/* harmony import */ var _MonthPickerInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MonthPickerInput.vue */ "./node_modules/vue-month-picker/src/MonthPickerInput.vue");
+
+
+
+function plugin (Vue) {
+  Vue.component('month-picker', _MonthPicker_vue__WEBPACK_IMPORTED_MODULE_0__.default)
+  Vue.component('month-picker-input', _MonthPickerInput_vue__WEBPACK_IMPORTED_MODULE_1__.default)
+}
+
+// Install by default if using the script tag
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(plugin)
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (plugin);
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/languages.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/languages.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  af: ['Januarie', 'Februarie', 'Maart', 'April', 'Mei', 'Junie', 'Julie', 'Augustus', 'September', 'Oktober', 'November', 'Desember'],
+  ar: ['كانون الثاني', 'شهر فبراير', 'مارس', 'أبريل', 'قد', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'شهر اكتوبر', 'شهر نوفمبر', 'ديسمبر'],
+  cs: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
+  da: ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December'],
+  de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+  el: ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  et: ['Jaanuar', 'Veebruar', 'Märts', 'Aprill', 'Mai', 'Juuni', 'Juuli', 'August', 'September', 'Oktoober', 'November', 'Detsember'],
+  fi: ['Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Saattaa', 'Kesäkuuta', 'Heinäkuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu'],
+  fr: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+  hi: ['जनवरी ', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसम्बर'],
+  hr: ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj', 'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'],
+  hu: ['Január', 'Február', 'Március', 'Április', 'Lehet', 'Június', 'Július', 'Augusztus', 'Szeptember', 'Október', 'November', 'December'],
+  id: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+  is: ["Janúar", "Febrúar", "Mars", "Apríl", "Maí", "Júní", "Júlí", "Ágúst", 'September', 'Október', "Nóvember", "Desember"],
+  it: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+  ja: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  km: ['មករា', 'កុម្ភៈ', 'ខែមីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'ខែវិច្ឆិកា', 'ខែធ្នូ'],
+  ko: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+  ku: ['Rêbendan', 'Reşemî', 'Adar', 'Avrêl', 'Gulan', 'Pûşper', 'Tîrmeh', 'Tebax', 'Îlon', 'Cotmeh', 'Mijdar', 'Berfanbar'],
+  lt: ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjūtis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'],
+  lv: ["Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", 'Jūnijs', "Jūlijs", 'Augusts', "Septembris", "Oktobris", "Novembris", 'Decembris'],
+  ms: ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'],
+  ne: ['जनवरी', 'फेब्रुअरी', 'मार्च', 'अप्रिल', 'सक्छ', 'जुन', 'जुलाई', 'अगस्ट', 'सेप्टेम्बर', 'अक्टोबर', 'नोभेम्बर', 'डिसेम्बर'],
+  nl: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+  no: ['Januar', 'Februar', 'Mars', 'April', 'May', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
+  pa: ['ਜਨਵਰੀ', 'ਫਰਵਰੀ', 'ਮਾਰਚ', 'ਅਪ੍ਰੈਲ', 'ਮਈ', 'ਜੂਨ', 'ਜੁਲਾਈ', 'ਅਗਸਤ', 'ਸਤੰਬਰ', 'ਅਕਤੂਬਰ', 'ਨਵੰਬਰ', 'ਦਸੰਬਰ'],
+  pl: ['Styczeń', 'Luty', 'Marsz', 'Kwiecień', 'Może', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+  pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  ro: ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
+  ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+  sv: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+  sk: ['Január', 'Február', 'Marec', 'Apríl', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December'],
+  sl: ['Januar', "Februar", "Marec", "April", "Maj", 'Junij', "Julij", "Avgust", "September", "Oktober", "November", "December"],
+  sr: ['Januar', "Februar", "Mart", "April", "Maj", 'Jun', "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"],
+  so: ['Janaayo', 'Febraayo', 'Maarso', 'Abriil', 'Laga yaabaa', 'Juun', 'July', 'Agoosto', 'Sebtembar', 'Oktoobar', 'November', 'December'],
+  sq: ['Janar', 'Shkurt', 'Marsh', 'Prill', 'Mund', 'Qershor', 'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'],
+  th: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'อาจ', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+  tr: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs ayı', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+  uk: ["Січень", "Лютий", "Березень", "Квітень", 'Може', "Червень", "Липень", "Серпень", 'Вересень', "Жовтень", 'Листопад', 'Грудень'],
+  ur: ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'],
+  vi: ['Tháng một', 'Tháng hai', 'Tháng ba', 'Tháng tư', 'Tháng năm', 'Tháng sáu', 'Tháng bảy', 'Tháng tám', 'Tháng chín', 'Tháng mười', 'Tháng mười một', 'Tháng mười hai'],
+  yi: ['יאנואר', 'פעברואַר', 'מאַרץ', 'אפריל', 'מייַ', 'יוני', 'יולי', 'אויגוסט', 'סעפטעמבער', 'אקטאבער', 'נאוועמבער', 'דעצעמבער'],
+  zh: ['一月', '二月', '游行', '四月', '可以', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+  zu: ['Januwari', 'Febhuwari', 'Mashi', 'April', 'Kwangathi', 'Juni', 'Julayi', 'Agasti', 'September', 'Okthoba', 'Novemba', 'December']
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-month-picker/src/month-picker.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-month-picker/src/month-picker.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _languages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./languages */ "./node_modules/vue-month-picker/src/languages.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    lang: {
+      type: String,
+      default: 'en',
+      validator: function (value) {
+        return Object.keys(_languages__WEBPACK_IMPORTED_MODULE_0__.default).some(l => Object.is(l, value))
+      },
+      required: false
+    },
+    months: {
+      type: Array,
+      default: null,
+      validator: function (value) {
+        return value.length === 12
+      },
+      required: false
+    },
+    defaultMonth: {
+      type: Number,
+      default: null,
+      required: false
+    },
+    defaultYear: {
+      type: Number,
+      default: null,
+      required: false
+    },
+    showYear: {
+      type: Boolean,
+      default: true,
+      required: false
+    },
+    editableYear: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    yearOnly: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    noDefault: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    clearable: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    minDate: {
+      type: Date,
+      default: null,
+      required: false
+    },
+    maxDate: {
+      type: Date,
+      default: null
+    },
+    inputPreFilled: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    range: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    defaultMonthRange: {
+      type: Array,
+      default: null,
+      required: false,
+      validator: function (value) {
+        if (value === null || value.length !== 2) {
+          return false
+        }
+
+        const [firstRange, secondRange] = value
+        if (secondRange <= firstRange) {
+          return false
+        }
+
+        return true
+      }
+    },
+    variant: {
+      type: String,
+      default: 'default',
+      required: false,
+      validator: function (value) {
+        return ['default', 'dark'].includes(value)
+      }
+    }
+  },
+  computed: {
+    monthsByLang: function() {
+      if (this.months !== null &&
+        this.months.length === 12) {
+        return this.months
+      }
+      return _languages__WEBPACK_IMPORTED_MODULE_0__.default[this.lang]
+    }
+  }
+});
 
 /***/ }),
 

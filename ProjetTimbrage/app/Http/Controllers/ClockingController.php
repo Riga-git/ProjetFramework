@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Throwable;
 use App\Models\Clocking;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,7 +17,10 @@ class ClockingController extends Controller
      */
     public function index()
     {
-        //
+        $clockings = Clocking::all();
+        foreach ($clockings as $clocking) {
+          echo $clocking->clocking;
+        }
     }
 
     /**
@@ -97,5 +101,11 @@ class ClockingController extends Controller
     public function destroy(Clocking $clocking)
     {
         //
+    }
+
+    public static function getClockingsForUserByPeriode(int $id, Carbon $start, Carbon $stop){
+      return Clocking::where([['clocking', '>=', $start],
+                              ['clocking', '<=', $stop],
+                              ['user_id', $id]])->orderBy('clocking')->get();
     }
 }
