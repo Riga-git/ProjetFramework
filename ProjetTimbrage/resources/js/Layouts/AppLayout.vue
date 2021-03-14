@@ -15,16 +15,16 @@
         <div id="navbarJLT" v-bind:class="{'is-active': sideNavActive}" class="navbar-menu">
             <div class="navbar-start">
                 <a href="/clockings" class="navbar-item ">
-                    Clockings
+                    Pointages
                 </a>
                 <a href="/projects" class="navbar-item">
-                    Projects
+                    Projets
                 </a>
                 <a href="/departments" class="navbar-item" v-bind:class="{'is-active': route().current('departments')}">
-                    Departments
+                    Departements 
                 </a>
                 <a href="/assignments" class="navbar-item">
-                    Assignments
+                    Assignations
             </a>
             </div>
 
@@ -44,20 +44,10 @@
 </template>
 
 <script>
-    //import JetApplicationMark from '@/Jetstream/ApplicationMark'
-    //import JetBanner from '@/Jetstream/Banner'
-    //import JetDropdown from '@/Jetstream/Dropdown'
-    //import JetDropdownLink from '@/Jetstream/DropdownLink'
-    //import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
     export default {
         components: {
-            //JetApplicationMark,
-            //JetBanner,
-            //JetDropdown,
-            //JetDropdownLink,
-            //JetNavLink,
             JetResponsiveNavLink,
         },
 

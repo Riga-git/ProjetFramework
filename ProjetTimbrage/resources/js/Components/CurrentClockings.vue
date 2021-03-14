@@ -9,10 +9,10 @@
       <div class="column is-full">
         <div class="columns is-centered">
           <div class="column is-justify-content-center">
-           <p style="text-align: center" class="has-text-weight-bold is-size-5">in</p>
+           <p style="text-align: center" class="has-text-weight-bold is-size-5">entrée</p>
           </div>
             <div class="column is-justify-content-center">
-            <p style="text-align: center" class="has-text-weight-bold is-size-5">out</p>
+            <p style="text-align: center" class="has-text-weight-bold is-size-5">sortie</p>
           </div>
         </div>
       </div>
