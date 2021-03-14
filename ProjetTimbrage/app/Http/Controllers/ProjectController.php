@@ -37,7 +37,8 @@ class ProjectController extends Controller
 
     /* Show all */
     $projects = ProjectListResource::collection(Project::all());
-    return Inertia::render('Project/ProjectsList', [ 'projects' => $projects]);
+    return Inertia::render('Project/ProjectsList', [ 'projects' => $projects,
+                                                    'hasAuth' => $this->authForProjects()]);
   }
 
   /**
@@ -87,7 +88,7 @@ class ProjectController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('view', [Project::class, $this->userGrade()]);
+      $this->authorize('view', [$project, $this->userGrade()]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);
@@ -95,7 +96,8 @@ class ProjectController extends Controller
 
     /* Show */
     $projectsDetails = ProjectDetailResource::collection(Project::where('id', $project->id)->get());
-    return Inertia::render('Project/ProjectDetail', ['project' => $projectsDetails]);
+    return Inertia::render('Project/ProjectDetail', ['project' => $projectsDetails,
+                                                    'hasAuth' => $this->authForProjects()]);
   }
 
   /**
@@ -109,7 +111,7 @@ class ProjectController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('update', [Project::class, $this->userGrade()]);
+      $this->authorize('update', [$project, $this->userGrade()]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);
@@ -147,7 +149,7 @@ class ProjectController extends Controller
   {
     /* Check the user rights according to related policies, if not return a brutal 403 error */
     try {
-      $this->authorize('delete', [Project::class, $this->userGrade()]);
+      $this->authorize('delete', [$project, $this->userGrade()]);
     }
     catch (Throwable $e){
       return response($this->notAllowed, 403);

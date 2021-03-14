@@ -22,13 +22,13 @@
               </div>
               <a v-for="assignment in getFilteredAssignments" v-bind:key="assignment.object" class="panel-block" >
               <p>
-                <strong> {{ assignment.user.firstName}} {{ assignment.user.lastName}} </strong> 
-                le {{assignment.date}} : {{assignment.duration}} 
+                <strong> {{ assignment.user.firstName}} {{ assignment.user.lastName}} </strong>
+                le {{assignment.date}} : {{assignment.duration}}
               </p>
               </a>
             </nav>
           </div>
-          <div class="card-footer">
+          <div v-if="canEdit" class="card-footer">
             <div class="card-footer-item">
               <div @click="updateEditionMode(true)"  class="box">
                   <figure class="image is-32x32">
@@ -46,10 +46,10 @@
           </div>
         </div>
       </div>
-      <project-modal  :title="'Edit project'" 
-                      :name="projectDetail[0].name" 
+      <project-modal  :title="'Edit project'"
+                      :name="projectDetail[0].name"
                       :number="projectDetail[0].number"
-                      :show="this.editionMode" 
+                      :show="this.editionMode"
                       @closeRequest="updateEditionMode(false)"
                       @newProjValues="updateProjectRequest($event)">
 
@@ -64,7 +64,9 @@
   import AppLayout from '@/Layouts/AppLayout'
 
   export default {
-    props: ['project'],
+    props: ['project',
+            'hasAuth',
+    ],
 
     components:{
       JetNavLink,
@@ -77,13 +79,13 @@
         projectDetail : '',
         editForm : '',
         editionMode : false,
-        searchedValue : ''
+        searchedValue : '',
+        canEdit : this.hasAuth,
       }
     },
 
     created(){
       this.projectDetail =  this.project;
-      console.log(this.projectDetail[0].assignments)
     },
 
     methods: {
@@ -94,12 +96,12 @@
 
       updateProjectRequest(newData) {
         axios.patch('/projects/'+ this.projectDetail[0].id, {
-        name : newData.name, number : newData.number 
+        name : newData.name, number : newData.number
         })
         .then(response => {
             if (response.status === 200) {
               this.projectDetail[0] = response.data.newProj[0];
-            } 
+            }
             this.updateEditionMode(false);
         })
         .catch(error => {
@@ -113,7 +115,7 @@
         .then(response => {
             if (response.status === 200) {
               window.location.href = '/projects';
-            } 
+            }
         })
         .catch(error => {
           this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});

@@ -5493,7 +5493,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['project'],
+  props: ['project', 'hasAuth'],
   components: {
     JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__.default,
     ProjectModal: _ProjectModal_vue__WEBPACK_IMPORTED_MODULE_1__.default,
@@ -5504,12 +5504,12 @@ __webpack_require__.r(__webpack_exports__);
       projectDetail: '',
       editForm: '',
       editionMode: false,
-      searchedValue: ''
+      searchedValue: '',
+      canEdit: this.hasAuth
     };
   },
   created: function created() {
     this.projectDetail = this.project;
-    console.log(this.projectDetail[0].assignments);
   },
   methods: {
     updateEditionMode: function updateEditionMode(newValue) {
@@ -5709,7 +5709,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['projects'],
+  props: ['projects', 'hasAuth'],
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__.default,
     JetNavLink: _Jetstream_NavLink__WEBPACK_IMPORTED_MODULE_0__.default,
@@ -5718,7 +5718,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       projectsList: this.projects,
-      showModal: false
+      showModal: false,
+      canEdit: this.hasAuth
     };
   },
   methods: {
@@ -34118,11 +34119,11 @@ var render = function() {
                             )
                           ]),
                           _vm._v(
-                            " \n              le " +
+                            "\n              le " +
                               _vm._s(assignment.date) +
                               " : " +
                               _vm._s(assignment.duration) +
-                              " \n            "
+                              "\n            "
                           )
                         ])
                       ]
@@ -34133,49 +34134,51 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("div", { staticClass: "card-footer-item" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "box",
-                    on: {
-                      click: function($event) {
-                        return _vm.updateEditionMode(true)
-                      }
-                    }
-                  },
-                  [
-                    _c("figure", { staticClass: "image is-32x32" }, [
-                      _c("img", {
-                        attrs: { src: "/Icons/Edit.png", alt: "edit" }
-                      })
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer-item" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "box",
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteProjectRequest()
-                      }
-                    }
-                  },
-                  [
-                    _c("figure", { staticClass: "image is-32x32" }, [
-                      _c("img", {
-                        attrs: { src: "/Icons/Delete.png", alt: "delete" }
-                      })
-                    ])
-                  ]
-                )
-              ])
-            ])
+            _vm.canEdit
+              ? _c("div", { staticClass: "card-footer" }, [
+                  _c("div", { staticClass: "card-footer-item" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "box",
+                        on: {
+                          click: function($event) {
+                            return _vm.updateEditionMode(true)
+                          }
+                        }
+                      },
+                      [
+                        _c("figure", { staticClass: "image is-32x32" }, [
+                          _c("img", {
+                            attrs: { src: "/Icons/Edit.png", alt: "edit" }
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer-item" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "box",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteProjectRequest()
+                          }
+                        }
+                      },
+                      [
+                        _c("figure", { staticClass: "image is-32x32" }, [
+                          _c("img", {
+                            attrs: { src: "/Icons/Delete.png", alt: "delete" }
+                          })
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -34397,51 +34400,55 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "column is-4" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c(
-                    "div",
-                    { staticClass: "card-header has-background-primary-dark" },
-                    [
+              _vm.canEdit
+                ? _c("div", { staticClass: "column is-4" }, [
+                    _c("div", { staticClass: "card" }, [
                       _c(
-                        "p",
+                        "div",
                         {
-                          staticClass:
-                            "has-text-white has-text-weight-bold is-size-3 pl-2"
-                        },
-                        [_vm._v("New Project")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card-content",
-                      staticStyle: { margin: "0 auto" }
-                    },
-                    [
-                      _c(
-                        "figure",
-                        {
-                          staticClass: "image is-64x64",
-                          staticStyle: { margin: "0 auto" },
-                          on: {
-                            click: function($event) {
-                              return _vm.updateShowModal(true)
-                            }
-                          }
+                          staticClass: "card-header has-background-primary-dark"
                         },
                         [
-                          _c("img", {
-                            attrs: { src: "/Icons/Add.png", alt: "edit" }
-                          })
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "has-text-white has-text-weight-bold is-size-3 pl-2"
+                            },
+                            [_vm._v("New Project")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "card-content",
+                          staticStyle: { margin: "0 auto" }
+                        },
+                        [
+                          _c(
+                            "figure",
+                            {
+                              staticClass: "image is-64x64",
+                              staticStyle: { margin: "0 auto" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.updateShowModal(true)
+                                }
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: { src: "/Icons/Add.png", alt: "edit" }
+                              })
+                            ]
+                          )
                         ]
                       )
-                    ]
-                  )
-                ])
-              ])
+                    ])
+                  ])
+                : _vm._e()
             ],
             2
           )

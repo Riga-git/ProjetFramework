@@ -16,7 +16,7 @@
                 </div>
               </inertia-link>
           </div>
-          <div class="column is-4">
+          <div v-if="canEdit" class="column is-4">
             <div class="card">
               <div class="card-header has-background-primary-dark">
                 <p class="has-text-white has-text-weight-bold is-size-3 pl-2">New Project</p>
@@ -30,10 +30,10 @@
           </div>
         </div>
       </div>
-      <project-modal  :title="'New project'" 
-                      :name="''" 
+      <project-modal  :title="'New project'"
+                      :name="''"
                       :number="''"
-                      :show="this.showModal" 
+                      :show="this.showModal"
                       @closeRequest="updateShowModal(false)"
                       @newProjValues="addNew($event)">
 
@@ -49,9 +49,11 @@
   import AppLayout from '@/Layouts/AppLayout'
 
   export default {
-    props: ['projects'],
+    props: ['projects',
+            'hasAuth',
+],
 
-    components:{ 
+    components:{
       AppLayout,
       JetNavLink,
       ProjectModal
@@ -60,7 +62,9 @@
     data() {
       return {
         projectsList : this.projects,
-        showModal : false
+        showModal : false,
+        canEdit : this.hasAuth,
+
       }
     },
 
@@ -71,12 +75,12 @@
 
       addNew(data){
         axios.post('/projects', {
-        name : data.name, number : data.number 
+        name : data.name, number : data.number
         })
         .then(response => {
               if (response.status === 200) {
                 window.location.href = '/projects';
-              } 
+              }
             this.updateShowModal(false);
         })
         .catch(error => {
