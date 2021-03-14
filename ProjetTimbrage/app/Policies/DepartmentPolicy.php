@@ -2,12 +2,10 @@
 
 namespace App\Policies;
 
-use App\Http\Resources\UserWithGrade;
 use App\Models\Department;
 use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Database\Eloquent\Collection;
 
 class DepartmentPolicy
 {

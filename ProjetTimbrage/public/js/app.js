@@ -32584,7 +32584,7 @@ var render = function() {
                       "figure",
                       {
                         staticClass: "image is-64x64",
-                        staticStyle: { margin: "auto" },
+                        staticStyle: { margin: "auto :hover:blaballba" },
                         attrs: { title: "Pointages" }
                       },
                       [
