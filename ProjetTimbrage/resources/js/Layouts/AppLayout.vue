@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar is-primary has-background-primary-dark" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-primary has-background-primary-dark mb-5" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
                     <img src="/Icons/logo.svg" width="112" height="28">

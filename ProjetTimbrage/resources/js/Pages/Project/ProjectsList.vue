@@ -1,54 +1,58 @@
 <template>
-  <div>
-    <div class="container mt-5">
-      <div class="columns is-multiline">
-        <div v-for="project in this.projectsList" v-bind:key="project.object" class="column is-4">
-            <inertia-link :href="'projects/' + project.id" :active=false>
-              <div class="card">
-                <div class="card-header has-background-primary-dark">
-                  <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ project.name }}</p>
+  <app-layout>
+    <div>
+      <div class="container">
+        <div class="columns is-multiline">
+          <div v-for="project in this.projectsList" v-bind:key="project.object" class="column is-4">
+              <inertia-link :href="'projects/' + project.id" :active=false>
+                <div class="card">
+                  <div class="card-header has-background-primary-dark">
+                    <p class="has-text-white has-text-weight-bold is-size-3 pl-2">{{ project.name }}</p>
+                  </div>
+                  <div class="card-content">
+                    <p class="tag is-primary-dark has-text-weight-bold is-medium mb-2">{{ project.number }}</p>
+                    <p><span class="icon has-text-primary-dark"><em class="fas fa-clock"></em></span> {{ project.totalHours}}</p>
+                  </div>
                 </div>
-                <div class="card-content">
-                  <p class="tag is-primary-dark has-text-weight-bold is-medium mb-2">{{ project.number }}</p>
-                  <p><span class="icon has-text-primary-dark"><em class="fas fa-clock"></em></span> {{ project.totalHours}}</p>
-                </div>
+              </inertia-link>
+          </div>
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-header has-background-primary-dark">
+                <p class="has-text-white has-text-weight-bold is-size-3 pl-2">New Project</p>
               </div>
-            </inertia-link>
-        </div>
-        <div class="column is-4">
-          <div class="card">
-            <div class="card-header has-background-primary-dark">
-              <p class="has-text-white has-text-weight-bold is-size-3 pl-2">New Project</p>
-            </div>
-            <div class="card-content" style="margin: 0 auto">
-              <figure @click="updateShowModal(true)" class="image is-64x64" style="margin: 0 auto">
-                <img src="/Icons/Add.png" alt="edit">
-              </figure>
+              <div class="card-content" style="margin: 0 auto">
+                <figure @click="updateShowModal(true)" class="image is-64x64" style="margin: 0 auto">
+                  <img src="/Icons/Add.png" alt="edit">
+                </figure>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <project-modal  :title="'New project'" 
-                    :name="''" 
-                    :number="''"
-                    :show="this.showModal" 
-                    @closeRequest="updateShowModal(false)"
-                    @newProjValues="addNew($event)">
+      <project-modal  :title="'New project'" 
+                      :name="''" 
+                      :number="''"
+                      :show="this.showModal" 
+                      @closeRequest="updateShowModal(false)"
+                      @newProjValues="addNew($event)">
 
-    </project-modal>
-  </div>
+      </project-modal>
+    </div>
+    </app-layout>
 </template>
 
 
 <script>
   import JetNavLink from '@/Jetstream/NavLink'
-  import ProjectModal from './ProjectModal.vue';
+  import ProjectModal from './ProjectModal.vue'
+  import AppLayout from '@/Layouts/AppLayout'
 
   export default {
     props: ['projects'],
 
-    components:{
+    components:{ 
+      AppLayout,
       JetNavLink,
       ProjectModal
     },

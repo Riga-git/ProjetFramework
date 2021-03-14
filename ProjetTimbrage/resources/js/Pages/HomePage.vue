@@ -6,7 +6,7 @@
                     <div class="box">
                         <div class="columns is-centered">
                             <div class="column is-half">
-                                <figure @click="clockIn" class="image is-64x64" style="margin:auto">
+                                <figure @click="clockIn" class="image is-64x64" style="margin:auto" title="Pointer">
                                     <div class="iconHomePage">
                                         <img class="block" src="/Icons/ClockIn.png" alt="Clock In">
                                     </div>
@@ -14,9 +14,9 @@
                             </div>
                             <div class="column is-half">
                                 <a href="/clockings">
-                                    <figure class="image is-64x64" style="margin:auto">
+                                    <figure class="image is-64x64" style="margin:auto" title="Pointages">
                                         <div class="iconHomePage">
-                                            <img class="block" src="/Icons/Clockings.png" alt="Clockings">
+                                            <img class="block" src="/Icons/Clockings.png" alt="Clockings" >
                                         </div>
                                     </figure>
                                 </a>
@@ -25,7 +25,7 @@
                         <div class="columns is-justify-content-space-around is-align-items-center">
                             <div class="column is-half">
                                 <a href="/projects">
-                                    <figure class="image is-64x64" style="margin:auto">
+                                    <figure class="image is-64x64" style="margin:auto" title="Projets">
                                         <div class="iconHomePage">
                                             <img src="/Icons/Projects.png" alt="Projects">
                                         </div>
@@ -36,7 +36,7 @@
                                 <a href="/assignments">
                                     <figure class="image is-64x64" style="margin:auto">
                                         <div class="iconHomePage">
-                                            <img src="/Icons/Assignments.png" alt="Assignments">
+                                            <img src="/Icons/Assignments.png" alt="Assignments" title="Assignations">
                                         </div>
                                     </figure>
                                 </a>
