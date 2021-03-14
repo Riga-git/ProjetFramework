@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Grade;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -30,7 +31,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project)
     {
-        return $user->grade()->can_manage_project === true;
+        return true;
     }
 
     /**
@@ -39,9 +40,9 @@ class ProjectPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Grade $params)
     {
-        return $user->grade()->can_manage_project === true;
+      return $user->grade_id === $params->id && $params->can_manage_projects === 1;
     }
 
     /**
@@ -51,9 +52,9 @@ class ProjectPolicy
      * @param  \App\Models\Project  $project
      * @return mixed
      */
-    public function update(User $user, Project $project)
+    public function update(User $user, Project $project, Grade $params)
     {
-        return $user->grade()->can_manage_project === true;
+      return $user->grade_id === $params->id && $params->can_manage_projects === 1;
     }
 
     /**
@@ -63,8 +64,8 @@ class ProjectPolicy
      * @param  \App\Models\Project  $project
      * @return mixed
      */
-    public function delete(User $user, Project $project)
+    public function delete(User $user, Project $project, Grade $params)
     {
-        return $user->grade()->can_manage_project === true;
+      return $user->grade_id === $params->id && $params->can_manage_projects === 1;
     }
 }

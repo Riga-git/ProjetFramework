@@ -8,7 +8,7 @@
                 <div class="box">
                     <div class="columns is-centered">
                         <div class="column is-half">
-                            <figure @click="clockIn" class="image is-64x64" style="margin:auto">
+                            <figure @click="clockIn" class="image is-64x64" style="margin:auto :hover:blaballba">
                                 <img class="block" src="/Icons/ClockIn.png" alt="Clock In">
                             </figure>
                         </div>
@@ -64,6 +64,6 @@
             }
         }
 
-    
+
     }
 </script>
