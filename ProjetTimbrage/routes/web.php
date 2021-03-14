@@ -29,7 +29,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::resource('departments', DepartmentController::class)->except(['edit', 'create']);
-    Route::resource('clockings', ClockingController::class)->except(['edit', 'create']);
+    Route::resource('clockings', ClockingController::class)->except(['edit', 'create', 'show']);
+    Route::get('/getClockings', [ClockingController::class, 'show']);
     Route::resource('projects', ProjectController::class)->except(['edit']);
     Route::resource('users', UserController::class);
 
