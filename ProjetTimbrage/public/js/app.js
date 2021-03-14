@@ -32629,7 +32629,7 @@ var render = function() {
                       "figure",
                       {
                         staticClass: "image is-64x64",
-                        staticStyle: { margin: "auto :hover:blaballba" },
+                        staticStyle: { margin: "auto" },
                         on: { click: _vm.clockIn }
                       },
                       [
