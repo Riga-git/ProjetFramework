@@ -17,11 +17,21 @@ trait AuthTrait{
   }
 
   /**
-   * Get the right to manage department for the authenticated user
+   * Get the right to manage departments for the authenticated user
    *
-   * @return int can_manage_department
+   * @return int can_manage_departments
    */
-  protected function authForDepartment(){
+  protected function authForDepartments(){
     return Grade::find(Auth::user()->grade_id)->can_manage_departments;
   }
+
+  /**
+   * Get the right to manage projects for the authenticated user
+   *
+   * @return int can_manage_projects
+   */
+  protected function authForProjects(){
+    return Grade::find(Auth::user()->grade_id)->can_manage_projects;
+  }
+
 }

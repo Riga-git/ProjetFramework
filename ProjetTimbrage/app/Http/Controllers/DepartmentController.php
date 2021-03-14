@@ -38,7 +38,7 @@ class DepartmentController extends Controller
     /* Show all */
     $departments = DepartmentOverviewResource::collection(Department::all());
     return Inertia::render('Department/DepartmentsList', ['departments' => $departments,
-                                                          'hasAuth' => $this->authForDepartment()]);
+                                                          'hasAuth' => $this->authForDepartments()]);
   }
 
   /**
@@ -105,7 +105,7 @@ class DepartmentController extends Controller
     /* Show */
     $departmentWithDetails = DepartmentDetailResource::collection(Department::where('id', $department->id)->get());
     return Inertia::render('Department/DepartmentDetail', ['departmentDetail' => $departmentWithDetails,
-                                                            'hasAuth' => $this->authForDepartment()]);
+                                                            'hasAuth' => $this->authForDepartments()]);
   }
 
   /**
