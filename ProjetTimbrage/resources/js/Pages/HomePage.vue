@@ -9,13 +9,17 @@
                     <div class="columns is-centered">
                         <div class="column is-half">
                             <figure @click="clockIn" class="image is-64x64" style="margin:auto">
-                                <img class="block" src="/Icons/ClockIn.png" alt="Clock In">
+                                <div class="iconHomePage">
+                                    <img class="block" src="/Icons/ClockIn.png" alt="Clock In">
+                                </div>
                             </figure>
                         </div>
                         <div class="column is-half">
                             <a href="/clockings">
                                 <figure class="image is-64x64" style="margin:auto">
-                                    <img class="block" src="/Icons/Clockings.png" alt="Clockings">
+                                    <div class="iconHomePage">
+                                        <img class="block" src="/Icons/Clockings.png" alt="Clockings">
+                                    </div>
                                 </figure>
                             </a>
                         </div>
@@ -24,14 +28,18 @@
                         <div class="column is-half">
                             <a href="/projects">
                                 <figure class="image is-64x64" style="margin:auto">
-                                    <img src="/Icons/Projects.png" alt="Projects">
+                                    <div class="iconHomePage">
+                                        <img src="/Icons/Projects.png" alt="Projects">
+                                    </div>
                                 </figure>
                             </a>
                         </div>
                         <div class="column is-half">
                             <a href="/assignments">
                                 <figure class="image is-64x64" style="margin:auto">
-                                    <img src="/Icons/Assignments.png" alt="Assignments">
+                                    <div class="iconHomePage">
+                                        <img src="/Icons/Assignments.png" alt="Assignments">
+                                    </div>
                                 </figure>
                             </a>
                         </div>
