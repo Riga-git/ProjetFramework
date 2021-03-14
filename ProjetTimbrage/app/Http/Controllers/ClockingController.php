@@ -38,7 +38,7 @@ class ClockingController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'timestamp' => 'required|string|min:1|max:255',
+            'timestamp' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -50,7 +50,7 @@ class ClockingController extends Controller
             $clocking->save();
 ;           return response(200);
         } catch (Throwable $e) {
-            return response("Erreur lors de la création d'un nouveau projet", 500);
+            return response("Erreur lors de la création d'un nouveau pointage", 500);
         }
     }
 

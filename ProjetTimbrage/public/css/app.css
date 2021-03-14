@@ -16357,4 +16357,11 @@ readers do not read off random characters that represent icons */
 @import 'tailwindcss/utilities';
 */
 /*@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"*/
+.iconHomePage{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.iconHomePage:hover{
+    border: 1px solid #555;
+}
 
