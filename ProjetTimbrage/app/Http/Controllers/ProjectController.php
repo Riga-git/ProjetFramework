@@ -155,6 +155,7 @@ class ProjectController extends Controller
       return response($this->notAllowed, 403);
     }
 
+    /* Delete */
     try{
       $project->delete();
       return response('OK', 200);
