@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Throwable;
 use App\Http\Controllers\UserController;
-use App\Models\Grade;
 use App\Traits\AuthTrait;
-use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
