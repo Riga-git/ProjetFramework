@@ -11,10 +11,11 @@ use Inertia\Inertia;
 use Throwable;
 use App\Http\Controllers\UserController;
 use App\Traits\AuthTrait;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class DepartmentController extends Controller
 {
-  use AuthTrait;
+  use AuthTrait, AuthorizesRequests;
 
   private $notAllowed = 'You don\'t have the rights to perform this action';
 

@@ -19,7 +19,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+      return true;
     }
 
     /**

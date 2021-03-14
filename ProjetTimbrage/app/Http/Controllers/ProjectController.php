@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ProjectListResource;
 use App\Http\Resources\ProjectDetailResource;
 use App\Traits\AuthTrait;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ProjectController extends Controller
 {
 
-  use AuthTrait;
+  use AuthTrait, AuthorizesRequests;
 
   private $notAllowed = 'You don\'t have the rights to perform this action';
 
@@ -31,7 +32,7 @@ class ProjectController extends Controller
       $this->authorize('viewAny', [Project::class, $this->userGrade()]);
     }
     catch (Throwable $e){
-      return response($this->notAllowed, 403);
+      return response($e, 403);
     }
 
     /* Show all */
