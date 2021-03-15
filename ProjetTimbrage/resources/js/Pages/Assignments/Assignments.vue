@@ -86,6 +86,8 @@ export default {
         defaultYear : this.actualYear,
         inputPrefilled : true,
       },
+
+      dayDetail: {},
     }
   },
 
@@ -93,14 +95,23 @@ export default {
     showDate (date) {
       this.date = date
     },
+
     toggleDropdownProjects(){
       this.dropDownProjectsActive = !this.dropDownProjectsActive;
     },
+
     selectProject(project){
       this.$emit('project-selected', project.id)
       this.selectedProjectName = project.name
       this.toggleDropdownProjects()
+    },
+
+    showDayDetail(day, month, year){
+      this.dayDetail = {
+
+      }
     }
+
   }
 }
 
