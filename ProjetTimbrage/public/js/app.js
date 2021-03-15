@@ -32229,7 +32229,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  workingTime.hours !== 0 || workingTime.minutes !== 0
+                  workingTime !== 0
                     ? _c("div", [
                         _vm._v(
                           "\n                          " +

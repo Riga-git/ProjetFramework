@@ -18,7 +18,7 @@
                             <div>
                                 {{index}}-{{actualMonthData}}-{{actualYearData}}
                             </div>
-                            <div v-if="(workingTime.hours!== 0 || workingTime.minutes!== 0)">
+                            <div v-if="(workingTime!== 0)">
                               {{workingTime.hours}} : {{workingTime.minutes}}
                             </div>
                         </a>
