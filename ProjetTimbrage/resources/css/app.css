@@ -13,3 +13,7 @@
 .iconHomePage:hover{
     border: 1px solid #555;
 }
+
+.monthPicker div{
+    background-color: white;
+}

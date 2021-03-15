@@ -16364,4 +16364,6 @@ readers do not read off random characters that represent icons */
 .iconHomePage:hover{
     border: 1px solid #555;
 }
-
+.monthPicker div{
+    background-color: white;
+}

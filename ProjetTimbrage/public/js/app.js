@@ -3301,6 +3301,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  //import JetNavLink from '@/Jetstream/NavLink'
 
@@ -32115,21 +32135,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "app-layout",
-    [
-      _c("month-picker-input", {
-        attrs: {
-          lang: "fr",
-          "default-month": _vm.defaultCalandar.defaultMonth,
-          "default-year": _vm.defaultCalandar.defaultYear,
-          "input-pre-filled": _vm.defaultCalandar.inputPrefilled
-        },
-        on: { input: _vm.showDate }
-      })
-    ],
-    1
-  )
+  return _c("app-layout", [
+    _c("div", { staticClass: "container mt-5" }, [
+      _c(
+        "div",
+        { staticClass: "columns is-centered" },
+        [
+          _c("month-picker-input", {
+            staticClass: "monthPicker",
+            attrs: {
+              lang: "fr",
+              "default-month": _vm.defaultCalandar.defaultMonth,
+              "default-year": _vm.defaultCalandar.defaultYear,
+              "input-pre-filled": _vm.defaultCalandar.inputPrefilled
+            },
+            on: { input: _vm.showDate }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-2 is-centered" }, [
+        _c("div", { staticClass: "column is-half" }, [
+          _c("div", { staticClass: "box" }, [
+            _c("div", { staticClass: "columns is-centered" }, [
+              _vm._v(
+                "\n                       content left\n                    "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-half" }, [
+          _c("div", { staticClass: "box" }, [
+            _vm._v("\n                    content right\n                ")
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
