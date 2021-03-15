@@ -14,16 +14,16 @@
 
         <div id="navbarJLT" v-bind:class="{'is-active': sideNavActive}" class="navbar-menu">
             <div class="navbar-start">
-                <a href="/clockings" class="navbar-item ">
+                <a href="/clockings" v-bind:class="{'is-active': currentRoute ==='/clockings'}" class="navbar-item">
                     Pointages
                 </a>
-                <a href="/projects" class="navbar-item">
+                <a href="/projects" v-bind:class="{'is-active': currentRoute ==='/projects'}" class="navbar-item">
                     Projets
                 </a>
-                <a href="/departments" class="navbar-item" v-bind:class="{'is-active': route().current('departments')}">
+                <a href="/departments" v-bind:class="{'is-active': currentRoute ==='/departments'}" class="navbar-item">
                     Departements 
                 </a>
-                <a href="/assignments" class="navbar-item">
+                <a href="/assignments" v-bind:class="{'is-active': currentRoute ==='/assignments'}" class="navbar-item">
                     Assignations
             </a>
             </div>
@@ -55,6 +55,7 @@
             return {
                 showingNavigationDropdown: false,
                 sideNavActive : false,
+                currentRoute : window.location.pathname
             }
         },
 
@@ -65,7 +66,7 @@
 
             toggleNavBar(){
                 this.sideNavActive = !this.sideNavActive;
-            }
+            },
         }
     }
 </script>
