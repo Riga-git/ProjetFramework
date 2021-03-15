@@ -11,6 +11,7 @@ use App\Models\Assignment;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Throwable;
 
 class AssignmentController extends Controller
@@ -25,33 +26,27 @@ class AssignmentController extends Controller
   public function index(Request $request)
   {
     try{
-      $now = Carbon::now();
       if ($request->has('month') && intval($request->input('month')) >= 1 && intval($request->input('month')) <= 12
           && $request->has('year') && intval($request->input('year')) >= 2021 && intval($request->input('year')) <= 3000){
 
             /* Force to the 1st of the selected month to avoid overflow (i.e : we are 31 of mach and try to show february => will return a date in march) */
+            $now = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1);
             $start = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1)->firstOfMonth();
             $stop = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1)->lastOfMonth();
 
             $workingTime = $this->getWorkingTimePerDay($start, $stop);
       }
       else {
+        $now = Carbon::now();
         $start = Carbon::now()->firstOfMonth();
         $stop = Carbon::now()->lastOfMonth()->hour(23)->minute(59)->second(59);
 
         $workingTime = $this->getWorkingTimePerDay($start, $stop);
       }
 
-
-      $assignments = AssignmentResource::collection(Assignment::where([['date', '>=', $start],
-                                                                      ['date', '<=', $stop],
-                                                                      ['user_id', Auth::user()->id]])->get());
-
       return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
                                                         'actualYear' => $now->year,
-                                                        'workingTimeForMonth' => $workingTime,
-                                                        'projectsList' => Project::all(),
-                                                        'assigments' => $assignments]);
+                                                        'workingTimeForMonth' => $workingTime,]);
     }
     catch (Throwable $e){
       return response('Error during assignment rendering : ' . $e, 500);
@@ -89,6 +84,35 @@ class AssignmentController extends Controller
   public function destroy(Assignment $assignment)
   {
       //
+  }
+
+  public function getAssigmentsForDate(Request $request){
+
+    $validator = Validator::make($request->all(), [
+      'year' => 'required|min:2021|max:3000',
+      'month' => 'required|min:1|max:12',
+      'day' => 'required|min:1|max:31',
+    ]);
+
+    if ($validator->fails()) {
+      return response('Validation fail : ' . $validator->failed(), 500);
+    }
+    else {
+      try{
+        $start = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 0, 0, 0);
+        $stop = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 23, 59, 59);
+
+        $assignments = AssignmentResource::collection(Assignment::where([['date', '>=', $start],
+                                                                        ['date', '<=', $stop],
+                                                                        ['user_id', Auth::user()->id]])->get());
+
+        return ['projectsList' => Project::all(),
+                'assigments' => $assignments];
+      }
+      catch (Throwable $e) {
+        return response('Error during assignment listing', 500);
+      }
+    }
   }
 
   private function getWorkingTimePerDay(Carbon $start, Carbon $stop){
