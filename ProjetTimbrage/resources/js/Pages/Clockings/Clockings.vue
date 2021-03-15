@@ -5,7 +5,7 @@
               <div class="column is-half">
                     <div class="box">
                         <div class="columns is-centered">
-                            <vc-calendar @dayclick="updateClockings($event)"></vc-calendar>
+                            <vc-calendar :attributes='attrs' @dayclick="updateClockings($event)"></vc-calendar>
                         </div>
                   </div>
                 </div>
@@ -32,7 +32,12 @@
         data() {
             return {
             updateCurrentClockings : false,
-            selectedDate : ''
+            selectedDate : '',
+            attrs: [{
+                key: 'today',
+                highlight: true,
+                dates: new Date(),
+            }],
         }
     },
 

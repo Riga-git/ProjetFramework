@@ -4059,7 +4059,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       updateCurrentClockings: false,
-      selectedDate: ''
+      selectedDate: '',
+      attrs: [{
+        key: 'today',
+        highlight: true,
+        dates: new Date()
+      }]
     };
   },
   methods: {
@@ -30180,7 +30185,9 @@ var render = function() {
                   "a",
                   {
                     staticClass: "navbar-item",
-                    class: { "is-active": _vm.currentRoute === "/clockings" },
+                    class: {
+                      "is-active": _vm.currentRoute.includes("/clockings")
+                    },
                     attrs: { href: "/clockings" }
                   },
                   [_vm._v("\n                Pointages\n            ")]
@@ -30190,7 +30197,9 @@ var render = function() {
                   "a",
                   {
                     staticClass: "navbar-item",
-                    class: { "is-active": _vm.currentRoute === "/projects" },
+                    class: {
+                      "is-active": _vm.currentRoute.includes("/projects")
+                    },
                     attrs: { href: "/projects" }
                   },
                   [_vm._v("\n                Projets\n            ")]
@@ -30200,7 +30209,9 @@ var render = function() {
                   "a",
                   {
                     staticClass: "navbar-item",
-                    class: { "is-active": _vm.currentRoute === "/departments" },
+                    class: {
+                      "is-active": _vm.currentRoute.includes("/departments")
+                    },
                     attrs: { href: "/departments" }
                   },
                   [_vm._v("\n                Departements \n            ")]
@@ -30210,7 +30221,9 @@ var render = function() {
                   "a",
                   {
                     staticClass: "navbar-item",
-                    class: { "is-active": _vm.currentRoute === "/assignments" },
+                    class: {
+                      "is-active": _vm.currentRoute.includes("/assignments")
+                    },
                     attrs: { href: "/assignments" }
                   },
                   [_vm._v("\n                Assignations\n        ")]
@@ -32032,6 +32045,7 @@ var render = function() {
               { staticClass: "columns is-centered" },
               [
                 _c("vc-calendar", {
+                  attrs: { attributes: _vm.attrs },
                   on: {
                     dayclick: function($event) {
                       return _vm.updateClockings($event)
