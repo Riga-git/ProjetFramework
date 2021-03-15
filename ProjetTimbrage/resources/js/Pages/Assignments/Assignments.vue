@@ -1,12 +1,32 @@
+
 <template>
-  <app-layout>
-        <month-picker-input lang="fr"
-                            :default-month="defaultCalandar.defaultMonth"
-                            :default-year="defaultCalandar.defaultYear"
-                            :input-pre-filled="defaultCalandar.inputPrefilled"
-                            @input="showDate">
-          </month-picker-input>
-  </app-layout>
+    <app-layout>
+        <div class="container mt-5">
+          <div class="columns is-centered">
+              <month-picker-input class="monthPicker"
+                              lang="fr"
+                              :default-month="defaultCalandar.defaultMonth"
+                              :default-year="defaultCalandar.defaultYear"
+                              :input-pre-filled="defaultCalandar.inputPrefilled"
+                              @input="showDate">
+            </month-picker-input>
+          </div>
+          <div class="columns is-2 is-centered">
+              <div class="column is-half">
+                    <div class="box">
+                        <div class="columns is-centered">
+                           content left
+                        </div>
+                  </div>
+                </div>
+                <div class="column is-half">
+                    <div class="box">
+                        content right
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-layout>
 </template>
 
 <script>
