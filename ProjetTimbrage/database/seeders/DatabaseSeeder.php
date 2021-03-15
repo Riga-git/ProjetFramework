@@ -205,21 +205,21 @@ class DatabaseSeeder extends Seeder
       Assignment::create([
         'user_id' => 2,
         'project_id' => '1',
-        'date' => now(),
+        'date' =>'2021-03-15 17:00:00',
         'duration' => "06:00:00"
       ]);
 
       Assignment::create([
         'user_id' => 2,
         'project_id' => '2',
-        'date' => now(),
+        'date' => '2021-03-15 17:00:00',
         'duration' => "09:30:00"
       ]);
 
       Assignment::create([
         'user_id' => 1,
         'project_id' => '2',
-        'date' => now(),
+        'date' => '2021-03-14 17:00:00',
         'duration' => "06:45:00"
       ]);
 
