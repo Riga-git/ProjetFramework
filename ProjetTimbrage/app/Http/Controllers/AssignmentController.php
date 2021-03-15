@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Traits\AuthTrait;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class AssignmentController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,53 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        //
+      $now = Carbon::now();
+      $start = Carbon::now()->firstOfMonth();
+      $stop = Carbon::now()->lastOfMonth()->hour(23)->minute(59)->second(59);
+      $clockingsForThisMonth = ClockingController::getClockingsForUserByPeriode(Auth::user()->id, $start, $stop);
+
+      $workingTime = [1 => 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 31 Days maximum
+      $currentFilledDay = 0;
+      $currentDailyWorkingTime = CarbonInterval::hour(0);
+      $clockingOdd = null;
+      $clockingEven = null;
+
+      foreach ($clockingsForThisMonth as $entry) {
+        $entryCarbon = Carbon::parse($entry->clocking);
+        $newDay = $entryCarbon->day;
+
+        if ($newDay !== $currentFilledDay){
+          $clockingOdd = $entryCarbon;
+          $clockingEven = null;
+          if ($currentFilledDay !== 0){
+            $workingTime[$currentFilledDay] = $currentDailyWorkingTime;
+            $currentDailyWorkingTime = CarbonInterval::hour(0);
+          }
+          $currentFilledDay = $newDay;
+        }
+        else {
+          if (is_null($clockingOdd)){
+          $clockingOdd = $entryCarbon;
+        }
+          else {
+            $clockingEven = $entryCarbon;
+            $diff = $clockingEven->diffAsCarbonInterval($clockingOdd);
+            $currentDailyWorkingTime->add($diff);
+            $clockingOdd = null;
+            $clockingEven = null;
+          }
+
+        }
+      }
+
+      if ($currentDailyWorkingTime->greaterThanOrEqualTo(CarbonInterval::minute())){
+        $workingTime[$currentFilledDay] = $currentDailyWorkingTime->toArray();
+      }
+
+
+      return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
+                                                        'actualYear' => $now->year,
+                                                        'assigmentsForBaseMonth' => $workingTime]);
     }
 
     /**

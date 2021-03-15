@@ -6,6 +6,7 @@ import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-v
 import PortalVue from 'portal-vue';
 import Toasted from 'vue-toasted';
 import VCalendar from 'v-calendar';
+import { MonthPickerInput } from 'vue-month-picker'
 
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaPlugin);
@@ -18,6 +19,7 @@ Vue.use(Toasted ,{
 Vue.use(VCalendar, {
     componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
   });
+Vue.use(MonthPickerInput);
 
 const app = document.getElementById('app');
 
