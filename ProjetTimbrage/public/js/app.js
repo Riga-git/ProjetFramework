@@ -3345,7 +3345,7 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     MonthPickerInput: vue_month_picker__WEBPACK_IMPORTED_MODULE_1__.MonthPickerInput
   },
-  props: ['actualMonth', 'actualYear', 'LastDayInMonth', 'workingTimeForMonth', 'projectsList', 'assigments'],
+  props: ['actualMonth', 'actualYear', 'workingTimeForMonth', 'projectsList', 'assigments'],
   created: function created() {
     this.projects = this.projectsList;
     this.selectedProjectName = 'Projects...';
