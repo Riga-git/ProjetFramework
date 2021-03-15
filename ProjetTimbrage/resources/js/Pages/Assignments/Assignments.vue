@@ -58,8 +58,10 @@ export default {
   props: [
     'actualMonth',
     'actualYear',
-    'assigmentsForBaseMonth',
-    'projectsList'
+    'LastDayInMonth',
+    'workingTimeForMonth',
+    'projectsList',
+    'assigments',
   ],
 
   created(){
