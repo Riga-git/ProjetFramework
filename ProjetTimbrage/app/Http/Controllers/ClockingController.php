@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Throwable;
+use Carbon\Carbon;
 use Inertia\Inertia;
 use App\Models\Clocking;
 use App\Traits\AuthTrait;
@@ -157,4 +158,10 @@ class ClockingController extends Controller
     {
         //
     }
+
+    public static function getClockingsForUserByPeriode(int $id, Carbon $start, Carbon $stop){
+        return Clocking::where([['clocking', '>=', $start],
+                                ['clocking', '<=', $stop],
+                                ['user_id', $id]])->orderBy('clocking')->get();
+      }
 }
