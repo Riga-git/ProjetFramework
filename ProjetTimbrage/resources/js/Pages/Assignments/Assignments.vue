@@ -14,8 +14,13 @@
           <div class="columns is-2 is-centered">
               <div class="column is-half">
                     <div class="box">
-                        <a v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object"> 
-                        {{index}}-{{actualMonthData}}-{{actualYearData}} {{workingTime.hours}}:{{workingTime.minutes}}
+                        <a v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object" class="tag mb-1 is-block is-medium is-flex is-justify-content-space-between">
+                            <div>
+                                {{index}}-{{actualMonthData}}-{{actualYearData}}
+                            </div>
+                            <div v-if="(workingTime!== 0)">
+                              {{workingTime.hours}} : {{workingTime.minutes}}
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -67,7 +72,7 @@ export default {
     this.projects = this.projectsList
     this.selectedProjectName = 'Projects...'
     this.lastDayInMonthData = this.LastDayInMonth
-    this.workingTimeForMonthData = (this.workingTimeForMonth).subarray(0,this.lastDayInMonthData)
+    this.workingTimeForMonthData = this.workingTimeForMonth
     this.actualMonthData = this.actualMonth
     this.actualYearData = this.actualYear
   },
@@ -101,6 +106,7 @@ export default {
   methods: {
     showDate (date) {
       this.date = date
+       window.location.href = '/assignments?year=' + this.date.year + '&month=' + this.date.monthIndex;
     },
 
     toggleDropdownProjects(){

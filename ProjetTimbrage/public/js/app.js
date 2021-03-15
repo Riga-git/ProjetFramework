@@ -3337,6 +3337,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
  //import JetNavLink from '@/Jetstream/NavLink'
 
@@ -3350,7 +3355,7 @@ __webpack_require__.r(__webpack_exports__);
     this.projects = this.projectsList;
     this.selectedProjectName = 'Projects...';
     this.lastDayInMonthData = this.LastDayInMonth;
-    this.workingTimeForMonthData = this.workingTimeForMonth.subarray(0, this.lastDayInMonthData);
+    this.workingTimeForMonthData = this.workingTimeForMonth;
     this.actualMonthData = this.actualMonth;
     this.actualYearData = this.actualYear;
   },
@@ -3380,6 +3385,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showDate: function showDate(date) {
       this.date = date;
+      window.location.href = '/assignments?year=' + this.date.year + '&month=' + this.date.monthIndex;
     },
     toggleDropdownProjects: function toggleDropdownProjects() {
       this.dropDownProjectsActive = !this.dropDownProjectsActive;
@@ -32204,21 +32210,39 @@ var render = function() {
             "div",
             { staticClass: "box" },
             _vm._l(_vm.workingTimeForMonthData, function(workingTime, index) {
-              return _c("a", { key: workingTime.object }, [
-                _vm._v(
-                  " \n                    " +
-                    _vm._s(index) +
-                    "-" +
-                    _vm._s(_vm.actualMonthData) +
-                    "-" +
-                    _vm._s(_vm.actualYearData) +
-                    " " +
-                    _vm._s(workingTime.hours) +
-                    ":" +
-                    _vm._s(workingTime.minutes) +
-                    "\n                    "
-                )
-              ])
+              return _c(
+                "a",
+                {
+                  key: workingTime.object,
+                  staticClass:
+                    "tag mb-1 is-block is-medium is-flex is-justify-content-space-between"
+                },
+                [
+                  _c("div", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(index) +
+                        "-" +
+                        _vm._s(_vm.actualMonthData) +
+                        "-" +
+                        _vm._s(_vm.actualYearData) +
+                        "\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  workingTime !== 0
+                    ? _c("div", [
+                        _vm._v(
+                          "\n                          " +
+                            _vm._s(workingTime.hours) +
+                            " : " +
+                            _vm._s(workingTime.minutes) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
             }),
             0
           )
