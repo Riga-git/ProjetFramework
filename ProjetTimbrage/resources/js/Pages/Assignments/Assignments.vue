@@ -64,12 +64,9 @@ export default {
     'actualMonth',
     'actualYear',
     'workingTimeForMonth',
-    'projectsList',
-    'assigments',
   ],
 
   created(){
-    this.projects = this.projectsList
     this.selectedProjectName = 'Projects...'
     this.lastDayInMonthData = this.LastDayInMonth
     this.workingTimeForMonthData = this.workingTimeForMonth
@@ -91,7 +88,7 @@ export default {
         year: null,
         projects : null,
         selectedProjectName : ''
-      }, 
+      },
 
       defaultCalandar: {
         defaultMonth : this.actualMonth,
@@ -100,6 +97,9 @@ export default {
       },
 
       dayDetail: {},
+
+      projects : '',
+      assignments : '',
     }
   },
 
