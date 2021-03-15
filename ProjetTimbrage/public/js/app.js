@@ -3342,6 +3342,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
  //import JetNavLink from '@/Jetstream/NavLink'
 
@@ -3407,7 +3412,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.status === 200) {
           _this.projects = response.data.projectsList;
-          _this.assigments = response.data.assignments;
+          _this.assignments = response.data.assignments[0];
         }
       })["catch"](function (error) {
         _this.$toasted.show(error.response.data, {
@@ -32223,134 +32228,158 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "columns is-2 is-centered" }, [
-        _c("div", { staticClass: "column is-half" }, [
-          _c(
-            "div",
-            { staticClass: "box" },
-            _vm._l(_vm.workingTimeForMonthData, function(workingTime, index) {
-              return _c(
-                "a",
-                {
-                  key: workingTime.object,
-                  staticClass:
-                    "tag mb-1 is-block is-medium is-flex is-justify-content-space-between",
-                  on: {
-                    click: function($event) {
-                      return _vm.getDayDetail(index)
-                    }
-                  }
-                },
-                [
-                  _c("div", [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(index) +
-                        "-" +
-                        _vm._s(_vm.actualMonthData) +
-                        "-" +
-                        _vm._s(_vm.actualYearData) +
-                        "\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  workingTime !== 0
-                    ? _c("div", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(workingTime.hours) +
-                            " : " +
-                            _vm._s(workingTime.minutes) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              )
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column is-half" }, [
-          _c("div", { staticClass: "box" }, [
+      _c(
+        "div",
+        {
+          staticClass: "columns is-2 is-centered",
+          staticStyle: { "max-height": "100%" }
+        },
+        [
+          _c("div", { staticClass: "column is-half" }, [
             _c(
               "div",
-              {
-                staticClass: "dropdown",
-                class: { "is-active": _vm.dropDownProjectsActive }
-              },
-              [
-                _c(
-                  "div",
+              { staticClass: "box" },
+              _vm._l(_vm.workingTimeForMonthData, function(workingTime, index) {
+                return _c(
+                  "a",
                   {
-                    staticClass: "dropdown-trigger",
-                    on: { click: _vm.toggleDropdownProjects }
+                    key: workingTime.object,
+                    staticClass:
+                      "tag mb-1 is-block is-medium is-flex is-justify-content-space-between",
+                    on: {
+                      click: function($event) {
+                        return _vm.getDayDetail(index)
+                      }
+                    }
                   },
                   [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "button",
-                        attrs: {
-                          "aria-haspopup": "true",
-                          "aria-controls": "dropdown-menu"
-                        }
-                      },
-                      [
-                        _c("span", [_vm._v(_vm._s(_vm.selectedProjectName))]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "icon is-small" }, [
-                          _c("i", {
-                            staticClass: "fas fa-angle-down",
-                            attrs: { "aria-hidden": "true" }
-                          })
+                    _c("div", [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(index) +
+                          "-" +
+                          _vm._s(_vm.actualMonthData) +
+                          "-" +
+                          _vm._s(_vm.actualYearData) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    workingTime !== 0
+                      ? _c("div", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(workingTime.hours) +
+                              " : " +
+                              _vm._s(workingTime.minutes) +
+                              "\n                        "
+                          )
                         ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "dropdown-menu",
-                    attrs: { id: "dropdown-menu", role: "menu" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "dropdown-content" },
-                      _vm._l(_vm.projects, function(project) {
-                        return _c(
-                          "a",
-                          {
-                            key: project.object,
-                            staticClass: "dropdown-item",
-                            on: {
-                              click: function($event) {
-                                return _vm.selectProject(project)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                          " +
-                                _vm._s(project.name) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      }),
-                      0
-                    )
+                      : _vm._e()
                   ]
                 )
-              ]
+              }),
+              0
             )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-half" }, [
+            _c("div", { staticClass: "box" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown",
+                  class: { "is-active": _vm.dropDownProjectsActive }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dropdown-trigger",
+                      on: { click: _vm.toggleDropdownProjects }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "button",
+                          attrs: {
+                            "aria-haspopup": "true",
+                            "aria-controls": "dropdown-menu"
+                          }
+                        },
+                        [
+                          _c("span", [_vm._v(_vm._s(_vm.selectedProjectName))]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "icon is-small" }, [
+                            _c("i", {
+                              staticClass: "fas fa-angle-down",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dropdown-menu",
+                      attrs: { id: "dropdown-menu", role: "menu" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "dropdown-content" },
+                        _vm._l(_vm.projects, function(project) {
+                          return _c(
+                            "a",
+                            {
+                              key: project.object,
+                              staticClass: "dropdown-item",
+                              on: {
+                                click: function($event) {
+                                  return _vm.selectProject(project)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                          " +
+                                  _vm._s(project.name) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "box" },
+                _vm._l(_vm.assignments, function(assignment) {
+                  return _c("div", { key: assignment.id }, [
+                    _c("p", [
+                      _vm._v(
+                        _vm._s(assignment.date) +
+                          "  --  " +
+                          _vm._s(assignment.duration)
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     ])
   ])
 }

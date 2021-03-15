@@ -100,11 +100,12 @@ class AssignmentController extends Controller
       try{
         $start = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 0, 0, 0)->toDateString();
 
-        $assignments = AssignmentResource::collection(Assignment::where([['date', $start],
-                                                                        ['user_id', Auth::user()->id]])->get());
+        $assignments = Assignment::where([['date', $start],
+                                          ['user_id', Auth::user()->id]])->get();
+
 
         return ['projectsList' => Project::all(),
-                'assigments' => $assignments];
+                'assignments' => $assignments];
       }
       catch (Throwable $e) {
         return response('Error during assignment listing', 500);

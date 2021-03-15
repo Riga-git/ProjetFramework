@@ -11,8 +11,8 @@
                               @input="showDate">
             </month-picker-input>
           </div>
-          <div class="columns is-2 is-centered">
-              <div class="column is-half">
+          <div class="columns is-2 is-centered" style="max-height:100%">
+              <div class="column is-half" >
                     <div class="box">
                         <a @click="getDayDetail(index)" v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object" class="tag mb-1 is-block is-medium is-flex is-justify-content-space-between">
                             <div>
@@ -41,6 +41,11 @@
                               {{project.name}}
                             </a>
                           </div>
+                        </div>
+                      </div>
+                      <div class="box">
+                        <div v-for="assignment in assignments" v-bind:key="assignment.id">
+                          <p>{{ assignment.date }}  --  {{ assignment.duration }}</p>
                         </div>
                       </div>
                     </div>
@@ -122,7 +127,7 @@ export default {
         .then(response => {
           if (response.status === 200) {
               this.projects = response.data.projectsList;
-              this.assigments = response.data.assignments;
+              this.assignments = response.data.assignments[0];
           }
         })
         .catch(error => {
