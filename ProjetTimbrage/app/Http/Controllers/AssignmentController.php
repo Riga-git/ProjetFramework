@@ -49,7 +49,6 @@ class AssignmentController extends Controller
 
       return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
                                                         'actualYear' => $now->year,
-                                                        'LastDayInMonth' => $stop->day,
                                                         'workingTimeForMonth' => $workingTime,
                                                         'projectsList' => Project::all(),
                                                         'assigments' => $assignments]);
