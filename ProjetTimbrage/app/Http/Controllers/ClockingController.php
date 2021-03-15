@@ -114,6 +114,7 @@ class ClockingController extends Controller
                                         ->where('user_id', $user->id)
                                         ->where('clocking', '>=', $date)
                                         ->where('clocking', '<', $nextDay)
+                                        ->orderBy('clocking')
                                         ->get();
             $clockingsList = [];
             foreach ($dayClockings as $dayClocking) {
