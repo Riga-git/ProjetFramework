@@ -25,26 +25,27 @@ class AssignmentController extends Controller
   public function index(Request $request)
   {
     try{
+      $now = Carbon::now();
       if ($request->has('month') && intval($request->input('month')) >= 1 && intval($request->input('month')) <= 12
           && $request->has('year') && intval($request->input('year')) >= 2021 && intval($request->input('year')) <= 3000){
 
             /* Force to the 1st of the selected month to avoid overflow (i.e : we are 31 of mach and try to show february => will return a date in march) */
             $start = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1)->firstOfMonth();
-            $stop = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1)->firstOfMonth();
+            $stop = Carbon::createFromDate(intval($request->input('year')), intval($request->input('month')), 1)->lastOfMonth();
 
             $workingTime = $this->getWorkingTimePerDay($start, $stop);
       }
       else {
-        $now = Carbon::now();
         $start = Carbon::now()->firstOfMonth();
         $stop = Carbon::now()->lastOfMonth()->hour(23)->minute(59)->second(59);
 
         $workingTime = $this->getWorkingTimePerDay($start, $stop);
       }
 
+
       $assignments = AssignmentResource::collection(Assignment::where([['date', '>=', $start],
-                                                                        ['date', '<=', $stop],
-                                                                        ['user_id', Auth::user()->id]])->get());
+                                                                      ['date', '<=', $stop],
+                                                                      ['user_id', Auth::user()->id]])->get());
 
       return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
                                                         'actualYear' => $now->year,
@@ -91,10 +92,10 @@ class AssignmentController extends Controller
       //
   }
 
-  private function getWorkingTimePerDay($start, $stop){
+  private function getWorkingTimePerDay(Carbon $start, Carbon $stop){
     $clockingsForThisMonth = ClockingController::getClockingsForUserByPeriode(Auth::user()->id, $start, $stop);
 
-    $workingTime = [1 => 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 31 Days maximum
+    $workingTime = array_fill($start->day, $stop->day, 0); // 31 Days maximum
     $currentFilledDay = 0;
     $currentDailyWorkingTime = CarbonInterval::hour(0);
     $clockingOdd = null;

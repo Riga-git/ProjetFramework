@@ -16,8 +16,8 @@ class AssignmentResource extends JsonResource
     {
         return [
           'id' => $this->id,
-          'user' => $this->user(),
-          'project' => $this->project(),
+          'user' => $this->user_id,
+          'project' => $this->project_id,
           'date' => $this->date,
           'duration' => $this->duration,
         ];

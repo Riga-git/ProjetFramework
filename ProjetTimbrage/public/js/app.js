@@ -3373,7 +3373,8 @@ __webpack_require__.r(__webpack_exports__);
         defaultMonth: this.actualMonth,
         defaultYear: this.actualYear,
         inputPrefilled: true
-      }
+      },
+      dayDetail: {}
     };
   },
   methods: {
@@ -3387,6 +3388,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('project-selected', project.id);
       this.selectedProjectName = project.name;
       this.toggleDropdownProjects();
+    },
+    showDayDetail: function showDayDetail(day, month, year) {
+      this.dayDetail = {};
     }
   }
 });
