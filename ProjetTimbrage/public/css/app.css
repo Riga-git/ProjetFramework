@@ -16366,4 +16366,5 @@ readers do not read off random characters that represent icons */
 }
 .monthPicker div{
     background-color: white;
+    z-index: 100;
 }

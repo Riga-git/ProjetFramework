@@ -16,4 +16,5 @@
 
 .monthPicker div{
     background-color: white;
+    z-index: 100;
 }

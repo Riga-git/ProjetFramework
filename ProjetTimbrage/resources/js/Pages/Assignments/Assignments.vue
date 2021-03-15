@@ -14,12 +14,12 @@
           <div class="columns is-2 is-centered">
               <div class="column is-half">
                     <div class="box">
-                        <a v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object" class="tag mb-1 is-block is-medium is-flex is-justify-content-space-between">
+                        <a @click="getDayDetail(index)" v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object" class="tag mb-1 is-block is-medium is-flex is-justify-content-space-between">
                             <div>
                                 {{index}}-{{actualMonthData}}-{{actualYearData}}
                             </div>
                             <div v-if="(workingTime!== 0)">
-                              {{workingTime.hours}} : {{workingTime.minutes}}
+                                {{workingTime.hours}} : {{workingTime.minutes}}
                             </div>
                         </a>
                     </div>
@@ -98,8 +98,6 @@ export default {
         defaultYear : this.actualYear,
         inputPrefilled : true,
       },
-
-      dayDetail: {},
     }
   },
 
@@ -119,12 +117,18 @@ export default {
       this.toggleDropdownProjects()
     },
 
-    showDayDetail(day, month, year){
-      this.dayDetail = {
-
-      }
+    getDayDetail(day){
+      axios.get('/assignments', { params: { day: day , month: this.actualMonthData, year: this.actualYearData} })
+        .then(response => {
+          if (response.status === 200) {
+              this.projects = response.data.projectsList;
+              this.assigments = response.data.assignments;
+          } 
+        })
+        .catch(error => {
+          this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});
+          });
     }
-
   }
 }
 
