@@ -60,7 +60,7 @@ class ClockingController extends Controller
 
         /* Validator */
         $validator = Validator::make($request->all(), [
-            'timeStamp' => 'required',
+            'timeStamp' => 'required|date',
         ]);
 
         /* Store */
@@ -95,7 +95,7 @@ class ClockingController extends Controller
 
         /* Validation */
         $validator = Validator::make($request->all(), [
-            'date' => 'required|string'
+            'date' => 'required|string|date'
         ]);
 
 
