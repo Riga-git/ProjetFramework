@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Assignment;
-use App\Models\Department;
+use App\Models\User;
 use App\Models\Grade;
 use App\Models\Project;
-use App\Models\User;
+use App\Models\Clocking;
+use App\Models\Assignment;
+use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -141,8 +142,68 @@ class DatabaseSeeder extends Seeder
         'number' => 968574
       ]);
 
-      Assignment::create([
+      Clocking::create([
         'user_id' => 1,
+        'clocking' => '2021-03-14 08:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 1,
+        'clocking' => '2021-03-14 10:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 1,
+        'clocking' => '2021-03-14 10:15:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 1,
+        'clocking' => '2021-03-14 12:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 1,
+        'clocking' => '2021-03-14 13:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 1,
+        'clocking' => '2021-03-14 17:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 08:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 10:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 10:15:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 12:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 13:00:00'
+      ]);
+
+      Clocking::create([
+        'user_id' => 2,
+        'clocking' => '2021-03-15 17:00:00'
+      ]);
+
+      Assignment::create([
+        'user_id' => 2,
         'project_id' => '1',
         'date' => now(),
         'duration' => "06:00:00"
