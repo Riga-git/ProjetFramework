@@ -3385,6 +3385,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showDate: function showDate(date) {
       this.date = date;
+      window.location.href = '/assignments?year=' + this.date.year + '&month=' + this.date.monthIndex;
     },
     toggleDropdownProjects: function toggleDropdownProjects() {
       this.dropDownProjectsActive = !this.dropDownProjectsActive;

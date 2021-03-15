@@ -106,6 +106,7 @@ export default {
   methods: {
     showDate (date) {
       this.date = date
+       window.location.href = '/assignments?year=' + this.date.year + '&month=' + this.date.monthIndex;
     },
 
     toggleDropdownProjects(){
