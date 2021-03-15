@@ -130,6 +130,17 @@ class DatabaseSeeder extends Seeder
         'grade_id' => 2,
       ]);
 
+      User::create([
+        'firstName' => 'Raphaël',
+        'lastName' => 'Emourgeon',
+        'email' => 'raphael.emourgeon@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('password'),
+        'remember_token' => Str::random(10),
+        'department_id' => 1,
+        'grade_id' => 4,
+      ]);
+
       Project::create([
         'id' => 1,
         'name' => 'LUM01',
