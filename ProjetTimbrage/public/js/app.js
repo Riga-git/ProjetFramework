@@ -3321,6 +3321,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  //import JetNavLink from '@/Jetstream/NavLink'
 
@@ -3329,14 +3345,19 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     MonthPickerInput: vue_month_picker__WEBPACK_IMPORTED_MODULE_1__.MonthPickerInput
   },
-  props: ['actualMonth', 'actualYear', 'assigmentsForBaseMonth'],
+  props: ['actualMonth', 'actualYear', 'assigmentsForBaseMonth', 'projectsList'],
+  created: function created() {
+    this.projects = this.projectsList;
+  },
   data: function data() {
     return {
+      dropDownProjectsActive: false,
       date: {
         from: null,
         to: null,
         month: null,
-        year: null
+        year: null,
+        projects: null
       },
       defaultCalandar: {
         defaultMonth: this.actualMonth,
@@ -3348,6 +3369,12 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showDate: function showDate(date) {
       this.date = date;
+    },
+    toggleDropdownProjects: function toggleDropdownProjects() {
+      this.dropDownProjectsActive = !this.dropDownProjectsActive;
+    },
+    selectProject: function selectProject(id) {
+      this.$emit('project-selected', id);
     }
   }
 });
@@ -32168,7 +32195,80 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "column is-half" }, [
           _c("div", { staticClass: "box" }, [
-            _vm._v("\n                    content right\n                ")
+            _c(
+              "div",
+              {
+                staticClass: "dropdown",
+                class: { "is-active": _vm.dropDownProjectsActive }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-trigger",
+                    on: { click: _vm.toggleDropdownProjects }
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button",
+                        attrs: {
+                          "aria-haspopup": "true",
+                          "aria-controls": "dropdown-menu"
+                        }
+                      },
+                      [
+                        _c("span", [_vm._v("Projects")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "icon is-small" }, [
+                          _c("i", {
+                            staticClass: "fas fa-angle-down",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-menu",
+                    attrs: { id: "dropdown-menu", role: "menu" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "dropdown-content" },
+                      _vm._l(_vm.projects, function(project) {
+                        return _c(
+                          "a",
+                          {
+                            key: project.object,
+                            staticClass: "dropdown-item",
+                            on: {
+                              click: function($event) {
+                                return _vm.selectProject(project.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                          " +
+                                _vm._s(project.name) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
           ])
         ])
       ])

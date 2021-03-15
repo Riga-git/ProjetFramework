@@ -21,7 +21,23 @@
                 </div>
                 <div class="column is-half">
                     <div class="box">
-                        content right
+                        <div class="dropdown" v-bind:class="{'is-active': dropDownProjectsActive}">
+                        <div class="dropdown-trigger" @click="toggleDropdownProjects">
+                          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Projects</span>
+                            <span class="icon is-small">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                          <div class="dropdown-content">
+                            <a v-for="project in projects" v-bind:key="project.object" class="dropdown-item" @click="selectProject(project.id)">
+                              {{project.name}}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -43,15 +59,22 @@ export default {
     'actualMonth',
     'actualYear',
     'assigmentsForBaseMonth',
+    'projectsList'
   ],
+
+  created(){
+    this.projects = this.projectsList
+  },
 
   data() {
     return {
+      dropDownProjectsActive : false,
       date: {
         from: null,
         to: null,
         month: null,
-        year: null
+        year: null,
+        projects : null,
       },
 
       defaultCalandar: {
@@ -65,6 +88,12 @@ export default {
   methods: {
     showDate (date) {
       this.date = date
+    },
+    toggleDropdownProjects(){
+      this.dropDownProjectsActive = !this.dropDownProjectsActive;
+    },
+    selectProject(id){
+      this.$emit('project-selected', id);
     }
   }
 }

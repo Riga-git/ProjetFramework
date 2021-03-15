@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assignment;
-use App\Traits\AuthTrait;
 use Carbon\Carbon;
+use Inertia\Inertia;
+use App\Models\Project;
+use App\Traits\AuthTrait;
+use App\Models\Assignment;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
 class AssignmentController extends Controller
 {
@@ -67,7 +68,9 @@ class AssignmentController extends Controller
 
       return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
                                                         'actualYear' => $now->year,
-                                                        'assigmentsForBaseMonth' => $workingTime]);
+                                                        'assigmentsForBaseMonth' => $workingTime,
+                                                        'projectsList' => Project::all()
+                                                        ]);
     }
 
     /**
