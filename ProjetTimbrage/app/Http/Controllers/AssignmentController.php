@@ -42,9 +42,10 @@ class AssignmentController extends Controller
         $workingTime = $this->getWorkingTimePerDay($start, $stop);
       }
 
+
       $assignments = AssignmentResource::collection(Assignment::where([['date', '>=', $start],
-                                                                        ['date', '<=', $stop],
-                                                                        ['user_id', Auth::user()->id]])->get());
+                                                                      ['date', '<=', $stop],
+                                                                      ['user_id', Auth::user()->id]])->get());
 
       return Inertia::render('Assignments/Assignments',['actualMonth' => $now->month,
                                                         'actualYear' => $now->year,
