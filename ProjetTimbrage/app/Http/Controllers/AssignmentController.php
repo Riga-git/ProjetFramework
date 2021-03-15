@@ -87,23 +87,20 @@ class AssignmentController extends Controller
   }
 
   public function getAssigmentsForDate(Request $request){
-
     $validator = Validator::make($request->all(), [
-      'year' => 'required|min:2021|max:3000',
-      'month' => 'required|min:1|max:12',
       'day' => 'required|min:1|max:31',
+      'month' => 'required|min:1|max:12',
+      'year' => 'required|min:0|max:3000',
     ]);
 
     if ($validator->fails()) {
-      return response('Validation fail : ' . $validator->failed(), 500);
+      return response('Validation fail :' . implode("\n", $validator->failed()), 500);
     }
     else {
       try{
-        $start = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 0, 0, 0);
-        $stop = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 23, 59, 59);
+        $start = Carbon::create($request->input('year'), $request->input('month'), $request->input('day'), 0, 0, 0)->toDateString();
 
-        $assignments = AssignmentResource::collection(Assignment::where([['date', '>=', $start],
-                                                                        ['date', '<=', $stop],
+        $assignments = AssignmentResource::collection(Assignment::where([['date', $start],
                                                                         ['user_id', Auth::user()->id]])->get());
 
         return ['projectsList' => Project::all(),

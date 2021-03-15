@@ -3378,7 +3378,6 @@ __webpack_require__.r(__webpack_exports__);
         defaultYear: this.actualYear,
         inputPrefilled: true
       },
-      dayDetail: {},
       projects: '',
       assignments: ''
     };
@@ -3396,8 +3395,27 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedProjectName = project.name;
       this.toggleDropdownProjects();
     },
-    showDayDetail: function showDayDetail(day, month, year) {
-      this.dayDetail = {};
+    getDayDetail: function getDayDetail(day) {
+      var _this = this;
+
+      axios.get('/assignment/daily', {
+        params: {
+          day: day,
+          month: this.actualMonthData,
+          year: this.actualYearData
+        }
+      }).then(function (response) {
+        if (response.status === 200) {
+          _this.projects = response.data.projectsList;
+          _this.assigments = response.data.assignments;
+        }
+      })["catch"](function (error) {
+        _this.$toasted.show(error.response.data, {
+          duration: 3000,
+          icon: 'fa-exclamation-triangle',
+          type: 'error'
+        });
+      });
     }
   }
 });
@@ -32216,7 +32234,12 @@ var render = function() {
                 {
                   key: workingTime.object,
                   staticClass:
-                    "tag mb-1 is-block is-medium is-flex is-justify-content-space-between"
+                    "tag mb-1 is-block is-medium is-flex is-justify-content-space-between",
+                  on: {
+                    click: function($event) {
+                      return _vm.getDayDetail(index)
+                    }
+                  }
                 },
                 [
                   _c("div", [
@@ -32234,7 +32257,7 @@ var render = function() {
                   workingTime !== 0
                     ? _c("div", [
                         _vm._v(
-                          "\n                          " +
+                          "\n                            " +
                             _vm._s(workingTime.hours) +
                             " : " +
                             _vm._s(workingTime.minutes) +

@@ -29,7 +29,7 @@ class ClockingController extends Controller
         }catch (Throwable $e){
             return response($e, 403);
         }
-  
+
         /* Show all */
         return Inertia::render('Clockings/Clockings');
     }
@@ -104,7 +104,6 @@ class ClockingController extends Controller
             return response('Données invalides', 500);
         }
 
-        /* Store */
         try{
             $user = auth()->user();
             $date = $request->query('date');

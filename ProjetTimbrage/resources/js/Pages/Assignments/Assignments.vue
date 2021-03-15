@@ -118,12 +118,12 @@ export default {
     },
 
     getDayDetail(day){
-      axios.get('/assignments', { params: { day: day , month: this.actualMonthData, year: this.actualYearData} })
+      axios.get('/assignment/daily', { params: { day: day , month: this.actualMonthData, year: this.actualYearData} })
         .then(response => {
           if (response.status === 200) {
               this.projects = response.data.projectsList;
               this.assigments = response.data.assignments;
-          } 
+          }
         })
         .catch(error => {
           this.$toasted.show(error.response.data,{duration:3000, icon: 'fa-exclamation-triangle',type:'error'});

@@ -32,6 +32,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('projects', ProjectController::class)->except(['edit']);
     Route::resource('users', UserController::class);
     Route::resource('assignments', AssignmentController::class);
-    Route::get('assignments/daily', [AssignmentController::class, 'getAssigmentsForDate']);
+    Route::get('assignment/daily', [AssignmentController::class, 'getAssigmentsForDate']);
 });
 
