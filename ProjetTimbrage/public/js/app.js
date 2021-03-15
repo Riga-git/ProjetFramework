@@ -3349,10 +3349,18 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.projects = this.projectsList;
     this.selectedProjectName = 'Projects...';
+    this.lastDayInMonthData = this.LastDayInMonth;
+    this.workingTimeForMonthData = this.workingTimeForMonth.subarray(0, this.lastDayInMonthData);
+    this.actualMonthData = this.actualMonth;
+    this.actualYearData = this.actualYear;
   },
   data: function data() {
     return {
       dropDownProjectsActive: false,
+      lastDayInMonthData: null,
+      workingTimeForMonthData: null,
+      actualMonthData: null,
+      actualYearData: null,
       date: {
         from: null,
         to: null,
@@ -32188,13 +32196,28 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "columns is-2 is-centered" }, [
         _c("div", { staticClass: "column is-half" }, [
-          _c("div", { staticClass: "box" }, [
-            _c("div", { staticClass: "columns is-centered" }, [
-              _vm._v(
-                "\n                       content left\n                    "
-              )
-            ])
-          ])
+          _c(
+            "div",
+            { staticClass: "box" },
+            _vm._l(_vm.workingTimeForMonthData, function(workingTime, index) {
+              return _c("a", { key: workingTime.object }, [
+                _vm._v(
+                  " \n                    " +
+                    _vm._s(index) +
+                    "-" +
+                    _vm._s(_vm.actualMonthData) +
+                    "-" +
+                    _vm._s(_vm.actualYearData) +
+                    " " +
+                    _vm._s(workingTime.hours) +
+                    ":" +
+                    _vm._s(workingTime.minutes) +
+                    "\n                    "
+                )
+              ])
+            }),
+            0
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "column is-half" }, [

@@ -14,10 +14,10 @@
           <div class="columns is-2 is-centered">
               <div class="column is-half">
                     <div class="box">
-                        <div class="columns is-centered">
-                           content left
-                        </div>
-                  </div>
+                        <a v-for="(workingTime, index) in workingTimeForMonthData" v-bind:key="workingTime.object"> 
+                        {{index}}-{{actualMonthData}}-{{actualYearData}} {{workingTime.hours}}:{{workingTime.minutes}}
+                        </a>
+                    </div>
                 </div>
                 <div class="column is-half">
                     <div class="box">
@@ -67,19 +67,27 @@ export default {
   created(){
     this.projects = this.projectsList
     this.selectedProjectName = 'Projects...'
+    this.lastDayInMonthData = this.LastDayInMonth
+    this.workingTimeForMonthData = (this.workingTimeForMonth).subarray(0,this.lastDayInMonthData)
+    this.actualMonthData = this.actualMonth
+    this.actualYearData = this.actualYear
   },
 
   data() {
     return {
       dropDownProjectsActive : false,
-      date: {
+      lastDayInMonthData : null,
+      workingTimeForMonthData : null,
+      actualMonthData : null,
+      actualYearData : null,
+        date: {
         from: null,
         to: null,
         month: null,
         year: null,
         projects : null,
         selectedProjectName : ''
-      },
+      }, 
 
       defaultCalandar: {
         defaultMonth : this.actualMonth,
