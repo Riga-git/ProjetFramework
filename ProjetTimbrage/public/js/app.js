@@ -3348,6 +3348,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['actualMonth', 'actualYear', 'LastDayInMonth', 'workingTimeForMonth', 'projectsList', 'assigments'],
   created: function created() {
     this.projects = this.projectsList;
+    this.selectedProjectName = 'Projects...';
   },
   data: function data() {
     return {
@@ -3357,7 +3358,8 @@ __webpack_require__.r(__webpack_exports__);
         to: null,
         month: null,
         year: null,
-        projects: null
+        projects: null,
+        selectedProjectName: ''
       },
       defaultCalandar: {
         defaultMonth: this.actualMonth,
@@ -3373,8 +3375,10 @@ __webpack_require__.r(__webpack_exports__);
     toggleDropdownProjects: function toggleDropdownProjects() {
       this.dropDownProjectsActive = !this.dropDownProjectsActive;
     },
-    selectProject: function selectProject(id) {
-      this.$emit('project-selected', id);
+    selectProject: function selectProject(project) {
+      this.$emit('project-selected', project.id);
+      this.selectedProjectName = project.name;
+      this.toggleDropdownProjects();
     }
   }
 });
@@ -32219,7 +32223,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("span", [_vm._v("Projects")]),
+                        _c("span", [_vm._v(_vm._s(_vm.selectedProjectName))]),
                         _vm._v(" "),
                         _c("span", { staticClass: "icon is-small" }, [
                           _c("i", {
@@ -32250,7 +32254,7 @@ var render = function() {
                             staticClass: "dropdown-item",
                             on: {
                               click: function($event) {
-                                return _vm.selectProject(project.id)
+                                return _vm.selectProject(project)
                               }
                             }
                           },
