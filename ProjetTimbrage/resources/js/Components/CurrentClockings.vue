@@ -1,9 +1,9 @@
   
 <template>
-<div class="columns">
+<div class="columns is-centered">
   <div class="column is-full">
     <div class="columns is-centered">
-      <p class="has-text-weight-bold is-size-3">{{currentTime}}</p>
+      <p style="text-align: center" class="has-text-weight-bold is-size-3">{{currentTime}}</p>
     </div>
     <div class="columns is-centered">
       <div class="column is-full">
@@ -33,7 +33,7 @@
 
     data() {
       return {
-        dataDate : '',
+        dateIn : '',
         currentDate : null,
         timeSeparator : '',
         currentTime : '-- : --',
@@ -45,21 +45,22 @@
     },
 
     created(){
-        this.dataDate = this.date;
+        this.dateIn = this.date === '' ? this.getCurrentDate() : this.date;
         this.interval = setInterval(() => this.updateTime(), 1000);
     },
 
     mounted(){  
-      axios.get('/getClockings', { params: { date: this.getDate() } })
+      axios.get('/getClockings', { params: { date: this.dateIn } })
         .then(response => {
           if (response.status === 200) {
               this.clockingsList = response.data.clockingsList;
+              this.currentDate = response.data.date;
               for (let index = 0; index < this.clockingsList.length; index++) {
                   if (index % 2){
-                    this.clocksOut.push(this.clockingsList[index])
+                    this.clocksOut.push(this.clockingsList[index].substring(6,0))
                   }else
                   {
-                    this.clocksIn.push(this.clockingsList[index])
+                    this.clocksIn.push(this.clockingsList[index].substring(6,0))
                   }
               }
           } 
@@ -71,19 +72,20 @@
 
     methods: {
       updateTime(){
-        this.currentDate = new Date
-        let hours = this.currentDate.getHours() < 10 ? '0' + this.currentDate.getHours() : this.currentDate.getHours()
-        let minutes = this.currentDate.getMinutes() < 10 ? '0' + this.currentDate.getMinutes() : this.currentDate.getMinutes()
+        let date = new Date
+        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
         this.timeSeparator = this.timeSeparator === ' ' ? ':' : ' '
         this.currentTime = hours +  this.timeSeparator + minutes
       },
-      getDate() {
+
+      getCurrentDate() {
         let date = new Date
         let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
         let month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1 // Jan -> 0
         let year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear()
         return year + '-' + month + '-' + day
-    },
+      }
     }
   }
 

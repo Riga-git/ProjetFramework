@@ -5,6 +5,7 @@ import Vue from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue';
 import PortalVue from 'portal-vue';
 import Toasted from 'vue-toasted';
+import VCalendar from 'v-calendar';
 
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaPlugin);
@@ -14,6 +15,9 @@ Vue.use(Toasted ,{
     fullWidth : true,
     position : 'bottom-center'
 });
+Vue.use(VCalendar, {
+    componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+  });
 
 const app = document.getElementById('app');
 

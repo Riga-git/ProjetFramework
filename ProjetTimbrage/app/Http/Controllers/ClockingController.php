@@ -118,7 +118,7 @@ class ClockingController extends Controller
             foreach ($dayClockings as $dayClocking) {
                 array_push($clockingsList, substr($dayClocking['clocking'],10));
             }
-            return response()->json(['clockingsList' => $clockingsList], 200);
+            return response()->json(['date' =>$date, 'clockingsList' => $clockingsList], 200);
         } catch(Throwable $e) {
                 return response('Impossible récupérér les pointages', 500);
         }

@@ -46,7 +46,7 @@
                 </div>
                 <div class="column is-half">
                     <div class="box">
-                    <current-clockings :date="''" :key="updateCurrentClockings"></current-clockings>
+                    <current-clockings :date="this.getCurrentDate()" :key="updateCurrentClockings"></current-clockings>
                     </div>
                 </div>
             </div>
@@ -86,14 +86,18 @@
             },
             getCurrentTimeStamp() {
                 let date = new Date
-                let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-                let month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1 // Jan -> 0
-                let year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear()
                 let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
                 let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
                 let seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
-                return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds
+                return this.getCurrentDate() + ' ' + hours + ':' + minutes + ':' + seconds
             },
+            getCurrentDate() {
+                let date = new Date
+                let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+                let month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1 // Jan -> 0
+                let year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear()
+                return year + '-' + month + '-' + day
+            }
         }
 
 

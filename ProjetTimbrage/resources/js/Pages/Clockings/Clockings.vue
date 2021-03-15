@@ -1,20 +1,22 @@
 <template>
-  <app-layout>
-      <div class="container mt-5">
-          <div class="columns is-2 ">
-              <div class="column is-half is-justify-content-space-around is-align-items-center">
-                  <div class="box">
-                      clockings list
-                  </div>
-              </div>
+    <app-layout>
+        <div class="container mt-5">
+          <div class="columns is-2 is-centered">
               <div class="column is-half">
-                  <div class="box">
-                  <current-clockings :date="''" :key="updateCurrentClockings"></current-clockings>
+                    <div class="box">
+                        <div class="columns is-centered">
+                            <vc-calendar @dayclick="updateClockings($event)"></vc-calendar>
+                        </div>
                   </div>
-              </div>
-          </div>
-      </div>
-  </app-layout>
+                </div>
+                <div class="column is-half">
+                    <div class="box">
+                        <current-clockings :date="selectedDate" :key="selectedDate"></current-clockings>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-layout>
 </template>
 
 <script>
@@ -29,13 +31,15 @@
 
         data() {
             return {
-            updateCurrentClockings : false
+            updateCurrentClockings : false,
+            selectedDate : ''
         }
     },
 
         methods : {
+            updateClockings(datePicked){
+                this.selectedDate = datePicked.id;
+            },
         }
-
-
     }
 </script>
